@@ -1,0 +1,2 @@
+{"message":"Requires authentication","documentation_url":"https://docs.github.com/rest/users/users#get-the-authenticated-user","status":"401"}
+gh: Requires authentication (HTTP 401)

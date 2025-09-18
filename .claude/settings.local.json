@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Read(//c/MyDevelopment/unice-angular/staterkit/modern-sass/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
