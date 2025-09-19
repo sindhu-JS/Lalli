@@ -5,7 +5,10 @@
       "Read(//c/MyDevelopment/unice-angular/staterkit/modern-sass/**)",
       "Bash(npm run build:*)",
       "Bash(xcopy:*)",
-      "Bash(robocopy:*)"
+      "Bash(robocopy:*)",
+      "Bash(npx tailwindcss init:*)",
+      "Bash(node_modules.bintailwindcss init -p)",
+      "Bash(npm uninstall:*)"
     ],
     "deny": [],
     "ask": []

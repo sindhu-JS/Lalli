@@ -1,43 +1,71 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { CarouselModule } from 'ngx-owl-carousel-o';
+import { CarouselModule } from 'primeng/carousel';
 
 @Component({
   selector: 'app-modern-sass-testimonial',
-  imports:[CarouselModule],
+  imports: [CommonModule, CarouselModule],
   templateUrl: './modern-sass-testimonial.component.html',
-  styleUrls: ['./modern-sass-testimonial.component.scss']
+  styleUrls: ['./modern-sass-testimonial.component.scss'],
 })
 export class ModernSassTestimonialComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
-  }
-  testimonial = [
+  testimonials = [
     {
-      img:'assets/images/event/testimonial/L3-1.png',
-      msgIcon:'assets/images/event/testimonial/message.png',
-      name:'Jhon Denal - ',
-      designation:'UI Designer'
+      name: 'JENELIA ORKID 1',
+      designation: 'CEO',
+      img: 'assets/images/event/testimonial/L3-1.png',
+      description:
+        'I need to get a business loan fast! I need to get a business loan fast! get a business.',
     },
     {
-      img:'assets/images/event/testimonial/L3-1.png',
-      msgIcon:'assets/images/event/testimonial/message.png',
-      name:'Joy Denal - ',
-      designation:'UI Designer'
-    }
-  ]
+      name: 'JENELIA ORKID 2',
+      designation: 'CEO',
+      img: 'assets/images/event/testimonial/L3-1.png',
+      description:
+        'I need to get a business loan fast! I need to get a business loan fast! get a business.',
+    },
+    {
+      name: 'JENELIA ORKID 3',
+      designation: 'CEO',
+      img: 'assets/images/event/testimonial/L3-1.png',
+      description:
+        'I need to get a business loan fast! I need to get a business loan fast! get a business.',
+    },
+    {
+      name: 'JENELIA ORKID 4',
+      designation: 'CEO',
+      img: 'assets/images/event/testimonial/L3-1.png',
+      description:
+        'I need to get a business loan fast! I need to get a business loan fast! get a business.',
+    },
+    {
+      name: 'JENELIA ORKID 5',
+      designation: 'CEO',
+      img: 'assets/images/event/testimonial/L3-1.png',
+      description:
+        'I need to get a business loan fast! I need to get a business loan fast! get a business.',
+    },
+  ];
 
-  testimonialcarouselOptions= {
-    items: 1,
-    margin: 0,
-    autoHeight: true,
-    nav: true,
-    dots: false,
-    navText: ['<img src="assets/images/music/gallery/gallery-icon/left.png">', '<img src="assets/images/music/gallery/gallery-icon/right.png">'],
-    autoplay: false,
-    slideSpeed: 300,
-    paginationSpeed: 400,
-    loop: true
-  }
+  responsiveOptions = [
+    {
+      breakpoint: '1199px',
+      numVisible: 3,
+      numScroll: 1,
+    },
+    {
+      breakpoint: '991px',
+      numVisible: 2,
+      numScroll: 1,
+    },
+    {
+      breakpoint: '767px',
+      numVisible: 1,
+      numScroll: 1,
+    },
+  ];
 }

@@ -1,9 +1,9 @@
 <!--brand css start-->
 <section class="saas2 brand">
-    <div class="col-md-10 offset-md-1 col-12">
-        <div class="container saas2-services">
-            <div class="row">
-                <div class="col-md-10 offset-md-1">
+    <div class="w-full md:w-10/12 md:ml-[8.333333%]">
+        <div class="container mx-auto saas2-services">
+            <div class="flex flex-wrap">
+                <div class="w-full md:w-10/12 md:ml-[8.333333%]">
                     <div class="title">
                         <div class="main-title">
                             <h2>trusted us</h2>
@@ -16,16 +16,25 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12">
-                    <owl-carousel-o [options]="brandcarouselOptions" class="brand-slider">
-                        @for(brand of brands; track brand){
-                        <ng-template carouselSlide class="item">
-                            <a href="javascript:void(0)">
-                                <img [src]="brand.img" alt="" class="img-fluid">
-                            </a>
+                <div class="w-full">
+                    <p-carousel
+                        [value]="brands"
+                        [numVisible]="5"
+                        [numScroll]="1"
+                        [circular]="true"
+                        [autoplayInterval]="3000"
+                        [responsiveOptions]="responsiveOptions"
+                        [showIndicators]="false"
+                        [showNavigators]="false"
+                        class="brand-slider">
+                        <ng-template let-brand pTemplate="item">
+                            <div class="px-2">
+                                <a href="javascript:void(0)">
+                                    <img [src]="brand.img" [alt]="brand.alt" class="w-full h-auto">
+                                </a>
+                            </div>
                         </ng-template>
-                        }
-                    </owl-carousel-o>
+                    </p-carousel>
                 </div>
             </div>
         </div>

@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { CarouselModule } from 'ngx-owl-carousel-o';
+import { CarouselModule } from 'primeng/carousel';
 
 @Component({
     selector: 'app-modern-sass-brand',
-      imports:[CommonModule,CarouselModule],
+    imports: [CommonModule, CarouselModule],
     templateUrl: './modern-sass-brand.component.html',
     styleUrls: ['./modern-sass-brand.component.scss']
 })
@@ -14,48 +14,40 @@ export class ModernSassBrandComponent implements OnInit {
 
     ngOnInit() {
     }
+
     brands = [
-        { img: "assets/images/saas2/brand/1.png" },
-        { img: "assets/images/saas2/brand/2.png" },
-        { img: "assets/images/saas2/brand/3.png" },
-        { img: "assets/images/saas2/brand/1.png" },
-        { img: "assets/images/saas2/brand/5.png" }
+        { img: "assets/images/saas2/brand/1.png", alt: "Brand 1" },
+        { img: "assets/images/saas2/brand/2.png", alt: "Brand 2" },
+        { img: "assets/images/saas2/brand/3.png", alt: "Brand 3" },
+        { img: "assets/images/saas2/brand/1.png", alt: "Brand 4" },
+        { img: "assets/images/saas2/brand/5.png", alt: "Brand 5" }
     ]
 
-    brandcarouselOptions = {
-        items: 5,
-        margin: 40,
-        autoHeight: true,
-        nav: false,
-        dots: false,
-        autoplay: true,
-        slideSpeed: 300,
-        paginationSpeed: 400,
-        loop: true,
-        responsive: {
-            0: {
-                items: 1,
-                margin: 40
-            },
-            320: {
-                items: 1,
-                margin: 30
-            },
-            360: {
-                items: 2,
-                margin: 20
-            },
-            480: {
-                items: 3,
-                margin: 30
-            },
-            768: {
-                items: 4,
-                margin: 30
-            },
-            992: {
-                items: 5
-            }
+    responsiveOptions = [
+        {
+            breakpoint: '1199px',
+            numVisible: 5,
+            numScroll: 1
+        },
+        {
+            breakpoint: '991px',
+            numVisible: 4,
+            numScroll: 1
+        },
+        {
+            breakpoint: '767px',
+            numVisible: 3,
+            numScroll: 1
+        },
+        {
+            breakpoint: '479px',
+            numVisible: 2,
+            numScroll: 1
+        },
+        {
+            breakpoint: '359px',
+            numVisible: 1,
+            numScroll: 1
         }
-    }
+    ];
 }

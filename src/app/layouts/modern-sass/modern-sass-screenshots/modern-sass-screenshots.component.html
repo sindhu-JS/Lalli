@@ -1,32 +1,38 @@
-
 <!--slider css start-->
 <section class="saas2 laptop-slider bg-gradient" id="screenshot" [ngStyle]="{'background-image': 'url(assets/images/saas2/background/screenshot-bg.png)'}">
-  <div class="container">
-      <div class="row">
-          <div class="col-md-10 offset-md-1">
+  <div class="container mx-auto">
+      <div class="flex flex-wrap">
+          <div class="w-full md:w-10/12 md:ml-[8.333333%]">
               <div class="title">
                   <div class="main-title">
-                      <h2 class="text-white">screen shot</h2>
+                      <h2>screenshot</h2>
                   </div>
                   <div class="sub-title">
-                      <p class="sub-title-para text-white">We believe we have created the most efficient SaaS landing
-                          page for
+                      <p class="sub-title-para">We believe we have created the most efficient SaaS landing page
+                          for
                           your users.
                           Landing page with features that will convince you to use it for your SaaS business.</p>
                   </div>
               </div>
           </div>
       </div>
-  </div>
-  <div class="container-fluid">
       <div class="slider-container">
-          <owl-carousel-o [options]="screenshotscarouselOptions" class="trainers-slider">
-                @for(screenshot of screenshots; track screenshot){
-                    <ng-template carouselSlide class="item">
-                    <img [src]="screenshot.img" alt="" class="img-fluid">
-                    </ng-template>
-                }
-                  </owl-carousel-o>
+          <p-carousel
+              [value]="screenshots"
+              [numVisible]="3"
+              [numScroll]="1"
+              [circular]="true"
+              [autoplayInterval]="5000"
+              [responsiveOptions]="responsiveOptions"
+              [showIndicators]="false"
+              [showNavigators]="true"
+              class="trainers-slider">
+              <ng-template let-screenshot pTemplate="item">
+                  <div class="px-2">
+                      <img [src]="screenshot.img" [alt]="screenshot.alt" class="w-full h-auto">
+                  </div>
+              </ng-template>
+          </p-carousel>
       </div>
   </div>
 </section>
