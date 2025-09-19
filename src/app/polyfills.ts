@@ -22,7 +22,7 @@ import '@angular/localize/init';
  * BROWSER POLYFILLS
  */
 if (typeof window !== 'undefined') {
-    (window as any).global = window;
+  (window as any).global = window;
 }
 
 /** IE9, IE10 and IE11 requires all of the following polyfills. **/
@@ -40,7 +40,7 @@ import 'core-js/es/regexp';
 import 'core-js/es/map';
 import 'core-js/es/weak-map';
 import 'core-js/es/set';
-import 'core-js/es/reflect';  // Run `npm install --save classlist.js`.  // Run `npm install --save web-animations-js`.
+import 'core-js/es/reflect'; // Run `npm install --save classlist.js`.  // Run `npm install --save web-animations-js`.
 
 /**
  * By default, zone.js will patch all possible macroTask and DomEvents
@@ -69,8 +69,7 @@ import 'core-js/es/reflect';  // Run `npm install --save classlist.js`.  // Run 
 /***************************************************************************************************
  * Zone JS is required by default for Angular itself.
  */
-import 'zone.js';  // Included with Angular CLI.
-
+import 'zone.js'; // Included with Angular CLI.
 
 /***************************************************************************************************
  * APPLICATION IMPORTS

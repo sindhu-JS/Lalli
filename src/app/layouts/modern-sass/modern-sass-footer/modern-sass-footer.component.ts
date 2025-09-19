@@ -4,15 +4,12 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-modern-sass-footer',
-  imports: [TapToTopComponent,CommonModule],
+  imports: [TapToTopComponent, CommonModule],
   templateUrl: './modern-sass-footer.component.html',
-  styleUrls: ['./modern-sass-footer.component.scss']
+  styleUrls: ['./modern-sass-footer.component.scss'],
 })
 export class ModernSassFooterComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

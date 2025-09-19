@@ -8,7 +8,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    loadChildren: () => import('../app/layouts/layout.routes').then(r => r.Layout),
+    loadChildren: () =>
+      import('../app/layouts/layout.routes').then((r) => r.Layout),
   },
-
 ];

@@ -3,20 +3,18 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-modern-sass-header',
-  imports:[CommonModule],
+  imports: [CommonModule],
   templateUrl: './modern-sass-header.component.html',
-  styleUrls: ['./modern-sass-header.component.scss']
+  styleUrls: ['./modern-sass-header.component.scss'],
 })
 export class ModernSassHeaderComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
-  }
-  
-  onRedirect(e: { preventDefault: () => void; }) {
+  onRedirect(e: { preventDefault: () => void }) {
     e.preventDefault();
-    let el:any = document.getElementById('feaure');
-    el.scrollIntoView({behavior: 'smooth'});
+    let el: any = document.getElementById('feaure');
+    el.scrollIntoView({ behavior: 'smooth' });
   }
 }

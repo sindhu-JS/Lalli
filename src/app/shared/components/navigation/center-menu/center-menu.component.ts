@@ -7,32 +7,31 @@ import { RouterModule } from '@angular/router';
   selector: 'app-center-menu',
   imports: [CommonModule, RouterModule],
   templateUrl: './center-menu.component.html',
-  styleUrls: ['./center-menu.component.scss']
+  styleUrls: ['./center-menu.component.scss'],
 })
 export class CenterMenuComponent implements OnInit {
   public menuItems: Menu[];
-  public openSide  = false;
+  public openSide = false;
   public activeItem = 'home';
   public active = false;
-  public activeChildItem  = '';
+  public activeChildItem = '';
   public overlay = false;
 
-  constructor(public navServices: NavService) { }
+  constructor(public navServices: NavService) {}
 
   ngOnInit() {
-    this.navServices.items.subscribe(menuItems => {
-      this.menuItems = menuItems
+    this.navServices.items.subscribe((menuItems) => {
+      this.menuItems = menuItems;
     });
   }
 
-  toggleSidebar(){
-    this.openSide = !this.openSide
+  toggleSidebar() {
+    this.openSide = !this.openSide;
   }
 
-  closeOverlay(){
-    this.openSide = false
+  closeOverlay() {
+    this.openSide = false;
   }
-
 
   setActive(menuItem: string | undefined) {
     const item = menuItem || '';
@@ -43,26 +42,23 @@ export class CenterMenuComponent implements OnInit {
     }
   }
 
-  isActive(item:string | undefined){
-    const items= item || '';
-    return this.activeItem === items 
+  isActive(item: string | undefined) {
+    const items = item || '';
+    return this.activeItem === items;
   }
 
   // For Active Child Menu in Mobile View
-  setChildActive(subMenu: string | undefined){
+  setChildActive(subMenu: string | undefined) {
     const item = subMenu || '';
     if (this.activeChildItem === item) {
-      this.activeChildItem = ''
+      this.activeChildItem = '';
     } else {
-      this.activeChildItem = item
+      this.activeChildItem = item;
     }
   }
 
-  ischildActive(subMenu: string | undefined){
+  ischildActive(subMenu: string | undefined) {
     const item = subMenu || '';
-    return this.activeChildItem === item
+    return this.activeChildItem === item;
   }
-
-  
-
 }

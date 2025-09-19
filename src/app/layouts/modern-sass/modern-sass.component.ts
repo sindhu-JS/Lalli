@@ -14,21 +14,26 @@ import { ModernSassPricingComponent } from './modern-sass-pricing/modern-sass-pr
 
 @Component({
   selector: 'app-modern-sass',
-  imports:[ModernSassNavComponent,ModernSassBrandComponent,ModernSassBusinessComponent,ModernSassFeatureComponent,ModernSassFooterComponent,
-    ModernSassHeaderComponent,ModernSassServicesComponent,ModernSassTestimonialComponent,ModernSassScreenshotsComponent,ModernSassPricingComponent
+  imports: [
+    ModernSassNavComponent,
+    ModernSassBrandComponent,
+    ModernSassBusinessComponent,
+    ModernSassFeatureComponent,
+    ModernSassFooterComponent,
+    ModernSassHeaderComponent,
+    ModernSassServicesComponent,
+    ModernSassTestimonialComponent,
+    ModernSassScreenshotsComponent,
+    ModernSassPricingComponent,
   ],
   templateUrl: './modern-sass.component.html',
   styleUrls: ['./modern-sass.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class ModernSassComponent implements OnInit {
-
-  constructor(private route: ActivatedRoute,
-    private title: Title,
-    ) { }
+  constructor(private route: ActivatedRoute, private title: Title) {}
 
   ngOnInit() {
     this.title.setTitle(this.route.snapshot.data['title']);
   }
-
 }

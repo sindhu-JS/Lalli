@@ -1,9 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.{html,ts}",
-    "./node_modules/primeng/**/*.{js,ts}"
-  ],
+  content: ['./src/**/*.{html,ts}', './node_modules/primeng/**/*.{js,ts}'],
   theme: {
     extend: {
       colors: {
@@ -18,14 +15,12 @@ module.exports = {
           700: '#1d4ed8',
           800: '#1e40af',
           900: '#1e3a8a',
-        }
-      }
+        },
+      },
     },
   },
-  plugins: [
-    require('tailwindcss-primeui')
-  ],
+  plugins: [require('tailwindcss-primeui')],
   corePlugins: {
     preflight: false, // Disable Tailwind's CSS reset to avoid conflicts
-  }
-}
+  },
+};

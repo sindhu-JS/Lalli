@@ -5,10 +5,9 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-loader',
   imports: [CommonModule],
   templateUrl: './loader.component.html',
-  styleUrls: ['./loader.component.scss']
+  styleUrls: ['./loader.component.scss'],
 })
 export class LoaderComponent implements OnInit {
-
   public show: boolean = true;
 
   constructor() {
@@ -17,8 +16,7 @@ export class LoaderComponent implements OnInit {
     }, 1500);
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
-  ngOnDestroy() { }
-
+  ngOnDestroy() {}
 }

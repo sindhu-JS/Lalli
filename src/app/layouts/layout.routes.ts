@@ -6,7 +6,7 @@ export const Layout: Routes = [
     path: 'modern-sass',
     component: ModernSassComponent,
     data: {
-      title: "Modern SASS| Unice Landing Page"
-    }
+      title: 'Modern SASS| Unice Landing Page',
+    },
   },
-]
+];

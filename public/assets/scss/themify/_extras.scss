@@ -21,13 +21,17 @@ a .icon-spin {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(359deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
 }
 
-@mixin spinicon(){
+@mixin spinicon() {
   @include icon-FontAwesome();
-  
+
   display: inline-block;
   -moz-animation: spin 2s infinite linear;
   -o-animation: spin 2s infinite linear;
@@ -83,7 +87,13 @@ a .icon-spin {
 
 /* ensure rotation occurs inside anchor tags */
 a {
-  .icon-rotate-90, .icon-rotate-180, .icon-rotate-270, .icon-flip-horizontal, .icon-flip-vertical {
-    &:before { display: inline-block; }
+  .icon-rotate-90,
+  .icon-rotate-180,
+  .icon-rotate-270,
+  .icon-flip-horizontal,
+  .icon-flip-vertical {
+    &:before {
+      display: inline-block;
+    }
   }
 }

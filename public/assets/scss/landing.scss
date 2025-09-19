@@ -12,24 +12,24 @@
 variables
 *************************/
 // font //
-$font-0:sans-serif;
-$font-1:Raleway;
-$font-2:Montserrat;
-$font-3:Roboto;
+$font-0: sans-serif;
+$font-1: Raleway;
+$font-2: Montserrat;
+$font-3: Roboto;
 
 $white: #ffffff;
 $black: #000000;
 $black1: #49494c;
 $primary: #8648db;
 $shadow-color: rgba(134, 72, 219, 0.2);
-$light: #BA38D2;
-$dark: #6851DF;
-$header-link:#888888;
-$light-white:#f6f4ff;
-$featur-back:#fbfafe;
-$testimonial-back:#f2edfb;
-$rat-star:#ffd700;
-$primary-light:#6e4dde;
+$light: #ba38d2;
+$dark: #6851df;
+$header-link: #888888;
+$light-white: #f6f4ff;
+$featur-back: #fbfafe;
+$testimonial-back: #f2edfb;
+$rat-star: #ffd700;
+$primary-light: #6e4dde;
 
 /**************************
 landing css start
@@ -62,8 +62,8 @@ h3 {
   color: $primary;
   font-weight: 700;
   margin-bottom: 0;
-  &.font-bold{
-    font-size:  calc(22px + (40 - 22) * ((100vw - 300px) / (1920 - 300)));
+  &.font-bold {
+    font-size: calc(22px + (40 - 22) * ((100vw - 300px) / (1920 - 300)));
     font-weight: 600;
     text-transform: uppercase;
   }
@@ -95,9 +95,9 @@ section {
   padding: 80px 0;
 }
 
-a{
+a {
   color: $black;
-  &:hover{
+  &:hover {
     color: $black;
     text-decoration: none;
   }
@@ -114,14 +114,19 @@ ul {
   margin-bottom: 50px;
   h2 {
     text-transform: capitalize;
-    background: -webkit-gradient(linear, left right, left right, from($light), to($dark));
+    background: -webkit-gradient(
+      linear,
+      left right,
+      left right,
+      from($light),
+      to($dark)
+    );
     background: linear-gradient(to right, $dark 25%, $light 65%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    letter-spacing:1px;
+    letter-spacing: 1px;
     font-size: calc(20px + (45 - 20) * ((100vw - 300px) / (1920 - 300)));
     font-weight: 800;
-
   }
   h6 {
     letter-spacing: 20px;
@@ -129,24 +134,31 @@ ul {
     font-weight: 700;
   }
   .bottom-border {
-    background: -webkit-gradient(linear, left right, left right, from($light), to($dark));
+    background: -webkit-gradient(
+      linear,
+      left right,
+      left right,
+      from($light),
+      to($dark)
+    );
     background: linear-gradient(to right, $dark, $light);
     height: 1px;
     width: 50px;
   }
 }
-.second-img{
+.second-img {
   height: 200px;
   margin-top: -45px;
   margin-bottom: -55px;
   margin-left: -50px;
 }
-.slick-next,.slick-prev {
+.slick-next,
+.slick-prev {
   display: none !important;
 }
 .m-x-auto {
-  margin-right: auto ;
-  margin-left:auto;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 /*=====================
@@ -174,7 +186,7 @@ ul {
   }
 }
 header {
-  box-shadow: 0 0 5px 0 rgba(153,153,153,0.62);
+  box-shadow: 0 0 5px 0 rgba(153, 153, 153, 0.62);
   background-color: white;
   z-index: 999;
   &.sticky {
@@ -221,7 +233,7 @@ header {
   }
 }
 .purchase-block {
-  background-color:$light-white;
+  background-color: $light-white;
   display: flex;
   margin-right: 50px;
   span {
@@ -246,7 +258,7 @@ header {
     text-transform: capitalize;
   }
 }
-.f-600{
+.f-600 {
   font-weight: 600;
 }
 @keyframes smoothScroll {
@@ -258,40 +270,40 @@ header {
   }
 }
 
-.landing-tabs{
+.landing-tabs {
   align-items: center;
   justify-content: center;
   width: 100%;
   margin-bottom: 50px;
   border: 0;
-  li{
-    &.active{
-      a{
+  li {
+    &.active {
+      a {
         color: $white;
         background-color: rgba($primary-light, 1);
       }
     }
-    a{
+    a {
       padding: 10px 25px;
       font-size: 16px;
       margin: 0 5px;
       border-radius: 25px;
       font-weight: 600;
       color: $primary-light;
-      background-color: rgba($primary-light, 0.10);
+      background-color: rgba($primary-light, 0.1);
     }
   }
 }
-.tab-content{
+.tab-content {
   width: 100%;
   color: #7d7d7d;
 }
 /*************************
   Portfolio css start
 *************************/
-.whatinside{
-  .row{
-    .col-md-4:nth-child(n+4){
+.whatinside {
+  .row {
+    .col-md-4:nth-child(n + 4) {
       margin-top: 30px;
     }
   }
@@ -301,13 +313,12 @@ header {
   padding: 30px;
   text-align: center;
   background-color: $white;
-  h3{
+  h3 {
     margin-bottom: 15px;
     color: #7d7d7d;
   }
-  h5{
-  font-size: calc(15px + (18 - 15) * ((100vw - 300px) / (1920 - 300)));
-
+  h5 {
+    font-size: calc(15px + (18 - 15) * ((100vw - 300px) / (1920 - 300)));
   }
 }
 .portfolio-section {
@@ -315,7 +326,7 @@ header {
   position: relative;
   .portfolio-back {
     position: absolute;
-    top:65px;
+    top: 65px;
     left: 0;
     opacity: 0.03;
     h1 {
@@ -334,7 +345,7 @@ header {
       button {
         &:before {
           font-size: 13px;
-          color:$primary;
+          color: $primary;
         }
       }
     }
@@ -342,7 +353,7 @@ header {
   .port-sib {
     position: absolute;
     top: 13%;
-    left:13%;
+    left: 13%;
     animation: hom-sib 30s linear infinite;
   }
   .port-round {
@@ -353,35 +364,35 @@ header {
   }
   .port-ract {
     position: absolute;
-    bottom:8%;
+    bottom: 8%;
     right: 10%;
-    animation:hom-ract 80s linear infinite;
+    animation: hom-ract 80s linear infinite;
   }
   .port-squar {
     position: absolute;
     top: 8%;
     right: 31%;
-    animation:hom-suar 3s linear infinite;
+    animation: hom-suar 3s linear infinite;
   }
 }
 
 /*=====================
    gif section CSS start
 ==========================*/
-.text-as-bg{
+.text-as-bg {
   margin-bottom: 50px;
-  h1{
+  h1 {
     font-size: calc(100px + (260 - 100) * ((100vw - 300px) / (1920 - 300)));
     text-transform: capitalize;
     font-weight: 800;
     line-height: 1;
     font-family: Montserrat;
     opacity: 0.03;
-    span{
+    span {
       float: right;
     }
   }
-  &~.title{
+  & ~ .title {
     position: absolute;
     top: 40%;
     text-align: center;
@@ -389,7 +400,7 @@ header {
   }
 }
 .home-section {
-  background: url("../../assets/images/landing/home/1.png");
+  background: url('../../assets/images/landing/home/1.png');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -419,7 +430,7 @@ header {
   }
   .home-contain {
     height: calc(100vh - 445px);
-    ul{
+    ul {
       height: 100%;
       margin: 0;
     }
@@ -474,14 +485,14 @@ header {
   }
   .hom-round1 {
     position: absolute;
-    top:30%;
+    top: 30%;
     left: 10%;
     animation: hom-round 3s linear infinite;
   }
   .hom-round2 {
     position: absolute;
     top: 17%;
-    right:30%;
+    right: 30%;
     animation: hom-round 10s linear infinite;
   }
   .hom-sib2 {
@@ -528,13 +539,12 @@ header {
   transform: translate(-50%, 10%);
 }
 
-
 @keyframes hom-suar {
   0% {
-    transform: translateY(0px) ;
+    transform: translateY(0px);
   }
   50% {
-    transform: translateY(20px) ;
+    transform: translateY(20px);
   }
   100% {
     transform: translateY(0px);
@@ -546,7 +556,7 @@ header {
     transform: translateY(0px) translatex(100px);
   }
   50% {
-    transform: translateY(70px) translatex(-40px) ;
+    transform: translateY(70px) translatex(-40px);
   }
   100% {
     transform: translateY(0px) translatex(100px);
@@ -554,38 +564,37 @@ header {
 }
 @keyframes hom-round {
   0% {
-    transform: translate(0px) ;
+    transform: translate(0px);
   }
   50% {
     transform: translate(20px) scale(2);
   }
   100% {
-    transform: translate(0px) ;
+    transform: translate(0px);
   }
 }
 @keyframes hom-sib {
   0% {
-    transform: translate(-50px) ;
+    transform: translate(-50px);
   }
   50% {
-    transform: translateX(100px) translateY(-300px) ;
+    transform: translateX(100px) translateY(-300px);
   }
   100% {
-    transform: translate(-50px) ;
+    transform: translate(-50px);
   }
 }
 @keyframes hom-cloud {
   0% {
-    transform: translateX(0px) ;
+    transform: translateX(0px);
   }
   50% {
-    transform: translateX(100px) ;
+    transform: translateX(100px);
   }
   100% {
-    transform: translateX(0px) ;
+    transform: translateX(0px);
   }
 }
-
 
 /*=====================
    demo  CSS start
@@ -611,7 +620,7 @@ header {
     .demo-right-txt {
       display: inline-block;
       position: absolute;
-      top:0;
+      top: 0;
       right: 0;
       h1 {
         text-transform: capitalize;
@@ -621,17 +630,17 @@ header {
       }
     }
   }
-  .margin-preview{
+  .margin-preview {
     margin-bottom: -80px;
   }
-  .demo-effects{
+  .demo-effects {
     position: relative;
     margin-bottom: 80px;
     .demo-layouts {
       .layout-images {
         width: 100%;
         height: 500px;
-        background-image: url("../../assets/images/landing/navbar.jpg");
+        background-image: url('../../assets/images/landing/navbar.jpg');
         display: inline-block;
         position: relative;
         background-repeat: no-repeat;
@@ -640,43 +649,43 @@ header {
         background-color: #fff;
         border-radius: 5px;
         .image-1 {
-          background: url("../../assets/images/landing/demo/1.jpg");
+          background: url('../../assets/images/landing/demo/1.jpg');
         }
         .image-2 {
-          background: url("../../assets/images/landing/demo/2.jpg");
+          background: url('../../assets/images/landing/demo/2.jpg');
         }
         .image-3 {
-          background: url("../../assets/images/landing/demo/3.jpg");
+          background: url('../../assets/images/landing/demo/3.jpg');
         }
         .image-4 {
-          background: url("../../assets/images/landing/demo/4.jpg");
+          background: url('../../assets/images/landing/demo/4.jpg');
         }
         .image-5 {
-          background: url("../../assets/images/landing/demo/5.jpg");
+          background: url('../../assets/images/landing/demo/5.jpg');
         }
         .image-6 {
-          background: url("../../assets/images/landing/demo/6.jpg");
+          background: url('../../assets/images/landing/demo/6.jpg');
         }
         .image-7 {
-          background: url("../../assets/images/landing/demo/7.jpg");
+          background: url('../../assets/images/landing/demo/7.jpg');
         }
         .image-8 {
-          background: url("../../assets/images/landing/demo/8.jpg");
+          background: url('../../assets/images/landing/demo/8.jpg');
         }
         .image-9 {
-          background: url("../../assets/images/landing/demo/9.jpg");
+          background: url('../../assets/images/landing/demo/9.jpg');
         }
         .image-10 {
-          background: url("../../assets/images/landing/demo/10.jpg");
+          background: url('../../assets/images/landing/demo/10.jpg');
         }
         .image-11 {
-          background: url("../../assets/images/landing/demo/11.jpg");
+          background: url('../../assets/images/landing/demo/11.jpg');
         }
         .image-12 {
-          background: url("../../assets/images/landing/demo/12.jpg");
+          background: url('../../assets/images/landing/demo/12.jpg');
         }
         .image-13 {
-          background: url("../../assets/images/landing/demo/13.jpg");
+          background: url('../../assets/images/landing/demo/13.jpg');
         }
         .layout-container {
           background-size: cover;
@@ -688,7 +697,7 @@ header {
       }
       &.coming-soons {
         opacity: 0.5;
-        .coming-soon{
+        .coming-soon {
           color: $black;
           font-size: calc(35px + (55 - 35) * ((100vw - 300px) / (1920 - 300)));
           text-align: center;
@@ -700,36 +709,36 @@ header {
           height: 100%;
         }
       }
-      &:hover{
-        .layout-images{
-          .layout-container{
+      &:hover {
+        .layout-images {
+          .layout-container {
             background-position: center 100% !important;
             transition: 10s;
           }
         }
       }
-      &.app-preview{
+      &.app-preview {
         overflow: hidden;
         padding: 0 20px;
-        .preview-header{
+        .preview-header {
           position: relative;
           text-align: left;
           transition: 0.8s;
           font-family: $font-3;
           font-size: calc(16px + (20 - 16) * ((100vw - 300px) / (1920 - 300)));
           text-transform: capitalize;
-          &:before{
-            content: url("../../assets/images/landing/hover.png");
+          &:before {
+            content: url('../../assets/images/landing/hover.png');
             position: absolute;
             left: -80px;
             opacity: 0;
           }
         }
-        &:hover{
-          .preview-header{
+        &:hover {
+          .preview-header {
             transform: translate(18%, 0);
             transition: 0.8s;
-            &:before{
+            &:before {
               opacity: 1;
             }
           }
@@ -740,12 +749,12 @@ header {
   .demo-ract1 {
     position: absolute;
     top: 3%;
-    left:24%;
-    animation:hom-ract 80s linear infinite;
+    left: 24%;
+    animation: hom-ract 80s linear infinite;
   }
   .demo-squar {
     position: absolute;
-    top:45%;
+    top: 45%;
     right: 2%;
     animation: hom-suar 3s linear infinite;
   }
@@ -753,7 +762,7 @@ header {
     position: absolute;
     bottom: 20%;
     left: 50px;
-    animation:hom-sib 30s linear infinite;
+    animation: hom-sib 30s linear infinite;
   }
   .demo-ract3 {
     position: absolute;
@@ -784,8 +793,8 @@ header {
   }
   .ecom-round1 {
     position: absolute;
-    top:35%;
-    right:11%;
+    top: 35%;
+    right: 11%;
     animation: hom-round 3s linear infinite;
   }
   .ecom-squar {
@@ -804,7 +813,7 @@ header {
   overflow: hidden;
   .elemant-back {
     position: absolute;
-    top:105px;
+    top: 105px;
     left: 0;
     opacity: 0.03;
     h1 {
@@ -820,7 +829,6 @@ header {
     justify-content: center;
   }
 
-
   .element-rect {
     position: absolute;
     top: 10%;
@@ -835,7 +843,7 @@ header {
   }
   .element-sib {
     position: absolute;
-    top:10%;
+    top: 10%;
     right: 10%;
     animation: hom-sib 30s linear infinite;
   }
@@ -856,7 +864,7 @@ Core Feature css start
   overflow: hidden;
   .core-back {
     position: absolute;
-    top:30px;
+    top: 30px;
     left: 8%;
     opacity: 0.03;
     h1 {
@@ -878,7 +886,7 @@ Core Feature css start
         position: relative;
         background: $white;
         border-radius: 10px;
-        box-shadow:0 0 3px $shadow-color;
+        box-shadow: 0 0 3px $shadow-color;
         display: inline-block;
         padding: 40px;
         img {
@@ -897,7 +905,7 @@ Core Feature css start
   }
   .cor-sib {
     position: absolute;
-    top:5%;
+    top: 5%;
     left: 5%;
     animation: hom-suar 3s linear infinite;
   }
@@ -909,13 +917,13 @@ Core Feature css start
   }
   .cor-ract {
     position: absolute;
-    top:5%;
-    right:15%;
+    top: 5%;
+    right: 15%;
     animation: hom-ract 80s linear infinite;
   }
   .cor-squar1 {
     position: absolute;
-    bottom:41%;
+    bottom: 41%;
     right: 5%;
     animation: hom-suar 3s linear infinite;
   }
@@ -923,7 +931,7 @@ Core Feature css start
     position: absolute;
     bottom: 5%;
     right: 35%;
-    animation:hom-suar 3s linear infinite;
+    animation: hom-suar 3s linear infinite;
   }
 }
 /*************************
@@ -951,9 +959,9 @@ Core Feature css start
   .testimonial-contain {
     .testimonial-left {
       background-color: $primary;
-      padding:50px;
-      border-top-left-radius:10px ;
-      border-bottom-left-radius:10px ;
+      padding: 50px;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
       height: 100%;
       h3 {
         color: $white;
@@ -962,7 +970,7 @@ Core Feature css start
         letter-spacing: 0.05em;
         font-family: $font-3;
       }
-      p{
+      p {
         color: $white;
         font-size: 14px;
         text-transform: capitalize;
@@ -971,7 +979,6 @@ Core Feature css start
       }
     }
     .testimonial-right {
-
       .media {
         align-items: center;
         margin-bottom: 20px;
@@ -990,17 +997,18 @@ Core Feature css start
         line-height: 2;
       }
     }
-    .slick-prev,.slick-next {
+    .slick-prev,
+    .slick-next {
       display: none !important;
       &:before {
-        color:$primary;
+        color: $primary;
       }
     }
     .slick-dots {
       width: auto;
-      bottom: -40px ;
-      margin: unset ;
-      left:-45px;
+      bottom: -40px;
+      margin: unset;
+      left: -45px;
       li {
         button {
           &:before {
@@ -1013,7 +1021,7 @@ Core Feature css start
     }
     .slick-dotted {
       &.slick-slider {
-        margin-bottom: 0 ;
+        margin-bottom: 0;
         background-color: $white;
         padding: 50px;
         border-top-right-radius: 10px;
@@ -1023,7 +1031,7 @@ Core Feature css start
   }
   .test-sib {
     position: absolute;
-    top:5%;
+    top: 5%;
     left: 15%;
     animation: hom-suar 3s linear infinite;
   }
@@ -1035,13 +1043,13 @@ Core Feature css start
   }
   .test-ract {
     position: absolute;
-    top:25%;
-    right:9%;
+    top: 25%;
+    right: 9%;
     animation: hom-ract 80s linear infinite;
   }
   .test-squar1 {
     position: absolute;
-    bottom:20%;
+    bottom: 20%;
     right: 10%;
     animation: hom-suar 3s linear infinite;
   }
@@ -1049,7 +1057,7 @@ Core Feature css start
     position: absolute;
     bottom: 15%;
     right: 20%;
-    animation:hom-suar 3s linear infinite;
+    animation: hom-suar 3s linear infinite;
   }
 }
 
@@ -1082,7 +1090,7 @@ Core Feature css start
       width: 100%;
       height: 100%;
       background: $primary;
-      transform: scale(0.0);
+      transform: scale(0);
       transform-origin: center center;
       animation: loader 2s infinite linear;
       &:nth-of-type(1),
@@ -1109,16 +1117,16 @@ Core Feature css start
 
   @keyframes loader {
     0% {
-      transform: scale(0.0);
+      transform: scale(0);
     }
     40% {
-      transform: scale(1.0);
+      transform: scale(1);
     }
     80% {
-      transform: scale(1.0);
+      transform: scale(1);
     }
     100% {
-      transform: scale(0.0);
+      transform: scale(0);
     }
   }
 }
@@ -1153,11 +1161,11 @@ Core Feature css start
       height: 175px;
       border-radius: 50%;
       margin: 0 auto;
-      background-color: rgba($primary,0.03);
+      background-color: rgba($primary, 0.03);
     }
     h1 {
       text-transform: capitalize;
-      background: linear-gradient(to right, $dark 25%,$light 60%);
+      background: linear-gradient(to right, $dark 25%, $light 60%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       font-weight: 800;
@@ -1186,7 +1194,7 @@ Core Feature css start
 
   .rat-sib {
     position: absolute;
-    top:5%;
+    top: 5%;
     left: 15%;
     animation: hom-suar 3s linear infinite;
   }
@@ -1198,13 +1206,13 @@ Core Feature css start
   }
   .rat-ract {
     position: absolute;
-    top:25%;
-    right:9%;
+    top: 25%;
+    right: 9%;
     animation: hom-ract 80s linear infinite;
   }
   .rat-squar1 {
     position: absolute;
-    top:20%;
+    top: 20%;
     right: 10%;
     animation: hom-suar 3s linear infinite;
   }
@@ -1212,30 +1220,30 @@ Core Feature css start
     position: absolute;
     bottom: 15%;
     right: 20%;
-    animation:hom-suar 3s linear infinite;
+    animation: hom-suar 3s linear infinite;
   }
-
 }
-.btn-gradient{
+.btn-gradient {
   padding: 15px 30px;
   font-size: 14px;
   background-image: linear-gradient(to right, $dark 15%, $light 85%);
   box-shadow: 0 0 10px $light;
   text-transform: uppercase;
   color: $white;
-  font-weight:500 ;
+  font-weight: 500;
   border-radius: 5px;
   display: inline-block;
   transition: all 1s linear;
   letter-spacing: 0.05em;
   line-height: 1;
-  &:hover,&:active,&:focus {
+  &:hover,
+  &:active,
+  &:focus {
     background-color: transparent !important;
-    background-image: linear-gradient(to right, #BA38D2 15%, #6851DF 85%);
+    background-image: linear-gradient(to right, #ba38d2 15%, #6851df 85%);
     color: $white;
   }
 }
-
 
 /*************************
   Footer css start
@@ -1265,14 +1273,20 @@ Core Feature css start
   z-index: 99;
   color: $white;
   text-align: center;
-  background: -webkit-gradient(linear, left bottom, left top, from($light), to($dark));
+  background: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    from($light),
+    to($dark)
+  );
   background: linear-gradient(to top, $light, $dark);
   border-radius: 100%;
   font-size: 22px;
   cursor: pointer;
   line-height: 2.2;
   display: none;
-  border: 1px solid $white
+  border: 1px solid $white;
 }
 
 /*************************
@@ -1295,7 +1309,7 @@ tap to top css end
         bottom: -18%;
         z-index: 1;
       }
-      .inner-slide3{
+      .inner-slide3 {
         img {
           width: 650px;
         }
@@ -1327,7 +1341,7 @@ tap to top css end
   }
 }
 
-@media (max-width: 1470px){
+@media (max-width: 1470px) {
   .home-section {
     .home-container {
       .home-logo-container {
@@ -1338,18 +1352,18 @@ tap to top css end
 }
 
 @media (max-width: 1199px) {
-  .feature-text-section{
+  .feature-text-section {
     height: 750px;
   }
 
- .app-preview-section .row{
-   min-width: 100%;
+  .app-preview-section .row {
+    min-width: 100%;
   }
   // rating start //
   .rate-us-section {
     .rate-us-contain {
       h1 {
-        margin-top:20px;
+        margin-top: 20px;
         margin-bottom: 12px;
       }
       .btn-gradient {
@@ -1370,16 +1384,16 @@ tap to top css end
 }
 
 @media (max-width: 991px) {
-  .purchase-block{
+  .purchase-block {
     display: none;
   }
-  .animate-gif{
+  .animate-gif {
     display: none;
   }
-  .text-as-bg h1{
+  .text-as-bg h1 {
     font-size: 40px;
   }
-  .navbar-collapse{
+  .navbar-collapse {
     position: absolute;
     top: 60px;
     z-index: 9;
@@ -1388,16 +1402,16 @@ tap to top css end
     background-color: rgb(255, 255, 255);
     text-align: center;
   }
-  .main-menu{
+  .main-menu {
     margin-right: 30px;
   }
-  h2{
+  h2 {
     margin-top: -3px;
   }
-  h4{
+  h4 {
     margin-bottom: 15px;
   }
-  section{
+  section {
     padding: 50px 0;
   }
   .second-img {
@@ -1405,7 +1419,7 @@ tap to top css end
     margin-top: -33px;
     margin-bottom: -42px;
   }
-  .header-section{
+  .header-section {
     height: 75vh;
     margin-bottom: 0;
     .slider-absolute {
@@ -1420,7 +1434,7 @@ tap to top css end
         margin-top: -33px;
         margin-bottom: -1px;
       }
-      h1{
+      h1 {
         margin-bottom: 18px;
       }
     }
@@ -1428,7 +1442,7 @@ tap to top css end
   .feature-text-section {
     height: 600px;
     margin-bottom: -14px;
-    .font-bold{
+    .font-bold {
       margin-top: 15px;
       margin-bottom: 15px;
     }
@@ -1457,7 +1471,7 @@ tap to top css end
 @media (max-width: 767px) {
   //gif section //
   .home-section {
-    height:70vh;
+    height: 70vh;
     .home-container {
       .home-logo-container {
         margin-bottom: 15px;
@@ -1467,7 +1481,10 @@ tap to top css end
       }
     }
     .home-contain {
-      .inner-slide1,.inner-slide2,.inner-slide4,.inner-slide5 {
+      .inner-slide1,
+      .inner-slide2,
+      .inner-slide4,
+      .inner-slide5 {
         display: none;
       }
     }
@@ -1531,7 +1548,7 @@ tap to top css end
           .media-body {
             flex: unset;
             margin-left: 0;
-            margin-top:10px;
+            margin-top: 10px;
           }
         }
       }
@@ -1552,7 +1569,7 @@ tap to top css end
     padding: 12px 20px;
   }
   // portfolio start//
-  .portfoli-section  {
+  .portfoli-section {
     .port-img {
       margin-right: 0;
     }
@@ -1562,7 +1579,10 @@ tap to top css end
   // gif css start //
   .home-section {
     .home-contain {
-      .inner-slide1,.inner-slide2,.inner-slide4,.inner-slide5 {
+      .inner-slide1,
+      .inner-slide2,
+      .inner-slide4,
+      .inner-slide5 {
         display: none;
       }
       .inner-slide3 {
@@ -1587,7 +1607,8 @@ tap to top css end
   // testimonial start //
   .testimonial-main {
     .testimonial-contain {
-      .testimonial-right,.testimonial-left{
+      .testimonial-right,
+      .testimonial-left {
         padding: 20px;
       }
     }
@@ -1632,7 +1653,7 @@ tap to top css end
   }
 }
 
-@media (max-width: 320px){
+@media (max-width: 320px) {
   .home-section {
     height: 59vh;
   }

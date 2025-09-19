@@ -1,43 +1,49 @@
 <!--brand css start-->
 <section class="saas2 brand">
-    <div class="w-full md:w-10/12 md:ml-[8.333333%]">
-        <div class="container mx-auto saas2-services">
-            <div class="flex flex-wrap">
-                <div class="w-full md:w-10/12 md:ml-[8.333333%]">
-                    <div class="title">
-                        <div class="main-title">
-                            <h2>trusted us</h2>
-                        </div>
-                        <div class="sub-title">
-                            <p class="sub-title-para">We believe we have created the most efficient SaaS landing page
-                                for
-                                your users.
-                                Landing page with features that will convince you to use it for your SaaS business.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full">
-                    <p-carousel
-                        [value]="brands"
-                        [numVisible]="5"
-                        [numScroll]="1"
-                        [circular]="true"
-                        [autoplayInterval]="3000"
-                        [responsiveOptions]="responsiveOptions"
-                        [showIndicators]="false"
-                        [showNavigators]="false"
-                        class="brand-slider">
-                        <ng-template let-brand pTemplate="item">
-                            <div class="px-2">
-                                <a href="javascript:void(0)">
-                                    <img [src]="brand.img" [alt]="brand.alt" class="w-full h-auto">
-                                </a>
-                            </div>
-                        </ng-template>
-                    </p-carousel>
-                </div>
+  <div class="w-full md:w-10/12 md:ml-[8.333333%]">
+    <div class="container mx-auto saas2-services">
+      <div class="flex flex-wrap">
+        <div class="w-full md:w-10/12 md:ml-[8.333333%]">
+          <div class="title">
+            <div class="main-title">
+              <h2>trusted us</h2>
             </div>
+            <div class="sub-title">
+              <p class="sub-title-para">
+                We believe we have created the most efficient SaaS landing page
+                for your users. Landing page with features that will convince
+                you to use it for your SaaS business.
+              </p>
+            </div>
+          </div>
         </div>
+        <div class="w-full">
+          <p-carousel
+            [value]="brands"
+            [numVisible]="5"
+            [numScroll]="1"
+            [circular]="true"
+            [autoplayInterval]="3000"
+            [responsiveOptions]="responsiveOptions"
+            [showIndicators]="false"
+            [showNavigators]="false"
+            class="brand-slider"
+          >
+            <ng-template let-brand pTemplate="item">
+              <div class="px-2">
+                <a href="javascript:void(0)">
+                  <img
+                    [src]="brand.img"
+                    [alt]="brand.alt"
+                    class="w-full h-auto"
+                  />
+                </a>
+              </div>
+            </ng-template>
+          </p-carousel>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 <!--brand css end-->

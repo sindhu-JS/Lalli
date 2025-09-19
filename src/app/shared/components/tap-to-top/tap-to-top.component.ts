@@ -5,16 +5,15 @@ import { Component, HostListener, OnInit } from '@angular/core';
   selector: 'app-tap-to-top',
   imports: [CommonModule],
   templateUrl: './tap-to-top.component.html',
-  styleUrls: ['./tap-to-top.component.scss']
+  styleUrls: ['./tap-to-top.component.scss'],
 })
 export class TapToTopComponent implements OnInit {
-
   public show: boolean = false;
   constructor(private viewScroller: ViewportScroller) {}
 
   ngOnInit() {}
 
-  @HostListener("window:scroll", [])
+  @HostListener('window:scroll', [])
   onWindowScroll() {
     let number =
       window.pageYOffset ||
@@ -31,5 +30,4 @@ export class TapToTopComponent implements OnInit {
   tapToTop() {
     this.viewScroller.scrollToPosition([0, 0]);
   }
-
 }

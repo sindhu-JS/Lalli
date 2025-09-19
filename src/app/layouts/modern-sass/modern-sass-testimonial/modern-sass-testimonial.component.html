@@ -1,48 +1,54 @@
 <!--testimonial css start-->
 <section class="saas2 testimonial bg-light">
-    <div class="container mx-auto">
-        <div class="flex flex-wrap">
-            <div class="w-full md:w-10/12 md:ml-[8.333333%]">
-                <div class="title">
-                    <div class="main-title">
-                        <h2>what people say</h2>
-                    </div>
-                    <div class="sub-title">
-                        <p class="sub-title-para">We believe we have created the most efficient SaaS landing page
-                            for
-                            your users.
-                            Landing page with features that will convince you to use it for your SaaS business.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full">
-                <p-carousel
-                    [value]="testimonials"
-                    [numVisible]="3"
-                    [numScroll]="1"
-                    [circular]="true"
-                    [autoplayInterval]="4000"
-                    [responsiveOptions]="responsiveOptions"
-                    [showIndicators]="true"
-                    [showNavigators]="false"
-                    class="testimonial">
-                    <ng-template let-data pTemplate="item">
-                        <div class="px-2">
-                            <div class="testimonial-container text-center">
-                                <div class="testimonial-details">
-                                    <div class="client-details">
-                                        <img [src]="data.img" [alt]="data.name" class="img-fluid mx-auto">
-                                        <h5>{{data.name}}</h5>
-                                        <h6>{{data.designation}}</h6>
-                                    </div>
-                                    <p class="client-say">"{{data.description}}"</p>
-                                </div>
-                            </div>
-                        </div>
-                    </ng-template>
-                </p-carousel>
-            </div>
+  <div class="container mx-auto">
+    <div class="flex flex-wrap">
+      <div class="w-full md:w-10/12 md:ml-[8.333333%]">
+        <div class="title">
+          <div class="main-title">
+            <h2>what people say</h2>
+          </div>
+          <div class="sub-title">
+            <p class="sub-title-para">
+              We believe we have created the most efficient SaaS landing page
+              for your users. Landing page with features that will convince you
+              to use it for your SaaS business.
+            </p>
+          </div>
         </div>
+      </div>
+      <div class="w-full">
+        <p-carousel
+          [value]="testimonials"
+          [numVisible]="3"
+          [numScroll]="1"
+          [circular]="true"
+          [autoplayInterval]="4000"
+          [responsiveOptions]="responsiveOptions"
+          [showIndicators]="true"
+          [showNavigators]="false"
+          class="testimonial"
+        >
+          <ng-template let-data pTemplate="item">
+            <div class="px-2">
+              <div class="testimonial-container text-center">
+                <div class="testimonial-details">
+                  <div class="client-details">
+                    <img
+                      [src]="data.img"
+                      [alt]="data.name"
+                      class="img-fluid mx-auto"
+                    />
+                    <h5>{{ data.name }}</h5>
+                    <h6>{{ data.designation }}</h6>
+                  </div>
+                  <p class="client-say">"{{ data.description }}"</p>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </p-carousel>
+      </div>
     </div>
+  </div>
 </section>
 <!--testimonial css end-->

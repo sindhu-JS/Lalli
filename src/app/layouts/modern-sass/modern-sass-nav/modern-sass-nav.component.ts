@@ -3,15 +3,12 @@ import { MenuComponent } from '../../../shared/components/navigation/menu/menu.c
 
 @Component({
   selector: 'app-modern-sass-nav',
-  imports:[MenuComponent],
+  imports: [MenuComponent],
   templateUrl: './modern-sass-nav.component.html',
-  styleUrls: ['./modern-sass-nav.component.scss']
+  styleUrls: ['./modern-sass-nav.component.scss'],
 })
 export class ModernSassNavComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
