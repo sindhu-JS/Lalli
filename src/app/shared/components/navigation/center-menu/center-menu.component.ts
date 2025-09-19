@@ -11,13 +11,13 @@ import { RouterModule } from '@angular/router';
 })
 export class CenterMenuComponent implements OnInit {
   public menuItems: Menu[];
-  public openSide : boolean = false;
+  public openSide  = false;
   public activeItem = 'home';
-  public active: boolean = false;
-  public activeChildItem : string = '' 
-  public overlay: boolean = false;
+  public active = false;
+  public activeChildItem  = '';
+  public overlay = false;
 
-  constructor( public navServices: NavService) { }
+  constructor(public navServices: NavService) { }
 
   ngOnInit() {
     this.navServices.items.subscribe(menuItems => {

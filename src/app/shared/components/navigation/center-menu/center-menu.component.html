@@ -1,13 +1,13 @@
 <a class="overlay-sidebar-header" [class.overlay-sidebar-header-open]="openSide" (click)="closeOverlay()"></a>
 <div class="responsive-btn float-right"><a (click)="toggleSidebar()"><i class="fa fa-bars" aria-hidden="true"></i></a>
 </div>
-<div class="navbar ml-md-auto ml-lg-0 res-width" id="togglebtn" [class.openSidebar]="openSide">
+<div class="flex ml-auto md:ml-auto lg:ml-0 res-width" id="togglebtn" [class.openSidebar]="openSide">
     <div class="responsive-btn">
         <a (click)="toggleSidebar()">
             <h5>back</h5>
         </a>
     </div>
-    <ul class="navbar-nav mr-auto">
+    <ul class="flex flex-col md:flex-row mr-auto">
         <!-- 1st Level Menu -->
         @for(menuItem of menuItems| slice : 0 : 3; track menuItem){
         <li [class]="menuItem.megaMenu ? 'mega-menu' : ''">
@@ -38,18 +38,18 @@
             }
 
             <!-- Mega menu -->
-            @if(menuItem.megaMenu && menuItem.megaMenuType == 'small' || menuItem.megaMenuType == 'medium' ||
-            menuItem.megaMenuType == 'large'){
+            @if(menuItem.megaMenu && menuItem.megaMenuType === 'small' || menuItem.megaMenuType === 'medium' ||
+            menuItem.megaMenuType === 'large'){
             <div class="mega-menu-container" [class.opensubmenu]="isActive(menuItem.title)">
                 <div class="container">
                     <div class="row">
                         @for(childrenItem of menuItem.children; track childrenItem){
                         <div
-                            [class]="menuItem.megaMenuType == 'small' ? 'col-lg-4' : menuItem.megaMenuType == 'medium' ? 'col-lg-3' : menuItem.megaMenuType =='large'? 'col' :'' ">
+                            [class]="menuItem.megaMenuType === 'small' ? 'col-lg-4' : menuItem.megaMenuType === 'medium' ? 'col-lg-3' : menuItem.megaMenuType ==='large'? 'col' :'' ">
                             <div class="menu-container">
                                 <a class="menu-head"
                                     (click)="setChildActive(childrenItem.title)">{{childrenItem.title}}</a>
-                                <ul [class.menu-icon]="menuItem.title == 'Elements'"
+                                <ul [class.menu-icon]="menuItem.title === 'Elements'"
                                     [class.openSubChildMenu]="ischildActive(childrenItem.title)">
                                     @for(subChildrenItem of childrenItem.children; track subChildrenItem){
                                     <li>
@@ -140,7 +140,7 @@
         </li>
         }
     </ul>
-    <ul class="navbar-nav ml-auto">
+    <ul class="flex flex-col md:flex-row ml-auto">
         <!-- 1st Level Menu -->
         @for(menuItem of menuItems | slice : 3:7 ; track menuItem){
         <li [class]="menuItem.megaMenu ? 'mega-menu' : ''">
@@ -170,18 +170,18 @@
             }
 
             <!-- Mega menu -->
-            @if(menuItem.megaMenu && menuItem.megaMenuType == 'small' || menuItem.megaMenuType == 'medium' ||
-            menuItem.megaMenuType == 'large'){
+            @if(menuItem.megaMenu && menuItem.megaMenuType === 'small' || menuItem.megaMenuType === 'medium' ||
+            menuItem.megaMenuType === 'large'){
             <div class="mega-menu-container" [class.opensubmenu]="isActive(menuItem.title)">
                 <div class="container">
                     <div class="row">
                         @for(childrenItem of menuItem.children; track childrenItem){
                         <div
-                            [class]="menuItem.megaMenuType == 'small' ? 'col-lg-4' : menuItem.megaMenuType == 'medium' ? 'col-lg-3' : menuItem.megaMenuType =='large'? 'col' :'' ">
+                            [class]="menuItem.megaMenuType === 'small' ? 'col-lg-4' : menuItem.megaMenuType === 'medium' ? 'col-lg-3' : menuItem.megaMenuType ==='large'? 'col' :'' ">
                             <div class="menu-container">
                                 <a class="menu-head"
                                     (click)="setChildActive(childrenItem.title)">{{childrenItem.title}}</a>
-                                <ul [class.menu-icon]="menuItem.title == 'Elements'"
+                                <ul [class.menu-icon]="menuItem.title === 'Elements'"
                                     [class.openSubChildMenu]="ischildActive(childrenItem.title)">
                                     @for(subChildrenItem of childrenItem.children; track subChildrenItem){
                                     <li>

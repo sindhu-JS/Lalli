@@ -7,6 +7,7 @@ This document provides a comprehensive analysis for migrating the Modern SaaS la
 ## Current Architecture
 
 ### Framework Stack
+
 - **Angular 20+** (Standalone Components)
 - **Bootstrap 5.x** (via SCSS imports)
 - **ngx-owl-carousel-o** (Carousel/Slider components)
@@ -14,6 +15,7 @@ This document provides a comprehensive analysis for migrating the Modern SaaS la
 - **Font Awesome** (Icons)
 
 ### Project Structure
+
 ```
 src/
 ├── app/
@@ -25,29 +27,36 @@ public/assets/scss/                   # 48 SCSS files with custom styling
 ## Bootstrap Usage Analysis
 
 ### High Usage Areas
+
 1. **Grid System**: Extensive use of `container`, `row`, `col-*` classes
 2. **Utility Classes**: `d-*`, `text-*`, `bg-*`, `m-*`, `p-*` classes
 3. **Component Classes**: `btn`, `card`, `nav`, `dropdown` classes
 4. **Responsive Classes**: `col-lg-*`, `col-md-*`, `offset-*` classes
 
 ### Bootstrap Dependencies Found
+
 ```html
 <!-- Navigation -->
 <div class="container">
   <div class="row">
     <div class="col">
-
-<!-- Services Grid -->
-<div class="col-lg-4 col-md-6 service-container">
-
-<!-- Pricing Cards -->
-<div class="col-lg-12 col-md-8 offset-md-2 offset-lg-0">
-  <div class="price-container shadows text-center">
-
-<!-- Mega Menu -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-4">
+      <!-- Services Grid -->
+      <div class="col-lg-4 col-md-6 service-container">
+        <!-- Pricing Cards -->
+        <div class="col-lg-12 col-md-8 offset-md-2 offset-lg-0">
+          <div class="price-container shadows text-center">
+            <!-- Mega Menu -->
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-4"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 ```
 
 ## PrimeNG Component Replacement Opportunities
@@ -55,6 +64,7 @@ public/assets/scss/                   # 48 SCSS files with custom styling
 ### 🎯 High Priority Replacements
 
 #### 1. Carousel/Slider Components
+
 **Current**: `ngx-owl-carousel-o`
 **Replace with**: `p-carousel`
 
@@ -76,12 +86,14 @@ public/assets/scss/                   # 48 SCSS files with custom styling
 ```
 
 **Benefits**:
+
 - Better Angular integration
 - Smaller bundle size
 - Consistent API with other PrimeNG components
 - Built-in touch support
 
 #### 2. Navigation Menu
+
 **Current**: Custom dropdown menus with Bootstrap classes
 **Replace with**: `p-megaMenu` or `p-menubar`
 
@@ -97,6 +109,7 @@ public/assets/scss/                   # 48 SCSS files with custom styling
 ```
 
 #### 3. Card Components
+
 **Current**: Custom card styling with Bootstrap
 **Replace with**: `p-card`
 
@@ -120,6 +133,7 @@ public/assets/scss/                   # 48 SCSS files with custom styling
 ### 🔄 Medium Priority Replacements
 
 #### 4. Buttons
+
 **Current**: Bootstrap button classes
 **Replace with**: `p-button`
 
@@ -132,6 +146,7 @@ public/assets/scss/                   # 48 SCSS files with custom styling
 ```
 
 #### 5. Form Components (Future Enhancement)
+
 **Potential**: `p-inputText`, `p-dropdown`, `p-textarea`, `p-checkbox`
 
 ## Tailwind CSS Migration Strategy
@@ -139,12 +154,14 @@ public/assets/scss/                   # 48 SCSS files with custom styling
 ### 🟢 **Migration Complexity**: MODERATE
 
 ### Pros ✅
+
 1. **Smaller Bundle Size**: Tailwind's purged CSS will be smaller than Bootstrap
 2. **Design Flexibility**: More granular control over styling
 3. **Modern Approach**: Utility-first methodology aligns with current trends
 4. **PrimeNG Compatibility**: Excellent integration with PrimeNG themes
 
 ### Challenges ⚠️
+
 1. **48 Custom SCSS Files**: Significant custom styling to migrate
 2. **Grid System Migration**: Bootstrap's grid needs conversion to Flexbox/Grid utilities
 3. **Responsive Breakpoints**: Need to map Bootstrap breakpoints to Tailwind
@@ -153,6 +170,7 @@ public/assets/scss/                   # 48 SCSS files with custom styling
 ### Migration Approach
 
 #### Phase 1: Setup & Configuration
+
 ```bash
 # Install Tailwind CSS
 npm install -D tailwindcss postcss autoprefixer
@@ -163,52 +181,61 @@ npm install primeng @primeuix/themes
 ```
 
 #### Phase 2: Grid System Conversion
+
 ```html
 <!-- Bootstrap Grid -->
 <div class="container">
   <div class="row">
     <div class="col-lg-4 col-md-6">
-
-<!-- Tailwind Conversion -->
-<div class="container mx-auto">
-  <div class="flex flex-wrap">
-    <div class="w-full md:w-1/2 lg:w-1/3">
+      <!-- Tailwind Conversion -->
+      <div class="container mx-auto">
+        <div class="flex flex-wrap">
+          <div class="w-full md:w-1/2 lg:w-1/3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 ```
 
 #### Phase 3: Utility Class Mapping
 
-| Bootstrap Class | Tailwind Equivalent |
-|----------------|-------------------|
-| `d-flex` | `flex` |
-| `justify-content-center` | `justify-center` |
-| `text-center` | `text-center` |
-| `bg-primary` | `bg-blue-500` |
-| `p-3` | `p-3` |
-| `m-4` | `m-4` |
-| `col-md-6` | `md:w-1/2` |
-| `offset-md-1` | `md:ml-[8.333333%]` |
+| Bootstrap Class          | Tailwind Equivalent |
+| ------------------------ | ------------------- |
+| `d-flex`                 | `flex`              |
+| `justify-content-center` | `justify-center`    |
+| `text-center`            | `text-center`       |
+| `bg-primary`             | `bg-blue-500`       |
+| `p-3`                    | `p-3`               |
+| `m-4`                    | `m-4`               |
+| `col-md-6`               | `md:w-1/2`          |
+| `offset-md-1`            | `md:ml-[8.333333%]` |
 
 ## Implementation Roadmap
 
 ### 🚀 Phase 1: Foundation (Week 1-2)
+
 - [ ] Install Tailwind CSS and configure build
 - [ ] Install PrimeNG and set up theming
 - [ ] Create utility mapping documentation
 - [ ] Set up component library structure
 
 ### 🔄 Phase 2: Core Components (Week 3-4)
+
 - [ ] Migrate navigation component to PrimeNG MenuBar
 - [ ] Replace owl-carousel with PrimeNG Carousel
 - [ ] Convert Bootstrap cards to PrimeNG Cards
 - [ ] Implement responsive grid with Tailwind
 
 ### 🎨 Phase 3: Styling Migration (Week 5-6)
+
 - [ ] Convert SCSS files to Tailwind utilities
 - [ ] Implement custom PrimeNG theme
 - [ ] Optimize bundle size and remove unused styles
 - [ ] Test responsive behavior across devices
 
 ### ✅ Phase 4: Testing & Optimization (Week 7)
+
 - [ ] Cross-browser testing
 - [ ] Performance optimization
 - [ ] Bundle size analysis
@@ -217,16 +244,19 @@ npm install primeng @primeuix/themes
 ## Expected Benefits
 
 ### Performance Improvements
+
 - **Bundle Size Reduction**: ~30-40% smaller CSS bundle
 - **Load Time**: Faster initial page load
 - **Development Speed**: Faster styling with utility classes
 
 ### Developer Experience
+
 - **Consistency**: Unified component library with PrimeNG
 - **Maintainability**: Reduced custom CSS maintenance
 - **Modern Tooling**: Better IDE support and documentation
 
 ### Design System
+
 - **Scalability**: Easy to extend and customize
 - **Consistency**: Standardized component library
 - **Accessibility**: PrimeNG components include ARIA support
@@ -234,25 +264,30 @@ npm install primeng @primeuix/themes
 ## Risk Assessment
 
 ### 🔴 High Risk
+
 - **Breaking Changes**: Significant visual changes during migration
 - **Timeline**: Complex migration may take longer than estimated
 
 ### 🟡 Medium Risk
+
 - **Custom Styling**: Some unique designs may need recreation
 - **Third-party Dependencies**: Potential conflicts with existing packages
 
 ### 🟢 Low Risk
+
 - **Angular Compatibility**: Both frameworks work well with Angular
 - **Community Support**: Strong documentation and community
 
 ## Cost-Benefit Analysis
 
 ### Development Cost
+
 - **Time Investment**: ~6-7 weeks development time
 - **Learning Curve**: Team training on Tailwind/PrimeNG patterns
 - **Testing Effort**: Comprehensive regression testing required
 
 ### Long-term Benefits
+
 - **Maintenance Reduction**: ~50% less custom CSS to maintain
 - **Development Speed**: ~30% faster feature development
 - **Bundle Size**: ~35% smaller CSS bundle
@@ -263,18 +298,21 @@ npm install primeng @primeuix/themes
 ### ✅ **RECOMMENDED**: Proceed with Migration
 
 **Rationale**:
+
 1. **Technical Debt Reduction**: Replace aging Bootstrap dependency
 2. **Modern Development**: Align with current industry standards
 3. **Component Library**: PrimeNG provides comprehensive UI components
 4. **Performance Gains**: Smaller bundle size and better optimization
 
 ### Migration Strategy
+
 1. **Incremental Approach**: Migrate component by component
 2. **Dual Running**: Keep Bootstrap temporarily during transition
 3. **Feature Flags**: Use feature toggles for A/B testing
 4. **Comprehensive Testing**: Ensure visual parity throughout migration
 
 ### Success Metrics
+
 - [ ] Bundle size reduced by >30%
 - [ ] Page load time improved by >20%
 - [ ] Development velocity increased by >25%
