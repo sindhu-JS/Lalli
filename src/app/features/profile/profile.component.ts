@@ -20,7 +20,7 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
       <div class="bg-white rounded-lg shadow-sm border">
         <!-- Header -->
         <div class="px-6 py-4 border-b border-gray-200">
-          <h1 class="text-2xl font-bold text-gray-900">Profile Settings</h1>
+          <h1 class="text-2xl font-bold text-gray-900 dark:!text-gray-100">Profile Settings</h1>
           <p class="text-gray-600 mt-1">Manage your account information and preferences</p>
         </div>
 

@@ -11,10 +11,10 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
   template: `
     <div class="project-form max-w-4xl mx-auto">
       <div class="mb-8">
-        <h1 class="text-2xl font-bold text-gray-900">
+        <h1 class="text-2xl font-bold text-gray-900 dark:!text-gray-100">
           {{ isEditMode ? 'Edit Project' : 'Create New Project' }}
         </h1>
-        <p class="text-gray-600 mt-1">
+        <p class="text-gray-600 dark:!text-gray-400 mt-1">
           {{ isEditMode ? 'Update project information' : 'Fill in the details below to create a new project' }}
         </p>
       </div>

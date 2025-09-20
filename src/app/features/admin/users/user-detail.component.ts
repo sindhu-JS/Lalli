@@ -15,8 +15,8 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
             <i class="pi pi-arrow-left"></i>
           </button>
           <div>
-            <h1 class="text-2xl font-bold text-gray-900">User Details</h1>
-            <p class="text-gray-600 mt-1">View and manage user information</p>
+            <h1 class="text-2xl font-bold text-gray-900 dark:!text-gray-100">User Details</h1>
+            <p class="text-gray-600 dark:!text-gray-400 mt-1">View and manage user information</p>
           </div>
         </div>
         <div class="flex space-x-3">
@@ -144,28 +144,34 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
           <!-- Quick Actions -->
           <div class="bg-white rounded-lg shadow-sm border p-6">
             <h3 class="text-lg font-medium text-gray-900 mb-4">Quick Actions</h3>
-            <div class="space-y-3">
-              <app-button
-                variant="secondary"
-                [fullWidth]="true"
-              >
-                <i class="pi pi-key mr-2"></i>
-                Reset Password
-              </app-button>
-              <app-button
-                variant="secondary"
-                [fullWidth]="true"
-              >
-                <i class="pi pi-envelope mr-2"></i>
-                Send Message
-              </app-button>
-              <app-button
-                variant="warning"
-                [fullWidth]="true"
-              >
-                <i class="pi pi-pause mr-2"></i>
-                Suspend Account
-              </app-button>
+            <div>
+              <div class="mb-2">
+                <app-button
+                  variant="secondary"
+                  [fullWidth]="true"
+                >
+                  <i class="pi pi-key mr-2"></i>
+                  Reset Password
+                </app-button>
+              </div>
+              <div class="mb-2">
+                <app-button
+                  variant="secondary"
+                  [fullWidth]="true"
+                >
+                  <i class="pi pi-envelope mr-2"></i>
+                  Send Message
+                </app-button>
+              </div>
+              <div>
+                <app-button
+                  variant="warning"
+                  [fullWidth]="true"
+                >
+                  <i class="pi pi-pause mr-2"></i>
+                  Suspend Account
+                </app-button>
+              </div>
             </div>
           </div>
 

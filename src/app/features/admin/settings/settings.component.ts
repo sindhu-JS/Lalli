@@ -17,8 +17,8 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
   template: `
     <div class="settings max-w-4xl mx-auto">
       <div class="mb-8">
-        <h1 class="text-2xl font-bold text-gray-900">System Settings</h1>
-        <p class="text-gray-600 mt-1">Configure system-wide settings and preferences</p>
+        <h1 class="text-2xl font-bold text-gray-900 dark:!text-gray-100">System Settings</h1>
+        <p class="text-gray-600 dark:!text-gray-400 mt-1">Configure system-wide settings and preferences</p>
       </div>
 
       <div class="space-y-8">

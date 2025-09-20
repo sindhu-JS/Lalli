@@ -26,8 +26,8 @@ interface AdminUser {
     <div class="users-list">
       <div class="flex justify-between items-center mb-6">
         <div>
-          <h1 class="text-2xl font-bold text-gray-900">User Management</h1>
-          <p class="text-gray-600 mt-1">Manage user accounts and permissions</p>
+          <h1 class="text-2xl font-bold text-gray-900 dark:!text-gray-100">User Management</h1>
+          <p class="text-gray-600 dark:!text-gray-400 mt-1">Manage user accounts and permissions</p>
         </div>
         <app-button
           routerLink="/admin/users/new"

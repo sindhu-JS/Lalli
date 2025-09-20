@@ -28,8 +28,8 @@ interface TeamMember {
       <div class="mb-8">
         <div class="flex items-center justify-between">
           <div>
-            <h1 class="text-3xl font-bold text-gray-900">Team Members</h1>
-            <p class="text-gray-600 mt-2">
+            <h1 class="text-3xl font-bold text-gray-900 dark:!text-gray-100">Team Members</h1>
+            <p class="text-gray-600 dark:!text-gray-400 mt-2">
               Manage your team members and their roles
             </p>
           </div>

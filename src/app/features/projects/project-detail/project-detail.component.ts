@@ -42,7 +42,7 @@ interface Task {
               <button routerLink="/app/projects" class="text-gray-500 hover:text-gray-700">
                 <i class="pi pi-arrow-left"></i>
               </button>
-              <h1 class="text-2xl font-bold text-gray-900">{{ project.name }}</h1>
+              <h1 class="text-2xl font-bold text-gray-900 dark:!text-gray-100">{{ project.name }}</h1>
               <span
                 [class]="getStatusBadgeClass(project.status)"
                 class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium"

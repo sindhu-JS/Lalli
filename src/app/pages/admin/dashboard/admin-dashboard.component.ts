@@ -10,14 +10,14 @@ import { RouterModule } from '@angular/router';
     <div class="admin-dashboard">
       <!-- Admin Dashboard Header -->
       <div class="mb-8">
-        <h1 class="text-3xl font-bold text-gray-900">Admin Dashboard</h1>
-        <p class="text-gray-600 mt-2">Overview of system metrics and administrative controls</p>
+        <h1 class="text-3xl font-bold text-gray-900 dark:!text-gray-100">Admin Dashboard</h1>
+        <p class="text-gray-600 dark:!text-gray-400 mt-2">Overview of system metrics and administrative controls</p>
       </div>
 
       <!-- Stats Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         @for (stat of stats; track stat.id) {
-          <div class="bg-white rounded-lg shadow-sm border p-6">
+          <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700 p-6">
             <div class="flex items-center">
               <div class="flex-shrink-0">
                 <div [class]="getStatIconClass(stat.type)">
@@ -25,8 +25,8 @@ import { RouterModule } from '@angular/router';
                 </div>
               </div>
               <div class="ml-4">
-                <p class="text-sm font-medium text-gray-500">{{ stat.label }}</p>
-                <p class="text-2xl font-bold text-gray-900">{{ stat.value }}</p>
+                <p class="text-sm font-medium text-gray-500 dark:!text-gray-400">{{ stat.label }}</p>
+                <p class="text-2xl font-bold text-gray-900 dark:!text-gray-100">{{ stat.value }}</p>
                 @if (stat.change) {
                   <p [class]="getChangeClass(stat.change)" class="text-sm">
                     <i [class]="getChangeIcon(stat.change)"></i>
@@ -42,16 +42,16 @@ import { RouterModule } from '@angular/router';
       <!-- Admin Actions Grid -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
         <!-- Quick Actions -->
-        <div class="bg-white rounded-lg shadow-sm border">
-          <div class="p-6 border-b border-gray-200">
-            <h3 class="text-lg font-medium text-gray-900">Quick Actions</h3>
+        <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700">
+          <div class="p-6 border-b border-gray-200 dark:!border-gray-700">
+            <h3 class="text-lg font-medium text-gray-900 dark:!text-gray-100">Quick Actions</h3>
           </div>
           <div class="p-6">
             <div class="grid grid-cols-2 gap-4">
               @for (action of quickActions; track action.id) {
                 <button
                   [routerLink]="action.route"
-                  class="relative group bg-gray-50 p-4 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-500 rounded-lg hover:bg-gray-100"
+                  class="relative group bg-gray-50 dark:!bg-gray-700 p-4 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-500 rounded-lg hover:bg-gray-100 dark:hover:!bg-gray-600"
                 >
                   <div>
                     <span [class]="getActionIconClass(action.type)">
@@ -59,8 +59,8 @@ import { RouterModule } from '@angular/router';
                     </span>
                   </div>
                   <div class="mt-3">
-                    <h3 class="text-sm font-medium text-gray-900">{{ action.title }}</h3>
-                    <p class="mt-1 text-xs text-gray-500">{{ action.description }}</p>
+                    <h3 class="text-sm font-medium text-gray-900 dark:!text-gray-100">{{ action.title }}</h3>
+                    <p class="mt-1 text-xs text-gray-500 dark:!text-gray-400">{{ action.description }}</p>
                   </div>
                 </button>
               }
@@ -69,13 +69,13 @@ import { RouterModule } from '@angular/router';
         </div>
 
         <!-- Recent Activity -->
-        <div class="bg-white rounded-lg shadow-sm border">
-          <div class="p-6 border-b border-gray-200">
-            <h3 class="text-lg font-medium text-gray-900">Recent Admin Activity</h3>
+        <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700">
+          <div class="p-6 border-b border-gray-200 dark:!border-gray-700">
+            <h3 class="text-lg font-medium text-gray-900 dark:!text-gray-100">Recent Admin Activity</h3>
           </div>
           <div class="p-6">
             <div class="flow-root">
-              <ul class="-my-5 divide-y divide-gray-200">
+              <ul class="-my-5 divide-y divide-gray-200 dark:!divide-gray-700">
                 @for (activity of recentActivity; track activity.id) {
                   <li class="py-4">
                     <div class="flex items-center space-x-4">
@@ -85,10 +85,10 @@ import { RouterModule } from '@angular/router';
                         </div>
                       </div>
                       <div class="flex-1 min-w-0">
-                        <p class="text-sm font-medium text-gray-900 truncate">
+                        <p class="text-sm font-medium text-gray-900 dark:!text-gray-100 truncate">
                           {{ activity.title }}
                         </p>
-                        <p class="text-sm text-gray-500 truncate">
+                        <p class="text-sm text-gray-500 dark:!text-gray-400 truncate">
                           by {{ activity.user }} • {{ activity.time }}
                         </p>
                       </div>
@@ -102,9 +102,9 @@ import { RouterModule } from '@angular/router';
       </div>
 
       <!-- System Health -->
-      <div class="bg-white rounded-lg shadow-sm border">
-        <div class="p-6 border-b border-gray-200">
-          <h3 class="text-lg font-medium text-gray-900">System Health</h3>
+      <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700">
+        <div class="p-6 border-b border-gray-200 dark:!border-gray-700">
+          <h3 class="text-lg font-medium text-gray-900 dark:!text-gray-100">System Health</h3>
         </div>
         <div class="p-6">
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -113,7 +113,7 @@ import { RouterModule } from '@angular/router';
                 <div class="relative">
                   <svg class="w-16 h-16 mx-auto" viewBox="0 0 36 36">
                     <path
-                      class="text-gray-200"
+                      class="text-gray-200 dark:!text-gray-600"
                       stroke="currentColor"
                       stroke-width="3"
                       fill="none"
@@ -134,10 +134,10 @@ import { RouterModule } from '@angular/router';
                     />
                   </svg>
                   <div class="absolute inset-0 flex items-center justify-center">
-                    <span class="text-sm font-semibold text-gray-900">{{ health.percentage }}%</span>
+                    <span class="text-sm font-semibold text-gray-900 dark:!text-gray-100">{{ health.percentage }}%</span>
                   </div>
                 </div>
-                <h4 class="mt-2 text-sm font-medium text-gray-900">{{ health.name }}</h4>
+                <h4 class="mt-2 text-sm font-medium text-gray-900 dark:!text-gray-100">{{ health.name }}</h4>
                 <p [class]="getStatusTextClass(health.status)" class="text-xs font-medium">
                   {{ health.status.toUpperCase() }}
                 </p>

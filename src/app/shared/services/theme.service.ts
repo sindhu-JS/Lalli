@@ -21,6 +21,7 @@ export class ThemeService {
    */
   toggleTheme(): void {
     const newTheme: Theme = this.theme() === 'light' ? 'dark' : 'light';
+    console.log('Toggling theme from', this.theme(), 'to', newTheme);
     this.setTheme(newTheme);
   }
 
@@ -79,9 +80,11 @@ export class ThemeService {
     if (theme === 'dark') {
       htmlElement.classList.add('p-dark');
       htmlElement.classList.remove('p-light');
+      console.log('Applied dark theme, classes:', htmlElement.classList.toString());
     } else {
       htmlElement.classList.add('p-light');
       htmlElement.classList.remove('p-dark');
+      console.log('Applied light theme, classes:', htmlElement.classList.toString());
     }
   }
 

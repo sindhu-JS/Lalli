@@ -29,8 +29,8 @@ interface Notification {
       <div class="mb-8">
         <div class="flex items-center justify-between">
           <div>
-            <h1 class="text-3xl font-bold text-gray-900">Notifications</h1>
-            <p class="text-gray-600 mt-2">
+            <h1 class="text-3xl font-bold text-gray-900 dark:!text-gray-100">Notifications</h1>
+            <p class="text-gray-600 dark:!text-gray-400 mt-2">
               Stay updated with your latest activities and alerts
             </p>
           </div>
