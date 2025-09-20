@@ -1,9 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
+/* Import all CSS files first */
+@import 'primeicons/primeicons.css';
+@import '../public/assets/scss/app.scss';
+
 /* Tailwind CSS imports */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Keep existing styles for gradual migration */
-@import '../public/assets/scss/app.scss';

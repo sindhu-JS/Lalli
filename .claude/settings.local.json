@@ -8,7 +8,15 @@
       "Bash(robocopy:*)",
       "Bash(npx tailwindcss init:*)",
       "Bash(node_modules.bintailwindcss init -p)",
-      "Bash(npm uninstall:*)"
+      "Bash(npm uninstall:*)",
+      "Bash(tree:*)",
+      "Bash(move:*)",
+      "Bash(del \"C:\\MyDevelopment\\Lalli\\src\\app\\core\\services\\api.service.ts\")",
+      "WebFetch(domain:primeng.org)",
+      "Bash(cat:*)",
+      "Bash(find:*)",
+      "WebSearch",
+      "Bash(dir \"C:\\MyDevelopment\\Lalli\\public\\assets\\images\\logo\")"
     ],
     "deny": [],
     "ask": []

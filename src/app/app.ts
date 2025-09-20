@@ -1,10 +1,11 @@
 import { Component, Renderer2, OnInit } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { ToastModule } from 'primeng/toast';
 import { LoaderComponent } from './shared/components/loader/loader.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, LoaderComponent],
+  imports: [RouterOutlet, LoaderComponent, ToastModule],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
