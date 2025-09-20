@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ButtonComponent } from '../../../shared/components/button/button.component';
+import { ToastService } from '../../../shared/services/toast.service';
 
 interface ProjectDetail {
   id: number;
@@ -244,6 +245,7 @@ interface Task {
 })
 export class ProjectDetailComponent implements OnInit {
   private route = inject(ActivatedRoute);
+  private toastService = inject(ToastService);
 
   project: ProjectDetail | null = null;
 
@@ -301,9 +303,21 @@ export class ProjectDetailComponent implements OnInit {
     }
   }
 
-  deleteProject(): void {
-    if (confirm('Are you sure you want to delete this project? This action cannot be undone.')) {
-      // Implement delete logic
+  async deleteProject(): Promise<void> {
+    if (!this.project) return;
+
+    const confirmed = await this.toastService.confirm(
+      `Are you sure you want to delete "${this.project.name}"? This action cannot be undone.`,
+      'Delete Project',
+      'Delete',
+      'Cancel',
+      'pi pi-exclamation-triangle',
+      'p-button-danger'
+    );
+
+    if (confirmed) {
+      this.toastService.success(`Project "${this.project.name}" has been deleted successfully`);
+      // Implement delete logic - could navigate back to projects list
       console.log('Project deleted');
     }
   }

@@ -7,6 +7,7 @@ import { SelectModule } from 'primeng/select';
 import { ButtonModule } from 'primeng/button';
 import { TooltipModule } from 'primeng/tooltip';
 import { ButtonComponent } from '../../../shared/components/button/button.component';
+import { ToastService } from '../../../shared/services/toast.service';
 
 interface AdminUser {
   id: string;
@@ -226,6 +227,8 @@ export class UsersListComponent {
   selectedRole = '';
   selectedStatus = '';
 
+  constructor(private toastService: ToastService) {}
+
   roleOptions = [
     { value: '', label: 'All Roles' },
     { value: 'admin', label: 'Admin' },
@@ -301,18 +304,38 @@ export class UsersListComponent {
     this.selectedStatus = '';
   }
 
-  toggleUserStatus(user: AdminUser): void {
+  async toggleUserStatus(user: AdminUser): Promise<void> {
     const newStatus = user.status === 'active' ? 'suspended' : 'active';
     const action = newStatus === 'active' ? 'activate' : 'suspend';
 
-    if (confirm(`Are you sure you want to ${action} ${user.name}?`)) {
+    const confirmed = await this.toastService.confirm(
+      `Are you sure you want to ${action} ${user.name}?`,
+      `${action.charAt(0).toUpperCase() + action.slice(1)} User`,
+      'Yes',
+      'Cancel',
+      'pi pi-question-circle',
+      newStatus === 'active' ? 'p-button-success' : 'p-button-warning'
+    );
+
+    if (confirmed) {
       user.status = newStatus;
+      this.toastService.success(`User ${user.name} has been ${action}d successfully`);
     }
   }
 
-  deleteUser(user: AdminUser): void {
-    if (confirm(`Are you sure you want to delete ${user.name}? This action cannot be undone.`)) {
+  async deleteUser(user: AdminUser): Promise<void> {
+    const confirmed = await this.toastService.confirm(
+      `Are you sure you want to delete ${user.name}? This action cannot be undone.`,
+      'Delete User',
+      'Delete',
+      'Cancel',
+      'pi pi-exclamation-triangle',
+      'p-button-danger'
+    );
+
+    if (confirmed) {
       this.users = this.users.filter(u => u.id !== user.id);
+      this.toastService.success(`User ${user.name} has been deleted successfully`);
     }
   }
 

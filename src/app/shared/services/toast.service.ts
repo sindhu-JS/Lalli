@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MessageService } from 'primeng/api';
+import { MessageService, ConfirmationService } from 'primeng/api';
 
 export interface ToastOptions {
   key?: string;
@@ -13,7 +13,10 @@ export interface ToastOptions {
   providedIn: 'root'
 })
 export class ToastService {
-  constructor(private messageService: MessageService) {}
+  constructor(
+    private messageService: MessageService,
+    private confirmationService: ConfirmationService
+  ) {}
 
   /**
    * Show a success toast message
@@ -103,22 +106,28 @@ export class ToastService {
   }
 
   /**
-   * Show a confirmation toast with custom actions
+   * Show a confirmation dialog using PrimeNG ConfirmDialog
    */
-  confirm(message: string, title: string = 'Confirm', acceptLabel: string = 'Yes', rejectLabel: string = 'No', options?: ToastOptions): Promise<boolean> {
+  confirm(
+    message: string,
+    title: string = 'Confirm',
+    acceptLabel: string = 'Yes',
+    rejectLabel: string = 'No',
+    icon: string = 'pi pi-question-circle',
+    acceptButtonStyleClass: string = 'p-button-danger',
+    rejectButtonStyleClass: string = 'p-button-secondary'
+  ): Promise<boolean> {
     return new Promise((resolve) => {
-      this.messageService.add({
-        severity: 'warn',
-        summary: title,
-        detail: message,
-        sticky: true,
-        key: options?.key || 'confirm',
-        data: {
-          accept: () => resolve(true),
-          reject: () => resolve(false),
-          acceptLabel,
-          rejectLabel
-        }
+      this.confirmationService.confirm({
+        message,
+        header: title,
+        icon,
+        acceptLabel,
+        rejectLabel,
+        acceptButtonStyleClass,
+        rejectButtonStyleClass,
+        accept: () => resolve(true),
+        reject: () => resolve(false)
       });
     });
   }

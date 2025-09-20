@@ -1,12 +1,13 @@
 import { Component, Renderer2, OnInit, inject } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { LoaderComponent } from './shared/components/loader/loader.component';
 import { ThemeService } from './shared/services/theme.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, LoaderComponent, ToastModule],
+  imports: [RouterOutlet, LoaderComponent, ToastModule, ConfirmDialogModule],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })

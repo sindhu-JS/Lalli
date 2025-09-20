@@ -9,6 +9,7 @@ import { SelectModule } from 'primeng/select';
 import { CheckboxModule } from 'primeng/checkbox';
 import { ButtonModule } from 'primeng/button';
 import { ButtonComponent } from '../../../shared/components/button/button.component';
+import { ToastService } from '../../../shared/services/toast.service';
 
 @Component({
   selector: 'app-settings',
@@ -449,7 +450,7 @@ export class SettingsComponent {
     { value: 'YYYY-MM-DD', label: 'YYYY-MM-DD' }
   ];
 
-  constructor() {
+  constructor(private toastService: ToastService) {
     this.generalForm = this.fb.group({
       appName: ['Lalli App', Validators.required],
       defaultLanguage: ['en'],
@@ -518,12 +519,21 @@ export class SettingsComponent {
     }, 2000);
   }
 
-  runDatabaseMaintenance(): void {
-    if (confirm('This operation may take several minutes. Continue?')) {
+  async runDatabaseMaintenance(): Promise<void> {
+    const confirmed = await this.toastService.confirm(
+      'This operation may take several minutes. Continue?',
+      'Database Maintenance',
+      'Continue',
+      'Cancel',
+      'pi pi-cog',
+      'p-button-warning'
+    );
+
+    if (confirmed) {
       this.maintenanceLoading = true;
       setTimeout(() => {
         this.maintenanceLoading = false;
-        alert('Database maintenance completed successfully!');
+        this.toastService.success('Database maintenance completed successfully!');
       }, 3000);
     }
   }
@@ -544,9 +554,18 @@ export class SettingsComponent {
     }, 2000);
   }
 
-  resetSystem(): void {
-    if (confirm('This will reset all system settings to defaults. This action cannot be undone. Are you sure?')) {
-      alert('System reset cancelled for safety. Contact system administrator.');
+  async resetSystem(): Promise<void> {
+    const confirmed = await this.toastService.confirm(
+      'This will reset all system settings to defaults. This action cannot be undone. Are you sure?',
+      'Reset System',
+      'Reset',
+      'Cancel',
+      'pi pi-exclamation-triangle',
+      'p-button-danger'
+    );
+
+    if (confirmed) {
+      this.toastService.warning('System reset cancelled for safety. Contact system administrator.');
     }
   }
 }

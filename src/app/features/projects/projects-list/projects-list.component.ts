@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ToastService } from '../../../shared/services/toast.service';
 
 interface Project {
   id: number;
@@ -176,6 +177,8 @@ interface Project {
 export class ProjectsListComponent implements OnInit {
   activeFilter = 'all';
 
+  constructor(private toastService: ToastService) {}
+
   filters = [
     { key: 'all', label: 'All Projects' },
     { key: 'active', label: 'Active' },
@@ -291,9 +294,20 @@ export class ProjectsListComponent implements OnInit {
     return Math.abs(hash).toString(16);
   }
 
-  deleteProject(projectId: number): void {
-    if (confirm('Are you sure you want to delete this project?')) {
+  async deleteProject(projectId: number): Promise<void> {
+    const project = this.projects.find(p => p.id === projectId);
+    const confirmed = await this.toastService.confirm(
+      `Are you sure you want to delete "${project?.name}"? This action cannot be undone.`,
+      'Delete Project',
+      'Delete',
+      'Cancel',
+      'pi pi-exclamation-triangle',
+      'p-button-danger'
+    );
+
+    if (confirmed) {
       this.projects = this.projects.filter(p => p.id !== projectId);
+      this.toastService.success(`Project "${project?.name}" has been deleted successfully`);
     }
   }
 }

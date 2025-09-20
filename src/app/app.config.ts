@@ -3,7 +3,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { MessageService } from 'primeng/api';
+import { MessageService, ConfirmationService } from 'primeng/api';
 
 import { routes } from './app.routes';
 import { JwtInterceptor } from './shared/interceptors/jwt.interceptor';
@@ -26,5 +26,6 @@ export const appConfig: ApplicationConfig = {
     },
     provideAnimations(),
     MessageService, // PrimeNG MessageService for Toast
+    ConfirmationService, // PrimeNG ConfirmationService for ConfirmDialog
   ],
 };
