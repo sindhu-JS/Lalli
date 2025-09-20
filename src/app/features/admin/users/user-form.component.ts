@@ -19,11 +19,11 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
         <p class="text-gray-600 dark:!text-gray-400 mt-1">Create a new user account</p>
       </div>
 
-      <div class="bg-white rounded-lg shadow-sm border">
+      <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700">
         <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="p-6 space-y-6">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">
+              <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
                 First Name *
               </label>
               <input
@@ -36,7 +36,7 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
             </div>
 
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">
+              <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
                 Last Name *
               </label>
               <input
@@ -50,7 +50,7 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
           </div>
 
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">
+            <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
               Email Address *
             </label>
             <input
@@ -63,7 +63,7 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
           </div>
 
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">
+            <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
               Role *
             </label>
             <p-select
@@ -77,7 +77,7 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
           </div>
 
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">
+            <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
               Status
             </label>
             <p-select
@@ -91,7 +91,7 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
           </div>
 
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">
+            <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
               Temporary Password *
             </label>
             <p-password
@@ -101,7 +101,7 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
               placeholder="Enter temporary password"
               class="w-full"
             ></p-password>
-            <p class="mt-1 text-sm text-gray-500">
+            <p class="mt-1 text-sm text-gray-500 dark:!text-gray-400">
               User will be required to change this password on first login.
             </p>
           </div>
@@ -113,12 +113,12 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
               inputId="send-invite"
               class="mr-2"
             ></p-checkbox>
-            <label for="send-invite" class="block text-sm text-gray-700">
+            <label for="send-invite" class="block text-sm text-gray-700 dark:!text-gray-300">
               Send welcome email with login instructions
             </label>
           </div>
 
-          <div class="flex justify-end space-x-3 pt-6 border-t border-gray-200">
+          <div class="flex justify-end space-x-3 pt-6 border-t border-gray-200 dark:!border-gray-700">
             <app-button
               type="button"
               variant="secondary"

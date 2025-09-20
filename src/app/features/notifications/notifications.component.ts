@@ -56,32 +56,32 @@ interface Notification {
       </div>
 
       <!-- Stats Bar -->
-      <div class="bg-white rounded-lg shadow-sm border p-6 mb-6">
+      <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700 p-6 mb-6">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
           <div class="text-center">
             <div class="text-2xl font-bold text-blue-600">{{ notifications.length }}</div>
-            <div class="text-sm text-gray-600">Total</div>
+            <div class="text-sm text-gray-600 dark:!text-gray-400">Total</div>
           </div>
           <div class="text-center">
             <div class="text-2xl font-bold text-red-600">{{ unreadCount }}</div>
-            <div class="text-sm text-gray-600">Unread</div>
+            <div class="text-sm text-gray-600 dark:!text-gray-400">Unread</div>
           </div>
           <div class="text-center">
             <div class="text-2xl font-bold text-green-600">{{ readCount }}</div>
-            <div class="text-sm text-gray-600">Read</div>
+            <div class="text-sm text-gray-600 dark:!text-gray-400">Read</div>
           </div>
           <div class="text-center">
             <div class="text-2xl font-bold text-orange-600">{{ todayCount }}</div>
-            <div class="text-sm text-gray-600">Today</div>
+            <div class="text-sm text-gray-600 dark:!text-gray-400">Today</div>
           </div>
         </div>
       </div>
 
       <!-- Filters -->
-      <div class="bg-white rounded-lg shadow-sm border p-6 mb-6">
+      <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700 p-6 mb-6">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Filter by Type</label>
+            <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-2">Filter by Type</label>
             <p-select
               [(ngModel)]="selectedType"
               [options]="typeOptions"
@@ -91,7 +91,7 @@ interface Notification {
             ></p-select>
           </div>
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Filter by Status</label>
+            <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-2">Filter by Status</label>
             <p-select
               [(ngModel)]="selectedStatus"
               [options]="statusOptions"
@@ -101,7 +101,7 @@ interface Notification {
             ></p-select>
           </div>
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Filter by Source</label>
+            <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-2">Filter by Source</label>
             <p-select
               [(ngModel)]="selectedSource"
               [options]="sourceOptions"
@@ -117,7 +117,7 @@ interface Notification {
       <div class="space-y-4">
         @for (notification of filteredNotifications; track notification.id) {
           <div
-            class="bg-white rounded-lg shadow-sm border transition-all duration-200 hover:shadow-md"
+            class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700 transition-all duration-200 hover:shadow-md"
             [class]="getNotificationClasses(notification)"
           >
             <div class="p-6">
@@ -145,17 +145,17 @@ interface Notification {
                   <!-- Notification Details -->
                   <div class="flex-1 min-w-0">
                     <div class="flex items-center justify-between mb-2">
-                      <h3 class="text-sm font-medium text-gray-900 truncate">
+                      <h3 class="text-sm font-medium text-gray-900 dark:!text-gray-100 truncate">
                         {{ notification.title }}
                       </h3>
                       <div class="flex items-center space-x-2">
                         @if (!notification.read) {
                           <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
                         }
-                        <span class="text-xs text-gray-500">{{ getTimeAgo(notification.timestamp) }}</span>
+                        <span class="text-xs text-gray-500 dark:!text-gray-400">{{ getTimeAgo(notification.timestamp) }}</span>
                       </div>
                     </div>
-                    <p class="text-sm text-gray-600 mb-3">{{ notification.message }}</p>
+                    <p class="text-sm text-gray-600 dark:!text-gray-400 mb-3">{{ notification.message }}</p>
                     <div class="flex items-center justify-between">
                       <div class="flex items-center space-x-3">
                         <span
@@ -164,7 +164,7 @@ interface Notification {
                         >
                           {{ notification.type | titlecase }}
                         </span>
-                        <span class="text-xs text-gray-500">{{ notification.source }}</span>
+                        <span class="text-xs text-gray-500 dark:!text-gray-400">{{ notification.source }}</span>
                       </div>
                       @if (notification.actionUrl && notification.actionText) {
                         <button
@@ -183,7 +183,7 @@ interface Notification {
                   @if (!notification.read) {
                     <button
                       (click)="markAsRead(notification)"
-                      class="p-2 text-gray-400 hover:text-blue-600 rounded-md hover:bg-blue-50"
+                      class="p-2 text-gray-400 hover:text-blue-600 dark:hover:!text-blue-400 rounded-md hover:bg-blue-50 dark:hover:!bg-blue-900"
                       title="Mark as read"
                     >
                       <i class="pi pi-check text-sm"></i>
@@ -191,7 +191,7 @@ interface Notification {
                   }
                   <button
                     (click)="deleteNotification(notification.id)"
-                    class="p-2 text-gray-400 hover:text-red-600 rounded-md hover:bg-red-50"
+                    class="p-2 text-gray-400 hover:text-red-600 dark:hover:!text-red-400 rounded-md hover:bg-red-50 dark:hover:!bg-red-900"
                     title="Delete"
                   >
                     <i class="pi pi-trash text-sm"></i>
@@ -207,8 +207,8 @@ interface Notification {
       @if (filteredNotifications.length === 0) {
         <div class="text-center py-12">
           <i class="pi pi-bell text-4xl text-gray-400 mb-4"></i>
-          <h3 class="text-lg font-medium text-gray-900 mb-2">No notifications found</h3>
-          <p class="text-gray-600 mb-6">
+          <h3 class="text-lg font-medium text-gray-900 dark:!text-gray-100 mb-2">No notifications found</h3>
+          <p class="text-gray-600 dark:!text-gray-400 mb-6">
             @if (hasActiveFilters()) {
               Try adjusting your filters to see more notifications.
             } @else {

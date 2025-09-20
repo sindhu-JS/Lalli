@@ -19,36 +19,36 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
         </p>
       </div>
 
-      <div class="bg-white rounded-lg shadow-sm border">
+      <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700">
         <form [formGroup]="projectForm" (ngSubmit)="onSubmit()" class="p-6 space-y-6">
           <!-- Basic Information -->
           <div>
-            <h3 class="text-lg font-medium text-gray-900 mb-4">Basic Information</h3>
+            <h3 class="text-lg font-medium text-gray-900 dark:!text-gray-100 mb-4">Basic Information</h3>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div class="md:col-span-2">
-                <label class="block text-sm font-medium text-gray-700 mb-1">
+                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
                   Project Name *
                 </label>
                 <input
                   type="text"
                   formControlName="name"
-                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  class="w-full px-3 py-2 border border-gray-300 dark:!border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:!bg-gray-800 text-gray-900 dark:!text-gray-100"
                   placeholder="Enter project name"
                   [class.border-red-500]="isFieldInvalid('name')"
                 />
                 @if (isFieldInvalid('name')) {
-                  <p class="mt-1 text-sm text-red-600">Project name is required</p>
+                  <p class="mt-1 text-sm text-red-600 dark:!text-red-400">Project name is required</p>
                 }
               </div>
 
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">
+                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
                   Status *
                 </label>
                 <select
                   formControlName="status"
-                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  class="w-full px-3 py-2 border border-gray-300 dark:!border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:!bg-gray-800 text-gray-900 dark:!text-gray-100"
                   [class.border-red-500]="isFieldInvalid('status')"
                 >
                   <option value="">Select status</option>
@@ -57,17 +57,17 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
                   <option value="on-hold">On Hold</option>
                 </select>
                 @if (isFieldInvalid('status')) {
-                  <p class="mt-1 text-sm text-red-600">Status is required</p>
+                  <p class="mt-1 text-sm text-red-600 dark:!text-red-400">Status is required</p>
                 }
               </div>
 
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">
+                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
                   Priority
                 </label>
                 <select
                   formControlName="priority"
-                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  class="w-full px-3 py-2 border border-gray-300 dark:!border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:!bg-gray-800 text-gray-900 dark:!text-gray-100"
                 >
                   <option value="low">Low</option>
                   <option value="medium">Medium</option>
@@ -77,35 +77,35 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
               </div>
 
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">
+                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
                   Start Date
                 </label>
                 <input
                   type="date"
                   formControlName="startDate"
-                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  class="w-full px-3 py-2 border border-gray-300 dark:!border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:!bg-gray-800 text-gray-900 dark:!text-gray-100"
                 />
               </div>
 
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">
+                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
                   Due Date
                 </label>
                 <input
                   type="date"
                   formControlName="dueDate"
-                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  class="w-full px-3 py-2 border border-gray-300 dark:!border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:!bg-gray-800 text-gray-900 dark:!text-gray-100"
                 />
               </div>
 
               <div class="md:col-span-2">
-                <label class="block text-sm font-medium text-gray-700 mb-1">
+                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
                   Description
                 </label>
                 <textarea
                   formControlName="description"
                   rows="4"
-                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  class="w-full px-3 py-2 border border-gray-300 dark:!border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:!bg-gray-800 text-gray-900 dark:!text-gray-100"
                   placeholder="Enter project description..."
                 ></textarea>
               </div>
@@ -114,16 +114,16 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
 
           <!-- Team & Budget -->
           <div>
-            <h3 class="text-lg font-medium text-gray-900 mb-4">Team & Budget</h3>
+            <h3 class="text-lg font-medium text-gray-900 dark:!text-gray-100 mb-4">Team & Budget</h3>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">
+                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
                   Project Manager
                 </label>
                 <select
                   formControlName="manager"
-                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  class="w-full px-3 py-2 border border-gray-300 dark:!border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:!bg-gray-800 text-gray-900 dark:!text-gray-100"
                 >
                   <option value="">Select manager</option>
                   <option value="john.doe">John Doe</option>
@@ -133,20 +133,20 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
               </div>
 
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">
+                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
                   Budget (USD)
                 </label>
                 <input
                   type="number"
                   formControlName="budget"
-                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  class="w-full px-3 py-2 border border-gray-300 dark:!border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:!bg-gray-800 text-gray-900 dark:!text-gray-100"
                   placeholder="0"
                   min="0"
                 />
               </div>
 
               <div class="md:col-span-2">
-                <label class="block text-sm font-medium text-gray-700 mb-1">
+                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
                   Team Members
                 </label>
                 <select
@@ -161,23 +161,23 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
                   <option value="mike.davis">Mike Davis</option>
                   <option value="lisa.chen">Lisa Chen</option>
                 </select>
-                <p class="mt-1 text-sm text-gray-500">Hold Ctrl (Cmd) to select multiple members</p>
+                <p class="mt-1 text-sm text-gray-500 dark:!text-gray-400">Hold Ctrl (Cmd) to select multiple members</p>
               </div>
             </div>
           </div>
 
           <!-- Tags & Categories -->
           <div>
-            <h3 class="text-lg font-medium text-gray-900 mb-4">Categories & Tags</h3>
+            <h3 class="text-lg font-medium text-gray-900 dark:!text-gray-100 mb-4">Categories & Tags</h3>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">
+                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
                   Category
                 </label>
                 <select
                   formControlName="category"
-                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  class="w-full px-3 py-2 border border-gray-300 dark:!border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:!bg-gray-800 text-gray-900 dark:!text-gray-100"
                 >
                   <option value="">Select category</option>
                   <option value="web-development">Web Development</option>
@@ -189,13 +189,13 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
               </div>
 
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">
+                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
                   Tags
                 </label>
                 <input
                   type="text"
                   formControlName="tags"
-                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  class="w-full px-3 py-2 border border-gray-300 dark:!border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:!bg-gray-800 text-gray-900 dark:!text-gray-100"
                   placeholder="frontend, react, typescript (comma separated)"
                 />
               </div>
@@ -203,13 +203,13 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
           </div>
 
           @if (errorMessage) {
-            <div class="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg">
+            <div class="bg-red-50 dark:!bg-red-900 border border-red-200 dark:!border-red-700 text-red-600 dark:!text-red-200 px-4 py-3 rounded-lg">
               {{ errorMessage }}
             </div>
           }
 
           <!-- Form Actions -->
-          <div class="flex justify-end space-x-3 pt-6 border-t border-gray-200">
+          <div class="flex justify-end space-x-3 pt-6 border-t border-gray-200 dark:!border-gray-700">
             <app-button
               type="button"
               variant="secondary"

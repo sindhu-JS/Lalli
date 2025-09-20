@@ -187,20 +187,20 @@ export class AdminDashboardComponent implements OnInit {
     const baseClasses = 'w-8 h-8 rounded-md flex items-center justify-center';
     switch (type) {
       case 'users':
-        return `${baseClasses} bg-blue-100 text-blue-600`;
+        return `${baseClasses} bg-blue-100 dark:!bg-blue-900 text-blue-600 dark:!text-blue-300`;
       case 'sessions':
-        return `${baseClasses} bg-green-100 text-green-600`;
+        return `${baseClasses} bg-green-100 dark:!bg-green-900 text-green-600 dark:!text-green-300`;
       case 'errors':
-        return `${baseClasses} bg-red-100 text-red-600`;
+        return `${baseClasses} bg-red-100 dark:!bg-red-900 text-red-600 dark:!text-red-300`;
       case 'uptime':
-        return `${baseClasses} bg-purple-100 text-purple-600`;
+        return `${baseClasses} bg-purple-100 dark:!bg-purple-900 text-purple-600 dark:!text-purple-300`;
       default:
-        return `${baseClasses} bg-gray-100 text-gray-600`;
+        return `${baseClasses} bg-gray-100 dark:!bg-gray-700 text-gray-600 dark:!text-gray-400`;
     }
   }
 
   getChangeClass(change: number): string {
-    return change >= 0 ? 'text-green-600' : 'text-red-600';
+    return change >= 0 ? 'text-green-600 dark:!text-green-400' : 'text-red-600 dark:!text-red-400';
   }
 
   getChangeIcon(change: number): string {
@@ -211,15 +211,15 @@ export class AdminDashboardComponent implements OnInit {
     const baseClasses = 'rounded-lg inline-flex p-3 group-hover:scale-110 transition-transform';
     switch (type) {
       case 'users':
-        return `${baseClasses} bg-blue-50 text-blue-700`;
+        return `${baseClasses} bg-blue-50 dark:!bg-blue-900 text-blue-700 dark:!text-blue-300`;
       case 'settings':
-        return `${baseClasses} bg-green-50 text-green-700`;
+        return `${baseClasses} bg-green-50 dark:!bg-green-900 text-green-700 dark:!text-green-300`;
       case 'logs':
-        return `${baseClasses} bg-orange-50 text-orange-700`;
+        return `${baseClasses} bg-orange-50 dark:!bg-orange-900 text-orange-700 dark:!text-orange-300`;
       case 'security':
-        return `${baseClasses} bg-red-50 text-red-700`;
+        return `${baseClasses} bg-red-50 dark:!bg-red-900 text-red-700 dark:!text-red-300`;
       default:
-        return `${baseClasses} bg-gray-50 text-gray-700`;
+        return `${baseClasses} bg-gray-50 dark:!bg-gray-700 text-gray-700 dark:!text-gray-300`;
     }
   }
 
@@ -227,15 +227,15 @@ export class AdminDashboardComponent implements OnInit {
     const baseClasses = 'w-8 h-8 rounded-full flex items-center justify-center text-sm';
     switch (type) {
       case 'user':
-        return `${baseClasses} bg-blue-100 text-blue-600`;
+        return `${baseClasses} bg-blue-100 dark:!bg-blue-900 text-blue-600 dark:!text-blue-300`;
       case 'settings':
-        return `${baseClasses} bg-green-100 text-green-600`;
+        return `${baseClasses} bg-green-100 dark:!bg-green-900 text-green-600 dark:!text-green-300`;
       case 'security':
-        return `${baseClasses} bg-red-100 text-red-600`;
+        return `${baseClasses} bg-red-100 dark:!bg-red-900 text-red-600 dark:!text-red-300`;
       case 'maintenance':
-        return `${baseClasses} bg-purple-100 text-purple-600`;
+        return `${baseClasses} bg-purple-100 dark:!bg-purple-900 text-purple-600 dark:!text-purple-300`;
       default:
-        return `${baseClasses} bg-gray-100 text-gray-600`;
+        return `${baseClasses} bg-gray-100 dark:!bg-gray-700 text-gray-600 dark:!text-gray-400`;
     }
   }
 
@@ -257,26 +257,26 @@ export class AdminDashboardComponent implements OnInit {
   getHealthColor(status: string): string {
     switch (status) {
       case 'good':
-        return 'text-green-600';
+        return 'text-green-600 dark:!text-green-400';
       case 'warning':
-        return 'text-yellow-600';
+        return 'text-yellow-600 dark:!text-yellow-400';
       case 'critical':
-        return 'text-red-600';
+        return 'text-red-600 dark:!text-red-400';
       default:
-        return 'text-gray-600';
+        return 'text-gray-600 dark:!text-gray-400';
     }
   }
 
   getStatusTextClass(status: string): string {
     switch (status) {
       case 'good':
-        return 'text-green-600';
+        return 'text-green-600 dark:!text-green-400';
       case 'warning':
-        return 'text-yellow-600';
+        return 'text-yellow-600 dark:!text-yellow-400';
       case 'critical':
-        return 'text-red-600';
+        return 'text-red-600 dark:!text-red-400';
       default:
-        return 'text-gray-600';
+        return 'text-gray-600 dark:!text-gray-400';
     }
   }
 }

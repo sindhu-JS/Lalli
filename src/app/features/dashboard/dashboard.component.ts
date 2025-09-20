@@ -23,13 +23,13 @@ import { AuthService } from '../../shared/services/auth.service';
           <div class="hidden md:block">
             <div class="flex items-center space-x-4">
               <div class="text-right">
-                <p class="text-sm text-gray-500">Member since</p>
-                <p class="text-sm font-medium text-gray-900">{{ memberSince() }}</p>
+                <p class="text-sm text-gray-500 dark:!text-gray-400">Member since</p>
+                <p class="text-sm font-medium text-gray-900 dark:!text-gray-100">{{ memberSince() }}</p>
               </div>
               <img
                 [src]="avatarUrl()"
                 [alt]="currentUser()?.name"
-                class="w-12 h-12 rounded-full border-2 border-gray-200"
+                class="w-12 h-12 rounded-full border-2 border-gray-200 dark:!border-gray-700"
               />
             </div>
           </div>
@@ -38,7 +38,7 @@ import { AuthService } from '../../shared/services/auth.service';
 
       <!-- Stats Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <div class="bg-white rounded-lg shadow-sm p-6">
+        <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm p-6">
           <div class="flex items-center">
             <div class="flex-shrink-0">
               <div class="w-8 h-8 bg-blue-100 rounded-md flex items-center justify-center">
@@ -46,13 +46,13 @@ import { AuthService } from '../../shared/services/auth.service';
               </div>
             </div>
             <div class="ml-4">
-              <p class="text-sm font-medium text-gray-500">Total Projects</p>
-              <p class="text-2xl font-bold text-gray-900">{{ stats.projects }}</p>
+              <p class="text-sm font-medium text-gray-500 dark:!text-gray-400">Total Projects</p>
+              <p class="text-2xl font-bold text-gray-900 dark:!text-gray-100">{{ stats.projects }}</p>
             </div>
           </div>
         </div>
 
-        <div class="bg-white rounded-lg shadow-sm p-6">
+        <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm p-6">
           <div class="flex items-center">
             <div class="flex-shrink-0">
               <div class="w-8 h-8 bg-green-100 rounded-md flex items-center justify-center">
@@ -60,13 +60,13 @@ import { AuthService } from '../../shared/services/auth.service';
               </div>
             </div>
             <div class="ml-4">
-              <p class="text-sm font-medium text-gray-500">Completed</p>
-              <p class="text-2xl font-bold text-gray-900">{{ stats.completed }}</p>
+              <p class="text-sm font-medium text-gray-500 dark:!text-gray-400">Completed</p>
+              <p class="text-2xl font-bold text-gray-900 dark:!text-gray-100">{{ stats.completed }}</p>
             </div>
           </div>
         </div>
 
-        <div class="bg-white rounded-lg shadow-sm p-6">
+        <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm p-6">
           <div class="flex items-center">
             <div class="flex-shrink-0">
               <div class="w-8 h-8 bg-yellow-100 rounded-md flex items-center justify-center">
@@ -74,13 +74,13 @@ import { AuthService } from '../../shared/services/auth.service';
               </div>
             </div>
             <div class="ml-4">
-              <p class="text-sm font-medium text-gray-500">In Progress</p>
-              <p class="text-2xl font-bold text-gray-900">{{ stats.inProgress }}</p>
+              <p class="text-sm font-medium text-gray-500 dark:!text-gray-400">In Progress</p>
+              <p class="text-2xl font-bold text-gray-900 dark:!text-gray-100">{{ stats.inProgress }}</p>
             </div>
           </div>
         </div>
 
-        <div class="bg-white rounded-lg shadow-sm p-6">
+        <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm p-6">
           <div class="flex items-center">
             <div class="flex-shrink-0">
               <div class="w-8 h-8 bg-purple-100 rounded-md flex items-center justify-center">
@@ -88,8 +88,8 @@ import { AuthService } from '../../shared/services/auth.service';
               </div>
             </div>
             <div class="ml-4">
-              <p class="text-sm font-medium text-gray-500">Team Members</p>
-              <p class="text-2xl font-bold text-gray-900">{{ stats.teamMembers }}</p>
+              <p class="text-sm font-medium text-gray-500 dark:!text-gray-400">Team Members</p>
+              <p class="text-2xl font-bold text-gray-900 dark:!text-gray-100">{{ stats.teamMembers }}</p>
             </div>
           </div>
         </div>
@@ -98,13 +98,13 @@ import { AuthService } from '../../shared/services/auth.service';
       <!-- Recent Activity & Quick Actions -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <!-- Recent Activity -->
-        <div class="bg-white rounded-lg shadow-sm">
-          <div class="p-6 border-b border-gray-200">
-            <h3 class="text-lg font-medium text-gray-900">Recent Activity</h3>
+        <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm">
+          <div class="p-6 border-b border-gray-200 dark:!border-gray-700">
+            <h3 class="text-lg font-medium text-gray-900 dark:!text-gray-100">Recent Activity</h3>
           </div>
           <div class="p-6">
             <div class="flow-root">
-              <ul class="-my-5 divide-y divide-gray-200">
+              <ul class="-my-5 divide-y divide-gray-200 dark:!divide-gray-700">
                 @for (activity of recentActivities; track activity.id) {
                   <li class="py-4">
                     <div class="flex items-center space-x-4">
@@ -114,14 +114,14 @@ import { AuthService } from '../../shared/services/auth.service';
                         </div>
                       </div>
                       <div class="flex-1 min-w-0">
-                        <p class="text-sm font-medium text-gray-900 truncate">
+                        <p class="text-sm font-medium text-gray-900 dark:!text-gray-100 truncate">
                           {{ activity.title }}
                         </p>
-                        <p class="text-sm text-gray-500 truncate">
+                        <p class="text-sm text-gray-500 dark:!text-gray-400 truncate">
                           {{ activity.description }}
                         </p>
                       </div>
-                      <div class="flex-shrink-0 text-sm text-gray-500">
+                      <div class="flex-shrink-0 text-sm text-gray-500 dark:!text-gray-400">
                         {{ activity.time }}
                       </div>
                     </div>
@@ -132,7 +132,7 @@ import { AuthService } from '../../shared/services/auth.service';
             <div class="mt-6">
               <a
                 href="#"
-                class="w-full flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+                class="w-full flex justify-center items-center px-4 py-2 border border-gray-300 dark:!border-gray-700 shadow-sm text-sm font-medium rounded-md text-gray-700 dark:!text-gray-400 bg-white dark:!bg-gray-800 hover:bg-gray-50 dark:hover:!bg-gray-700"
               >
                 View all activity
               </a>
@@ -141,15 +141,15 @@ import { AuthService } from '../../shared/services/auth.service';
         </div>
 
         <!-- Quick Actions -->
-        <div class="bg-white rounded-lg shadow-sm">
-          <div class="p-6 border-b border-gray-200">
-            <h3 class="text-lg font-medium text-gray-900">Quick Actions</h3>
+        <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm">
+          <div class="p-6 border-b border-gray-200 dark:!border-gray-700">
+            <h3 class="text-lg font-medium text-gray-900 dark:!text-gray-100">Quick Actions</h3>
           </div>
           <div class="p-6">
             <div class="grid grid-cols-2 gap-4">
               <button
                 routerLink="/app/projects"
-                class="relative group bg-gray-50 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-500 rounded-lg hover:bg-gray-100"
+                class="relative group bg-gray-50 dark:!bg-gray-700 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-500 rounded-lg hover:bg-gray-100 dark:hover:!bg-gray-700"
               >
                 <div>
                   <span class="rounded-lg inline-flex p-3 bg-blue-50 text-blue-700 group-hover:bg-blue-100">
@@ -161,7 +161,7 @@ import { AuthService } from '../../shared/services/auth.service';
                     <span class="absolute inset-0" aria-hidden="true"></span>
                     New Project
                   </h3>
-                  <p class="mt-2 text-sm text-gray-500">
+                  <p class="mt-2 text-sm text-gray-500 dark:!text-gray-400">
                     Create a new project to get started
                   </p>
                 </div>
@@ -169,7 +169,7 @@ import { AuthService } from '../../shared/services/auth.service';
 
               <button
                 routerLink="/app/team"
-                class="relative group bg-gray-50 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-500 rounded-lg hover:bg-gray-100"
+                class="relative group bg-gray-50 dark:!bg-gray-700 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-500 rounded-lg hover:bg-gray-100 dark:hover:!bg-gray-700"
               >
                 <div>
                   <span class="rounded-lg inline-flex p-3 bg-green-50 text-green-700 group-hover:bg-green-100">
@@ -181,7 +181,7 @@ import { AuthService } from '../../shared/services/auth.service';
                     <span class="absolute inset-0" aria-hidden="true"></span>
                     Invite Team
                   </h3>
-                  <p class="mt-2 text-sm text-gray-500">
+                  <p class="mt-2 text-sm text-gray-500 dark:!text-gray-400">
                     Invite colleagues to collaborate
                   </p>
                 </div>
@@ -189,7 +189,7 @@ import { AuthService } from '../../shared/services/auth.service';
 
               <button
                 routerLink="/app/profile"
-                class="relative group bg-gray-50 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-500 rounded-lg hover:bg-gray-100"
+                class="relative group bg-gray-50 dark:!bg-gray-700 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-500 rounded-lg hover:bg-gray-100 dark:hover:!bg-gray-700"
               >
                 <div>
                   <span class="rounded-lg inline-flex p-3 bg-purple-50 text-purple-700 group-hover:bg-purple-100">
@@ -201,14 +201,14 @@ import { AuthService } from '../../shared/services/auth.service';
                     <span class="absolute inset-0" aria-hidden="true"></span>
                     Settings
                   </h3>
-                  <p class="mt-2 text-sm text-gray-500">
+                  <p class="mt-2 text-sm text-gray-500 dark:!text-gray-400">
                     Manage your account settings
                   </p>
                 </div>
               </button>
 
               <button
-                class="relative group bg-gray-50 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-500 rounded-lg hover:bg-gray-100"
+                class="relative group bg-gray-50 dark:!bg-gray-700 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-500 rounded-lg hover:bg-gray-100 dark:hover:!bg-gray-700"
               >
                 <div>
                   <span class="rounded-lg inline-flex p-3 bg-orange-50 text-orange-700 group-hover:bg-orange-100">
@@ -220,7 +220,7 @@ import { AuthService } from '../../shared/services/auth.service';
                     <span class="absolute inset-0" aria-hidden="true"></span>
                     Help Center
                   </h3>
-                  <p class="mt-2 text-sm text-gray-500">
+                  <p class="mt-2 text-sm text-gray-500 dark:!text-gray-400">
                     Get help and support
                   </p>
                 </div>

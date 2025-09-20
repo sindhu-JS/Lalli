@@ -17,11 +17,11 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
   imports: [CommonModule, ReactiveFormsModule, InputTextModule, TextareaModule, SelectModule, CheckboxModule, MessageModule, ButtonModule, ButtonComponent],
   template: `
     <div class="profile-page max-w-4xl mx-auto">
-      <div class="bg-white rounded-lg shadow-sm border">
+      <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700">
         <!-- Header -->
-        <div class="px-6 py-4 border-b border-gray-200">
+        <div class="px-6 py-4 border-b border-gray-200 dark:!border-gray-700">
           <h1 class="text-2xl font-bold text-gray-900 dark:!text-gray-100">Profile Settings</h1>
-          <p class="text-gray-600 mt-1">Manage your account information and preferences</p>
+          <p class="text-gray-600 dark:!text-gray-400 mt-1">Manage your account information and preferences</p>
         </div>
 
         <div class="p-6">
@@ -33,7 +33,7 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
                   <img
                     [src]="avatarUrl()"
                     [alt]="currentUser()?.name"
-                    class="w-32 h-32 rounded-full border-4 border-white shadow-lg"
+                    class="w-32 h-32 rounded-full border-4 border-white dark:!border-gray-700 shadow-lg"
                   />
                   <p-button
                     icon="pi pi-camera"
@@ -43,8 +43,8 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
                     severity="info"
                   ></p-button>
                 </div>
-                <h2 class="mt-4 text-xl font-semibold text-gray-900">{{ currentUser()?.name }}</h2>
-                <p class="text-gray-600">{{ currentUser()?.email }}</p>
+                <h2 class="mt-4 text-xl font-semibold text-gray-900 dark:!text-gray-100">{{ currentUser()?.name }}</h2>
+                <p class="text-gray-600 dark:!text-gray-400">{{ currentUser()?.email }}</p>
                 <div class="mt-2">
                   <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium"
                         [class]="getRoleBadgeClass()">
@@ -59,11 +59,11 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
               <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="space-y-6">
                 <!-- Basic Information -->
                 <div>
-                  <h3 class="text-lg font-medium text-gray-900 mb-4">Basic Information</h3>
+                  <h3 class="text-lg font-medium text-gray-900 dark:!text-gray-100 mb-4">Basic Information</h3>
 
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label class="block text-sm font-medium text-gray-700 mb-1">
+                      <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
                         First Name *
                       </label>
                       <input
@@ -78,7 +78,7 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
                     </div>
 
                     <div>
-                      <label class="block text-sm font-medium text-gray-700 mb-1">
+                      <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
                         Last Name *
                       </label>
                       <input
@@ -95,7 +95,7 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
 
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label class="block text-sm font-medium text-gray-700 mb-1">
+                      <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
                         Email Address *
                       </label>
                       <input
@@ -111,7 +111,7 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
                     </div>
 
                     <div>
-                      <label class="block text-sm font-medium text-gray-700 mb-1">
+                      <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
                         Phone Number
                       </label>
                       <input
@@ -126,7 +126,7 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
 
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label class="block text-sm font-medium text-gray-700 mb-1">
+                      <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
                         Company
                       </label>
                       <input
@@ -138,7 +138,7 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
                     </div>
 
                     <div>
-                      <label class="block text-sm font-medium text-gray-700 mb-1">
+                      <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
                         Department
                       </label>
                       <input
@@ -166,11 +166,11 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
 
                 <!-- Preferences -->
                 <div>
-                  <h3 class="text-lg font-medium text-gray-900 mb-4">Preferences</h3>
+                  <h3 class="text-lg font-medium text-gray-900 dark:!text-gray-100 mb-4">Preferences</h3>
 
                   <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
-                      <label class="block text-sm font-medium text-gray-700 mb-1">
+                      <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
                         Theme
                       </label>
                       <p-select
@@ -184,7 +184,7 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
                     </div>
 
                     <div>
-                      <label class="block text-sm font-medium text-gray-700 mb-1">
+                      <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
                         Language
                       </label>
                       <p-select
@@ -198,7 +198,7 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
                     </div>
 
                     <div>
-                      <label class="block text-sm font-medium text-gray-700 mb-1">
+                      <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
                         Timezone
                       </label>
                       <p-select
@@ -215,7 +215,7 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
 
                 <!-- Notification Preferences -->
                 <div>
-                  <h3 class="text-lg font-medium text-gray-900 mb-4">Notifications</h3>
+                  <h3 class="text-lg font-medium text-gray-900 dark:!text-gray-100 mb-4">Notifications</h3>
 
                   <div class="space-y-3">
                     <label class="flex items-center">
@@ -224,7 +224,7 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
                         [binary]="true"
                         class="mr-2"
                       ></p-checkbox>
-                      <span class="text-sm text-gray-700">Email notifications</span>
+                      <span class="text-sm text-gray-700 dark:!text-gray-300">Email notifications</span>
                     </label>
 
                     <label class="flex items-center">
@@ -233,7 +233,7 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
                         [binary]="true"
                         class="mr-2"
                       ></p-checkbox>
-                      <span class="text-sm text-gray-700">Browser notifications</span>
+                      <span class="text-sm text-gray-700 dark:!text-gray-300">Browser notifications</span>
                     </label>
 
                     <label class="flex items-center">
@@ -242,7 +242,7 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
                         [binary]="true"
                         class="mr-2"
                       ></p-checkbox>
-                      <span class="text-sm text-gray-700">Mobile notifications</span>
+                      <span class="text-sm text-gray-700 dark:!text-gray-300">Mobile notifications</span>
                     </label>
 
                     <label class="flex items-center">
@@ -251,13 +251,13 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
                         [binary]="true"
                         class="mr-2"
                       ></p-checkbox>
-                      <span class="text-sm text-gray-700">Marketing emails and newsletters</span>
+                      <span class="text-sm text-gray-700 dark:!text-gray-300">Marketing emails and newsletters</span>
                     </label>
                   </div>
                 </div>
 
                 <!-- Form Actions -->
-                <div class="flex justify-end space-x-3 pt-6 border-t border-gray-200">
+                <div class="flex justify-end space-x-3 pt-6 border-t border-gray-200 dark:!border-gray-700">
                   <app-button
                     variant="secondary"
                     (clicked)="resetForm()"
@@ -280,13 +280,13 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
       </div>
 
       @if (successMessage) {
-        <div class="mt-4 bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg">
+        <div class="mt-4 bg-green-50 dark:!bg-green-900 border border-green-200 dark:!border-green-700 text-green-700 dark:!text-green-200 px-4 py-3 rounded-lg">
           {{ successMessage }}
         </div>
       }
 
       @if (errorMessage) {
-        <div class="mt-4 bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg">
+        <div class="mt-4 bg-red-50 dark:!bg-red-900 border border-red-200 dark:!border-red-700 text-red-600 dark:!text-red-200 px-4 py-3 rounded-lg">
           {{ errorMessage }}
         </div>
       }

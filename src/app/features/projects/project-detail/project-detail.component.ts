@@ -39,7 +39,7 @@ interface Task {
         <div class="flex items-center justify-between mb-8">
           <div>
             <div class="flex items-center space-x-3">
-              <button routerLink="/app/projects" class="text-gray-500 hover:text-gray-700">
+              <button routerLink="/app/projects" class="text-gray-500 hover:text-gray-700 dark:!text-gray-400 dark:hover:!text-gray-200">
                 <i class="pi pi-arrow-left"></i>
               </button>
               <h1 class="text-2xl font-bold text-gray-900 dark:!text-gray-100">{{ project.name }}</h1>
@@ -50,7 +50,7 @@ interface Task {
                 {{ getStatusLabel(project.status) }}
               </span>
             </div>
-            <p class="text-gray-600 mt-1">{{ project.description }}</p>
+            <p class="text-gray-600 dark:!text-gray-400 mt-1">{{ project.description }}</p>
           </div>
           <div class="flex space-x-3">
             <app-button
@@ -74,14 +74,14 @@ interface Task {
           <!-- Main Content -->
           <div class="lg:col-span-2 space-y-8">
             <!-- Progress Section -->
-            <div class="bg-white rounded-lg shadow-sm border p-6">
-              <h2 class="text-lg font-medium text-gray-900 mb-4">Project Progress</h2>
+            <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700 p-6">
+              <h2 class="text-lg font-medium text-gray-900 dark:!text-gray-100 mb-4">Project Progress</h2>
               <div class="mb-4">
-                <div class="flex justify-between text-sm text-gray-600 mb-2">
+                <div class="flex justify-between text-sm text-gray-600 dark:!text-gray-400 mb-2">
                   <span>Overall Progress</span>
                   <span>{{ project.progress }}%</span>
                 </div>
-                <div class="w-full bg-gray-200 rounded-full h-3">
+                <div class="w-full bg-gray-200 dark:!bg-gray-700 rounded-full h-3">
                   <div
                     class="bg-blue-600 h-3 rounded-full transition-all duration-500"
                     [style.width.%]="project.progress"
@@ -90,34 +90,34 @@ interface Task {
               </div>
               <div class="grid grid-cols-3 gap-4 text-center">
                 <div>
-                  <div class="text-2xl font-bold text-gray-900">{{ getCompletedTasks() }}</div>
-                  <div class="text-sm text-gray-500">Completed</div>
+                  <div class="text-2xl font-bold text-gray-900 dark:!text-gray-100">{{ getCompletedTasks() }}</div>
+                  <div class="text-sm text-gray-500 dark:!text-gray-400">Completed</div>
                 </div>
                 <div>
-                  <div class="text-2xl font-bold text-gray-900">{{ getPendingTasks() }}</div>
-                  <div class="text-sm text-gray-500">Pending</div>
+                  <div class="text-2xl font-bold text-gray-900 dark:!text-gray-100">{{ getPendingTasks() }}</div>
+                  <div class="text-sm text-gray-500 dark:!text-gray-400">Pending</div>
                 </div>
                 <div>
-                  <div class="text-2xl font-bold text-gray-900">{{ project.tasks.length }}</div>
-                  <div class="text-sm text-gray-500">Total Tasks</div>
+                  <div class="text-2xl font-bold text-gray-900 dark:!text-gray-100">{{ project.tasks.length }}</div>
+                  <div class="text-sm text-gray-500 dark:!text-gray-400">Total Tasks</div>
                 </div>
               </div>
             </div>
 
             <!-- Tasks Section -->
-            <div class="bg-white rounded-lg shadow-sm border">
-              <div class="p-6 border-b border-gray-200">
+            <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700">
+              <div class="p-6 border-b border-gray-200 dark:!border-gray-700">
                 <div class="flex items-center justify-between">
-                  <h2 class="text-lg font-medium text-gray-900">Tasks</h2>
+                  <h2 class="text-lg font-medium text-gray-900 dark:!text-gray-100">Tasks</h2>
                   <app-button variant="primary" size="sm">
                     <i class="pi pi-plus mr-2"></i>
                     Add Task
                   </app-button>
                 </div>
               </div>
-              <div class="divide-y divide-gray-200">
+              <div class="divide-y divide-gray-200 dark:!divide-gray-700">
                 @for (task of project.tasks; track task.id) {
-                  <div class="p-6 hover:bg-gray-50">
+                  <div class="p-6 hover:bg-gray-50 dark:hover:!bg-gray-700">
                     <div class="flex items-center justify-between">
                       <div class="flex items-center space-x-3">
                         <input
@@ -127,21 +127,21 @@ interface Task {
                           class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                         />
                         <div>
-                          <h3 [class]="task.completed ? 'line-through text-gray-500' : 'text-gray-900'"
+                          <h3 [class]="task.completed ? 'line-through text-gray-500 dark:!text-gray-500' : 'text-gray-900 dark:!text-gray-100'"
                               class="text-sm font-medium">
                             {{ task.title }}
                           </h3>
-                          <div class="flex items-center space-x-4 text-xs text-gray-500 mt-1">
+                          <div class="flex items-center space-x-4 text-xs text-gray-500 dark:!text-gray-400 mt-1">
                             <span>Assigned to {{ task.assignee }}</span>
                             <span>Due {{ formatDate(task.dueDate) }}</span>
                           </div>
                         </div>
                       </div>
                       <div class="flex items-center space-x-2">
-                        <button class="text-gray-400 hover:text-gray-600">
+                        <button class="text-gray-400 hover:text-gray-600 dark:hover:!text-gray-300">
                           <i class="pi pi-pencil"></i>
                         </button>
-                        <button class="text-gray-400 hover:text-red-600">
+                        <button class="text-gray-400 hover:text-red-600 dark:hover:!text-red-400">
                           <i class="pi pi-trash"></i>
                         </button>
                       </div>
@@ -155,37 +155,37 @@ interface Task {
           <!-- Sidebar -->
           <div class="space-y-6">
             <!-- Project Info -->
-            <div class="bg-white rounded-lg shadow-sm border p-6">
-              <h3 class="text-lg font-medium text-gray-900 mb-4">Project Information</h3>
+            <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700 p-6">
+              <h3 class="text-lg font-medium text-gray-900 dark:!text-gray-100 mb-4">Project Information</h3>
               <dl class="space-y-3">
                 <div>
-                  <dt class="text-sm font-medium text-gray-500">Priority</dt>
+                  <dt class="text-sm font-medium text-gray-500 dark:!text-gray-400">Priority</dt>
                   <dd [class]="getPriorityClass(project.priority)" class="text-sm font-medium mt-1">
                     {{ getPriorityLabel(project.priority) }}
                   </dd>
                 </div>
                 <div>
-                  <dt class="text-sm font-medium text-gray-500">Start Date</dt>
-                  <dd class="text-sm text-gray-900 mt-1">{{ formatDate(project.startDate) }}</dd>
+                  <dt class="text-sm font-medium text-gray-500 dark:!text-gray-400">Start Date</dt>
+                  <dd class="text-sm text-gray-900 dark:!text-gray-100 mt-1">{{ formatDate(project.startDate) }}</dd>
                 </div>
                 <div>
-                  <dt class="text-sm font-medium text-gray-500">Due Date</dt>
-                  <dd class="text-sm text-gray-900 mt-1">{{ formatDate(project.dueDate) }}</dd>
+                  <dt class="text-sm font-medium text-gray-500 dark:!text-gray-400">Due Date</dt>
+                  <dd class="text-sm text-gray-900 dark:!text-gray-100 mt-1">{{ formatDate(project.dueDate) }}</dd>
                 </div>
                 <div>
-                  <dt class="text-sm font-medium text-gray-500">Budget</dt>
-                  <dd class="text-sm text-gray-900 mt-1">\${{ project.budget.toLocaleString() }}</dd>
+                  <dt class="text-sm font-medium text-gray-500 dark:!text-gray-400">Budget</dt>
+                  <dd class="text-sm text-gray-900 dark:!text-gray-100 mt-1">\${{ project.budget.toLocaleString() }}</dd>
                 </div>
                 <div>
-                  <dt class="text-sm font-medium text-gray-500">Category</dt>
-                  <dd class="text-sm text-gray-900 mt-1">{{ project.category }}</dd>
+                  <dt class="text-sm font-medium text-gray-500 dark:!text-gray-400">Category</dt>
+                  <dd class="text-sm text-gray-900 dark:!text-gray-100 mt-1">{{ project.category }}</dd>
                 </div>
               </dl>
             </div>
 
             <!-- Project Manager -->
-            <div class="bg-white rounded-lg shadow-sm border p-6">
-              <h3 class="text-lg font-medium text-gray-900 mb-4">Project Manager</h3>
+            <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700 p-6">
+              <h3 class="text-lg font-medium text-gray-900 dark:!text-gray-100 mb-4">Project Manager</h3>
               <div class="flex items-center space-x-3">
                 <img
                   [src]="getAvatarUrl(project.manager)"
@@ -193,15 +193,15 @@ interface Task {
                   class="w-10 h-10 rounded-full"
                 />
                 <div>
-                  <div class="text-sm font-medium text-gray-900">{{ project.manager }}</div>
-                  <div class="text-sm text-gray-500">Project Manager</div>
+                  <div class="text-sm font-medium text-gray-900 dark:!text-gray-100">{{ project.manager }}</div>
+                  <div class="text-sm text-gray-500 dark:!text-gray-400">Project Manager</div>
                 </div>
               </div>
             </div>
 
             <!-- Team Members -->
-            <div class="bg-white rounded-lg shadow-sm border p-6">
-              <h3 class="text-lg font-medium text-gray-900 mb-4">Team Members</h3>
+            <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700 p-6">
+              <h3 class="text-lg font-medium text-gray-900 dark:!text-gray-100 mb-4">Team Members</h3>
               <div class="space-y-3">
                 @for (member of project.team; track member) {
                   <div class="flex items-center space-x-3">
@@ -210,7 +210,7 @@ interface Task {
                       [alt]="member"
                       class="w-8 h-8 rounded-full"
                     />
-                    <div class="text-sm text-gray-900">{{ member }}</div>
+                    <div class="text-sm text-gray-900 dark:!text-gray-100">{{ member }}</div>
                   </div>
                 }
               </div>
@@ -218,8 +218,8 @@ interface Task {
 
             <!-- Tags -->
             @if (project.tags && project.tags.length > 0) {
-              <div class="bg-white rounded-lg shadow-sm border p-6">
-                <h3 class="text-lg font-medium text-gray-900 mb-4">Tags</h3>
+              <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700 p-6">
+                <h3 class="text-lg font-medium text-gray-900 dark:!text-gray-100 mb-4">Tags</h3>
                 <div class="flex flex-wrap gap-2">
                   @for (tag of project.tags; track tag) {
                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
@@ -236,7 +236,7 @@ interface Task {
       <div class="flex items-center justify-center h-64">
         <div class="text-center">
           <i class="pi pi-spin pi-spinner text-4xl text-gray-400 mb-4"></i>
-          <p class="text-gray-500">Loading project details...</p>
+          <p class="text-gray-500 dark:!text-gray-400">Loading project details...</p>
         </div>
       </div>
     }

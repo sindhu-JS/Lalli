@@ -39,8 +39,8 @@ interface Project {
           <button
             *ngFor="let filter of filters"
             (click)="activeFilter = filter.key"
-            [class]="filter.key === activeFilter ? 'bg-blue-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-50'"
-            class="px-3 py-1 text-sm font-medium border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            [class]="filter.key === activeFilter ? 'bg-blue-600 text-white' : 'bg-white dark:!bg-gray-800 text-gray-700 dark:!text-gray-300 hover:bg-gray-50 dark:hover:!bg-gray-700'"
+            class="px-3 py-1 text-sm font-medium border border-gray-300 dark:!border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             {{ filter.label }} ({{ getFilterCount(filter.key) }})
           </button>
@@ -50,16 +50,16 @@ interface Project {
       <!-- Projects Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         @for (project of filteredProjects(); track project.id) {
-          <div class="bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+          <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700 hover:shadow-md transition-shadow">
             <div class="p-6">
               <div class="flex items-start justify-between">
                 <div class="flex-1">
-                  <h3 class="text-lg font-medium text-gray-900 mb-2">
+                  <h3 class="text-lg font-medium text-gray-900 dark:!text-gray-100 mb-2">
                     <a [routerLink]="['/app/projects', project.id]" class="hover:text-blue-600">
                       {{ project.name }}
                     </a>
                   </h3>
-                  <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+                  <p class="text-gray-600 dark:!text-gray-400 text-sm mb-4 line-clamp-2">
                     {{ project.description }}
                   </p>
                 </div>
@@ -75,11 +75,11 @@ interface Project {
 
               <!-- Progress Bar -->
               <div class="mb-4">
-                <div class="flex justify-between text-sm text-gray-600 mb-1">
+                <div class="flex justify-between text-sm text-gray-600 dark:!text-gray-400 mb-1">
                   <span>Progress</span>
                   <span>{{ project.progress }}%</span>
                 </div>
-                <div class="w-full bg-gray-200 rounded-full h-2">
+                <div class="w-full bg-gray-200 dark:!bg-gray-700 rounded-full h-2">
                   <div
                     class="bg-blue-600 h-2 rounded-full transition-all duration-300"
                     [style.width.%]="project.progress"
@@ -89,7 +89,7 @@ interface Project {
 
               <!-- Footer -->
               <div class="flex items-center justify-between text-sm">
-                <div class="text-gray-500">
+                <div class="text-gray-500 dark:!text-gray-400">
                   Due: {{ formatDate(project.dueDate) }}
                 </div>
                 <div class="flex -space-x-1">
@@ -102,7 +102,7 @@ interface Project {
                     />
                   }
                   @if (project.team.length > 3) {
-                    <div class="flex items-center justify-center h-6 w-6 rounded-full bg-gray-100 ring-2 ring-white text-xs text-gray-600">
+                    <div class="flex items-center justify-center h-6 w-6 rounded-full bg-gray-100 dark:!bg-gray-700 ring-2 ring-white dark:!ring-gray-800 text-xs text-gray-600 dark:!text-gray-300">
                       +{{ project.team.length - 3 }}
                     </div>
                   }
@@ -111,7 +111,7 @@ interface Project {
             </div>
 
             <!-- Actions -->
-            <div class="px-6 py-3 bg-gray-50 border-t border-gray-200 rounded-b-lg">
+            <div class="px-6 py-3 bg-gray-50 dark:!bg-gray-700 border-t border-gray-200 dark:!border-gray-700 rounded-b-lg">
               <div class="flex justify-between">
                 <button
                   [routerLink]="['/app/projects', project.id]"
@@ -143,8 +143,8 @@ interface Project {
       @if (filteredProjects().length === 0) {
         <div class="text-center py-12">
           <i class="pi pi-folder-open text-4xl text-gray-400 mb-4"></i>
-          <h3 class="text-lg font-medium text-gray-900 mb-2">No projects found</h3>
-          <p class="text-gray-500 mb-6">
+          <h3 class="text-lg font-medium text-gray-900 dark:!text-gray-100 mb-2">No projects found</h3>
+          <p class="text-gray-500 dark:!text-gray-400 mb-6">
             @if (activeFilter === 'all') {
               Get started by creating your first project.
             } @else {

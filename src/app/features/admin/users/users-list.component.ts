@@ -39,11 +39,11 @@ interface AdminUser {
       </div>
 
       <!-- Filters -->
-      <div class="bg-white rounded-lg shadow-sm border mb-6">
+      <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700 mb-6">
         <div class="p-4">
           <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">Search</label>
+              <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">Search</label>
               <input
                 pInputText
                 type="text"
@@ -53,7 +53,7 @@ interface AdminUser {
               />
             </div>
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">Role</label>
+              <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">Role</label>
               <p-select
                 [(ngModel)]="selectedRole"
                 [options]="roleOptions"
@@ -65,7 +65,7 @@ interface AdminUser {
               ></p-select>
             </div>
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+              <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">Status</label>
               <p-select
                 [(ngModel)]="selectedStatus"
                 [options]="statusOptions"
@@ -90,34 +90,34 @@ interface AdminUser {
       </div>
 
       <!-- Users Table -->
-      <div class="bg-white rounded-lg shadow-sm border overflow-hidden">
+      <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700 overflow-hidden">
         <div class="overflow-x-auto">
-          <table class="min-w-full divide-y divide-gray-200">
-            <thead class="bg-gray-50">
+          <table class="min-w-full divide-y divide-gray-200 dark:!divide-gray-700">
+            <thead class="bg-gray-50 dark:!bg-gray-700">
               <tr>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:!text-gray-400 uppercase tracking-wider">
                   User
                 </th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:!text-gray-400 uppercase tracking-wider">
                   Role
                 </th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:!text-gray-400 uppercase tracking-wider">
                   Status
                 </th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:!text-gray-400 uppercase tracking-wider">
                   Last Login
                 </th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:!text-gray-400 uppercase tracking-wider">
                   Created
                 </th>
-                <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:!text-gray-400 uppercase tracking-wider">
                   Actions
                 </th>
               </tr>
             </thead>
-            <tbody class="bg-white divide-y divide-gray-200">
+            <tbody class="bg-white dark:!bg-gray-800 divide-y divide-gray-200 dark:!divide-gray-700">
               @for (user of filteredUsers(); track user.id) {
-                <tr class="hover:bg-gray-50">
+                <tr class="hover:bg-gray-50 dark:hover:!bg-gray-700">
                   <td class="px-6 py-4 whitespace-nowrap">
                     <div class="flex items-center">
                       <img
@@ -126,8 +126,8 @@ interface AdminUser {
                         class="h-10 w-10 rounded-full"
                       />
                       <div class="ml-4">
-                        <div class="text-sm font-medium text-gray-900">{{ user.name }}</div>
-                        <div class="text-sm text-gray-500">{{ user.email }}</div>
+                        <div class="text-sm font-medium text-gray-900 dark:!text-gray-100">{{ user.name }}</div>
+                        <div class="text-sm text-gray-500 dark:!text-gray-400">{{ user.email }}</div>
                       </div>
                     </div>
                   </td>
@@ -147,10 +147,10 @@ interface AdminUser {
                       {{ getStatusLabel(user.status) }}
                     </span>
                   </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:!text-gray-400">
                     {{ formatDate(user.lastLogin) }}
                   </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:!text-gray-400">
                     {{ formatDate(user.createdAt) }}
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
@@ -197,9 +197,9 @@ interface AdminUser {
 
         @if (filteredUsers().length === 0) {
           <div class="text-center py-12">
-            <i class="pi pi-users text-4xl text-gray-400 mb-4"></i>
-            <h3 class="text-lg font-medium text-gray-900 mb-2">No users found</h3>
-            <p class="text-gray-500 mb-6">
+            <i class="pi pi-users text-4xl text-gray-400 dark:!text-gray-500 mb-4"></i>
+            <h3 class="text-lg font-medium text-gray-900 dark:!text-gray-100 mb-2">No users found</h3>
+            <p class="text-gray-500 dark:!text-gray-400 mb-6">
               @if (hasActiveFilters()) {
                 No users match your current filters.
               } @else {
@@ -318,20 +318,20 @@ export class UsersListComponent {
 
   getRoleBadgeClass(role: string): string {
     return role === 'admin'
-      ? 'bg-purple-100 text-purple-800'
-      : 'bg-blue-100 text-blue-800';
+      ? 'bg-purple-100 text-purple-800 dark:!bg-purple-900 dark:!text-purple-200'
+      : 'bg-blue-100 text-blue-800 dark:!bg-blue-900 dark:!text-blue-200';
   }
 
   getStatusBadgeClass(status: string): string {
     switch (status) {
       case 'active':
-        return 'bg-green-100 text-green-800';
+        return 'bg-green-100 text-green-800 dark:!bg-green-900 dark:!text-green-200';
       case 'inactive':
-        return 'bg-gray-100 text-gray-800';
+        return 'bg-gray-100 text-gray-800 dark:!bg-gray-700 dark:!text-gray-300';
       case 'suspended':
-        return 'bg-red-100 text-red-800';
+        return 'bg-red-100 text-red-800 dark:!bg-red-900 dark:!text-red-200';
       default:
-        return 'bg-gray-100 text-gray-800';
+        return 'bg-gray-100 text-gray-800 dark:!bg-gray-700 dark:!text-gray-300';
     }
   }
 
