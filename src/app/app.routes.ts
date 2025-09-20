@@ -77,7 +77,7 @@ export const routes: Routes = [
       import('./core/layout/main-layout/main-layout.component').then(
         (c) => c.MainLayoutComponent
       ),
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -119,7 +119,7 @@ export const routes: Routes = [
       import('./core/layout/admin-layout/admin-layout.component').then(
         (c) => c.AdminLayoutComponent
       ),
-    // canActivate: [AuthGuard, AdminGuard],
+    canActivate: [AuthGuard, AdminGuard],
     children: [
       {
         path: '',

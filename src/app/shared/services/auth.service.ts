@@ -4,11 +4,13 @@ import { Router } from '@angular/router';
 import { Observable, BehaviorSubject, throwError } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 
+export type UserRole = 'anonymous' | 'user' | 'admin';
+
 export interface User {
   id: string;
   email: string;
   name: string;
-  role: 'user' | 'admin';
+  role: UserRole;
 }
 
 export interface LoginRequest {
@@ -35,6 +37,24 @@ export class AuthService {
   private readonly TOKEN_KEY = 'auth_token';
   private readonly REFRESH_TOKEN_KEY = 'refresh_token';
   private readonly USER_KEY = 'user_data';
+
+  // Hardcoded user credentials for testing
+  private readonly MOCK_USERS = [
+    {
+      id: 'admin-001',
+      email: 'admin@lalli.com',
+      password: 'admin123$',
+      name: 'Admin User',
+      role: 'admin' as UserRole
+    },
+    {
+      id: 'user-001',
+      email: 'user@lalli.com',
+      password: 'user123$',
+      name: 'Regular User',
+      role: 'user' as UserRole
+    }
+  ];
 
   private currentUserSubject = new BehaviorSubject<User | null>(null);
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
@@ -64,16 +84,42 @@ export class AuthService {
   }
 
   login(credentials: LoginRequest): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>('/api/auth/login', credentials)
-      .pipe(
-        tap(response => {
-          this.setAuthData(response);
-        }),
-        catchError(error => {
-          console.error('Login failed:', error);
-          return throwError(() => error);
-        })
-      );
+    // Mock authentication - find user by email/username and password
+    const user = this.MOCK_USERS.find(u =>
+      (u.email === credentials.email || u.email === credentials.email) &&
+      u.password === credentials.password
+    );
+
+    if (user) {
+      // Generate a mock token
+      const token = this.generateMockToken(user);
+      const authResponse: AuthResponse = {
+        user: {
+          id: user.id,
+          email: user.email,
+          name: user.name,
+          role: user.role
+        },
+        token,
+        refreshToken: `refresh_${token}`
+      };
+
+      // Simulate async operation with delay
+      return new Observable<AuthResponse>(observer => {
+        setTimeout(() => {
+          this.setAuthData(authResponse);
+          observer.next(authResponse);
+          observer.complete();
+        }, 500); // 500ms delay to simulate network request
+      });
+    } else {
+      // Simulate async operation with delay for error
+      return new Observable<AuthResponse>(observer => {
+        setTimeout(() => {
+          observer.error({ message: 'Invalid credentials. Please check your username/password.' });
+        }, 500);
+      });
+    }
   }
 
   register(userData: RegisterRequest): Observable<AuthResponse> {
@@ -89,14 +135,24 @@ export class AuthService {
       );
   }
 
+  private generateMockToken(user: any): string {
+    // Generate a simple JWT-like token for mock purposes
+    const header = btoa(JSON.stringify({ typ: 'JWT', alg: 'HS256' }));
+    const payload = btoa(JSON.stringify({
+      sub: user.id,
+      email: user.email,
+      role: user.role,
+      iat: Math.floor(Date.now() / 1000),
+      exp: Math.floor(Date.now() / 1000) + (24 * 60 * 60) // 24 hours
+    }));
+    const signature = btoa(`mock-signature-${user.id}-${Date.now()}`);
+
+    return `${header}.${payload}.${signature}`;
+  }
+
   logout(): void {
-    // Call logout endpoint
-    this.http.post('/api/auth/logout', {}).subscribe({
-      complete: () => {
-        this.clearAuthData();
-        this.router.navigate(['/auth/login']);
-      }
-    });
+    this.clearAuthData();
+    this.router.navigate(['/auth/login']);
   }
 
   refreshToken(): Observable<AuthResponse> {

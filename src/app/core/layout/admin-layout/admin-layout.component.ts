@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../../shared/services/auth.service';
 
 @Component({
   selector: 'app-admin-layout',
@@ -25,7 +26,13 @@ import { CommonModule } from '@angular/common';
                 routerLink="/admin/profile"
                 class="flex items-center space-x-2 hover:bg-gray-100 rounded-lg px-3 py-2 transition-colors">
                 <img class="h-8 w-8 rounded-full" src="https://i.pravatar.cc/32" alt="Admin">
-                <span class="text-sm font-medium text-gray-700">Admin User</span>
+                <span class="text-sm font-medium text-gray-700">{{ currentUser()?.name || 'Admin' }}</span>
+              </button>
+              <button
+                (click)="logout()"
+                class="p-2 text-gray-500 hover:text-red-600 rounded-md hover:bg-red-50 transition-colors"
+                title="Logout">
+                <i class="pi pi-sign-out"></i>
               </button>
             </div>
           </div>
@@ -70,4 +77,14 @@ import { CommonModule } from '@angular/common';
     </div>
   `
 })
-export class AdminLayoutComponent {}
+export class AdminLayoutComponent {
+  private authService = inject(AuthService);
+
+  get currentUser() {
+    return this.authService.currentUser;
+  }
+
+  logout(): void {
+    this.authService.logout();
+  }
+}

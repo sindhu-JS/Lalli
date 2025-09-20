@@ -19,6 +19,27 @@ import { ToastService } from '../../shared/services/toast.service';
       <div class="text-center mb-8">
         <h2 class="text-3xl font-bold text-gray-900">Sign In</h2>
         <p class="text-gray-600 mt-2">Welcome back! Please sign in to your account.</p>
+
+        <!-- Demo Credentials -->
+        <div class="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+          <p class="text-sm font-medium text-blue-800 mb-2">Demo Credentials (click to auto-fill):</p>
+          <div class="text-sm text-blue-700 space-y-2">
+            <button
+              type="button"
+              (click)="fillCredentials('admin@lalli.com', 'admin123$')"
+              class="block w-full text-left px-3 py-2 bg-blue-100 hover:bg-blue-200 rounded-md transition-colors cursor-pointer"
+            >
+              <strong>Admin:</strong> admin@lalli.com / admin123$
+            </button>
+            <button
+              type="button"
+              (click)="fillCredentials('user@lalli.com', 'user123$')"
+              class="block w-full text-left px-3 py-2 bg-blue-100 hover:bg-blue-200 rounded-md transition-colors cursor-pointer"
+            >
+              <strong>User:</strong> user@lalli.com / user123$
+            </button>
+          </div>
+        </div>
       </div>
 
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-6">
@@ -135,6 +156,13 @@ export class LoginComponent {
     });
   }
 
+  fillCredentials(email: string, password: string): void {
+    this.loginForm.patchValue({
+      email: email,
+      password: password
+    });
+  }
+
   onSubmit(): void {
     if (this.loginForm.valid && !this.isLoading) {
       this.isLoading = true;
@@ -147,9 +175,23 @@ export class LoginComponent {
           this.isLoading = false;
           this.toastService.success('Login successful!', 'Welcome back');
 
-          // Check for stored redirect URL
-          const redirectUrl = localStorage.getItem('redirectUrl') || '/app/dashboard';
+          // Check for stored redirect URL or route based on user role
+          let redirectUrl = localStorage.getItem('redirectUrl');
           localStorage.removeItem('redirectUrl');
+
+          if (!redirectUrl) {
+            // Route based on user role
+            switch (response.user.role) {
+              case 'admin':
+                redirectUrl = '/admin/dashboard';
+                break;
+              case 'user':
+                redirectUrl = '/app/dashboard';
+                break;
+              default:
+                redirectUrl = '/app/dashboard';
+            }
+          }
 
           this.router.navigate([redirectUrl]);
         },
