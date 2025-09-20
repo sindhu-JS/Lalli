@@ -114,17 +114,28 @@ import { ToastService } from '../../shared/services/toast.service';
           ></p-message>
         }
 
-        <app-button
-          type="submit"
-          [disabled]="loginForm.invalid"
-          [loading]="isLoading"
-          [fullWidth]="true"
-          variant="primary"
-          size="lg"
-          (clicked)="onSubmit()"
-        >
-          Sign In
-        </app-button>
+        <div class="flex justify-between space-x-3">
+          <app-button
+            type="submit"
+            [disabled]="loginForm.invalid"
+            [loading]="isLoading"
+            variant="primary"
+            size="lg"
+            (clicked)="onSubmit()"
+          >
+            Sign In
+          </app-button>
+
+          <app-button
+            type="button"
+            variant="secondary"
+            size="lg"
+            (clicked)="goToHome()"
+          >
+            <i class="pi pi-arrow-left mr-2"></i>
+            Cancel & Go Home
+          </app-button>
+        </div>
       </form>
 
       <div class="mt-6 text-center">
@@ -161,6 +172,10 @@ export class LoginComponent {
       email: email,
       password: password
     });
+  }
+
+  goToHome(): void {
+    this.router.navigate(['/']);
   }
 
   onSubmit(): void {

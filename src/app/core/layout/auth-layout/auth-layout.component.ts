@@ -1,17 +1,32 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-auth-layout',
   standalone: true,
-  imports: [RouterOutlet, CommonModule],
+  imports: [RouterOutlet, RouterModule, CommonModule],
   template: `
     <div class="auth-layout min-h-screen bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800">
       <div class="flex min-h-screen">
         <!-- Left side - Branding -->
         <div class="hidden lg:flex lg:w-1/2 items-center justify-center p-12">
           <div class="text-center text-white">
+            <!-- Logo -->
+            <div class="mb-8">
+              <a routerLink="/" class="inline-block hover:opacity-80 transition-opacity cursor-pointer">
+                <img
+                  class="h-12 w-auto mx-auto block dark:hidden"
+                  src="assets/images/logo/1.png"
+                  alt="Logo"
+                />
+                <img
+                  class="h-12 w-auto mx-auto hidden dark:block"
+                  src="assets/images/logo/9.png"
+                  alt="Logo"
+                />
+              </a>
+            </div>
             <h1 class="text-4xl font-bold mb-6">Welcome to Our Platform</h1>
             <p class="text-xl opacity-90 mb-8">
               Experience the power of modern web applications with our cutting-edge technology stack.
