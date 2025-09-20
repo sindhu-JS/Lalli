@@ -17,24 +17,24 @@ import { ToastService } from '../../shared/services/toast.service';
   template: `
     <div class="login-form">
       <div class="text-center mb-8">
-        <h2 class="text-3xl font-bold text-gray-900">Sign In</h2>
-        <p class="text-gray-600 mt-2">Welcome back! Please sign in to your account.</p>
+        <h2 class="text-3xl font-bold text-gray-900 dark:!text-gray-100">Sign In</h2>
+        <p class="text-gray-600 dark:!text-gray-400 mt-2">Welcome back! Please sign in to your account.</p>
 
         <!-- Demo Credentials -->
-        <div class="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-          <p class="text-sm font-medium text-blue-800 mb-2">Demo Credentials (click to auto-fill):</p>
-          <div class="text-sm text-blue-700 space-y-2">
+        <div class="mt-4 p-4 bg-blue-50 dark:!bg-blue-900/20 border border-blue-200 dark:!border-blue-800 rounded-lg">
+          <p class="text-sm font-medium text-blue-800 dark:!text-blue-200 mb-2">Demo Credentials (click to auto-fill):</p>
+          <div class="text-sm text-blue-700 dark:!text-blue-300 space-y-2">
             <button
               type="button"
               (click)="fillCredentials('admin@lalli.com', 'admin123$')"
-              class="block w-full text-left px-3 py-2 bg-blue-100 hover:bg-blue-200 rounded-md transition-colors cursor-pointer"
+              class="block w-full text-left px-3 py-2 bg-blue-100 dark:!bg-blue-800/50 hover:bg-blue-200 dark:hover:!bg-blue-700/50 rounded-md transition-colors cursor-pointer text-blue-700 dark:!text-blue-200"
             >
               <strong>Admin:</strong> admin@lalli.com / admin123$
             </button>
             <button
               type="button"
               (click)="fillCredentials('user@lalli.com', 'user123$')"
-              class="block w-full text-left px-3 py-2 bg-blue-100 hover:bg-blue-200 rounded-md transition-colors cursor-pointer"
+              class="block w-full text-left px-3 py-2 bg-blue-100 dark:!bg-blue-800/50 hover:bg-blue-200 dark:hover:!bg-blue-700/50 rounded-md transition-colors cursor-pointer text-blue-700 dark:!text-blue-200"
             >
               <strong>User:</strong> user@lalli.com / user123$
             </button>
@@ -44,7 +44,7 @@ import { ToastService } from '../../shared/services/toast.service';
 
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-6">
         <div>
-          <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+          <label for="email" class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-2">
             Email Address
           </label>
           <input
@@ -65,7 +65,7 @@ import { ToastService } from '../../shared/services/toast.service';
         </div>
 
         <div>
-          <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
+          <label for="password" class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-2">
             Password
           </label>
           <p-password
@@ -92,7 +92,7 @@ import { ToastService } from '../../shared/services/toast.service';
               formControlName="rememberMe"
               [binary]="true"
             ></p-checkbox>
-            <label for="remember-me" class="ml-2 block text-sm text-gray-700">
+            <label for="remember-me" class="ml-2 block text-sm text-gray-700 dark:!text-gray-300">
               Remember me
             </label>
           </div>
@@ -100,7 +100,7 @@ import { ToastService } from '../../shared/services/toast.service';
           <div class="text-sm">
             <a
               routerLink="/auth/forgot-password"
-              class="text-blue-600 hover:text-blue-500"
+              class="text-blue-600 hover:text-blue-500 dark:!text-blue-400 dark:hover:!text-blue-300"
             >
               Forgot your password?
             </a>
@@ -128,9 +128,9 @@ import { ToastService } from '../../shared/services/toast.service';
       </form>
 
       <div class="mt-6 text-center">
-        <p class="text-sm text-gray-600">
+        <p class="text-sm text-gray-600 dark:!text-gray-400">
           Don't have an account?
-          <a routerLink="/auth/register" class="text-blue-600 hover:text-blue-500 font-medium">
+          <a routerLink="/auth/register" class="text-blue-600 hover:text-blue-500 dark:!text-blue-400 dark:hover:!text-blue-300 font-medium">
             Sign up
           </a>
         </p>

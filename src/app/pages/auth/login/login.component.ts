@@ -11,20 +11,20 @@ import { AuthService } from '../../../core/services/auth.service';
   template: `
     <div class="login-form">
       <div class="text-center mb-8">
-        <h2 class="text-3xl font-bold text-gray-900">Sign In</h2>
-        <p class="text-gray-600 mt-2">Welcome back! Please sign in to your account.</p>
+        <h2 class="text-3xl font-bold text-gray-900 dark:!text-gray-100">Sign In</h2>
+        <p class="text-gray-600 dark:!text-gray-400 mt-2">Welcome back! Please sign in to your account.</p>
       </div>
 
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-6">
         <div>
-          <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+          <label for="email" class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-2">
             Email Address
           </label>
           <input
             type="email"
             id="email"
             formControlName="email"
-            class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            class="w-full px-3 py-3 border border-gray-300 dark:!border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:!bg-gray-800 text-gray-900 dark:!text-gray-100"
             placeholder="Enter your email"
             [class.border-red-500]="isFieldInvalid('email')"
           />
@@ -40,7 +40,7 @@ import { AuthService } from '../../../core/services/auth.service';
         </div>
 
         <div>
-          <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
+          <label for="password" class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-2">
             Password
           </label>
           <div class="relative">
@@ -48,7 +48,7 @@ import { AuthService } from '../../../core/services/auth.service';
               [type]="showPassword ? 'text' : 'password'"
               id="password"
               formControlName="password"
-              class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 pr-10"
+              class="w-full px-3 py-3 border border-gray-300 dark:!border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:!bg-gray-800 text-gray-900 dark:!text-gray-100 pr-10"
               placeholder="Enter your password"
               [class.border-red-500]="isFieldInvalid('password')"
             />
@@ -57,7 +57,7 @@ import { AuthService } from '../../../core/services/auth.service';
               (click)="togglePasswordVisibility()"
               class="absolute inset-y-0 right-0 pr-3 flex items-center"
             >
-              <i [class]="showPassword ? 'pi pi-eye-slash' : 'pi pi-eye'" class="text-gray-400"></i>
+              <i [class]="showPassword ? 'pi pi-eye-slash' : 'pi pi-eye'" class="text-gray-400 dark:!text-gray-500"></i>
             </button>
           </div>
           @if (isFieldInvalid('password')) {
@@ -73,9 +73,9 @@ import { AuthService } from '../../../core/services/auth.service';
               id="remember-me"
               name="remember-me"
               type="checkbox"
-              class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+              class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 dark:!border-gray-600 rounded bg-white dark:!bg-gray-800"
             />
-            <label for="remember-me" class="ml-2 block text-sm text-gray-700">
+            <label for="remember-me" class="ml-2 block text-sm text-gray-700 dark:!text-gray-300">
               Remember me
             </label>
           </div>
@@ -83,7 +83,7 @@ import { AuthService } from '../../../core/services/auth.service';
           <div class="text-sm">
             <a
               routerLink="/auth/forgot-password"
-              class="text-blue-600 hover:text-blue-500"
+              class="text-blue-600 hover:text-blue-500 dark:!text-blue-400 dark:hover:!text-blue-300"
             >
               Forgot your password?
             </a>
@@ -91,7 +91,7 @@ import { AuthService } from '../../../core/services/auth.service';
         </div>
 
         @if (errorMessage) {
-          <div class="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg">
+          <div class="bg-red-50 dark:!bg-red-900/20 border border-red-200 dark:!border-red-800 text-red-600 dark:!text-red-400 px-4 py-3 rounded-lg">
             {{ errorMessage }}
           </div>
         }
@@ -111,9 +111,9 @@ import { AuthService } from '../../../core/services/auth.service';
       </form>
 
       <div class="mt-6 text-center">
-        <p class="text-sm text-gray-600">
+        <p class="text-sm text-gray-600 dark:!text-gray-400">
           Don't have an account?
-          <a routerLink="/auth/register" class="text-blue-600 hover:text-blue-500 font-medium">
+          <a routerLink="/auth/register" class="text-blue-600 hover:text-blue-500 dark:!text-blue-400 dark:hover:!text-blue-300 font-medium">
             Sign up
           </a>
         </p>

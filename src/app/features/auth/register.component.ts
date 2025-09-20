@@ -17,13 +17,13 @@ import { ButtonComponent } from '../../shared/components/button/button.component
   template: `
     <div class="register-form">
       <div class="text-center mb-8">
-        <h2 class="text-3xl font-bold text-gray-900">Create Account</h2>
-        <p class="text-gray-600 mt-2">Join us and start your journey today</p>
+        <h2 class="text-3xl font-bold text-gray-900 dark:!text-gray-100">Create Account</h2>
+        <p class="text-gray-600 dark:!text-gray-400 mt-2">Join us and start your journey today</p>
       </div>
 
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="space-y-6">
         <div>
-          <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
+          <label for="name" class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-2">
             Full Name
           </label>
           <input
@@ -44,7 +44,7 @@ import { ButtonComponent } from '../../shared/components/button/button.component
         </div>
 
         <div>
-          <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+          <label for="email" class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-2">
             Email Address
           </label>
           <input
@@ -65,7 +65,7 @@ import { ButtonComponent } from '../../shared/components/button/button.component
         </div>
 
         <div>
-          <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
+          <label for="password" class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-2">
             Password
           </label>
           <p-password
@@ -88,7 +88,7 @@ import { ButtonComponent } from '../../shared/components/button/button.component
         </div>
 
         <div>
-          <label for="confirmPassword" class="block text-sm font-medium text-gray-700 mb-2">
+          <label for="confirmPassword" class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-2">
             Confirm Password
           </label>
           <p-password
@@ -115,11 +115,11 @@ import { ButtonComponent } from '../../shared/components/button/button.component
             [binary]="true"
             styleClass="mt-1"
           ></p-checkbox>
-          <label for="terms" class="ml-2 block text-sm text-gray-700">
+          <label for="terms" class="ml-2 block text-sm text-gray-700 dark:!text-gray-300">
             I agree to the
-            <a href="#" class="text-blue-600 hover:text-blue-500">Terms of Service</a>
+            <a href="#" class="text-blue-600 hover:text-blue-500 dark:!text-blue-400 dark:hover:!text-blue-300">Terms of Service</a>
             and
-            <a href="#" class="text-blue-600 hover:text-blue-500">Privacy Policy</a>
+            <a href="#" class="text-blue-600 hover:text-blue-500 dark:!text-blue-400 dark:hover:!text-blue-300">Privacy Policy</a>
           </label>
         </div>
         @if (isFieldInvalid('acceptTerms')) {
@@ -150,9 +150,9 @@ import { ButtonComponent } from '../../shared/components/button/button.component
       </form>
 
       <div class="mt-6 text-center">
-        <p class="text-sm text-gray-600">
+        <p class="text-sm text-gray-600 dark:!text-gray-400">
           Already have an account?
-          <a routerLink="/auth/login" class="text-blue-600 hover:text-blue-500 font-medium">
+          <a routerLink="/auth/login" class="text-blue-600 hover:text-blue-500 dark:!text-blue-400 dark:hover:!text-blue-300 font-medium">
             Sign in
           </a>
         </p>

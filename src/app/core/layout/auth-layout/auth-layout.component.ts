@@ -51,7 +51,7 @@ import { CommonModule } from '@angular/common';
         <!-- Right side - Auth Form -->
         <div class="w-full lg:w-1/2 flex items-center justify-center p-8">
           <div class="w-full max-w-md">
-            <div class="bg-white rounded-lg shadow-xl p-8">
+            <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-xl p-8">
               <router-outlet></router-outlet>
             </div>
           </div>

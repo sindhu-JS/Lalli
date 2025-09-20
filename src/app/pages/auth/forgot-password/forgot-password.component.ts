@@ -14,14 +14,14 @@ import { AuthService } from '../../../shared/services/auth.service';
   template: `
     <div class="forgot-password-form">
       <div class="text-center mb-8">
-        <h2 class="text-3xl font-bold text-gray-900">Forgot Password</h2>
-        <p class="text-gray-600 mt-2">Enter your email address and we'll send you a link to reset your password.</p>
+        <h2 class="text-3xl font-bold text-gray-900 dark:!text-gray-100">Forgot Password</h2>
+        <p class="text-gray-600 dark:!text-gray-400 mt-2">Enter your email address and we'll send you a link to reset your password.</p>
       </div>
 
       @if (!emailSent) {
         <form [formGroup]="forgotPasswordForm" (ngSubmit)="onSubmit()" class="space-y-6">
           <div>
-            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+            <label for="email" class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-2">
               Email Address
             </label>
             <input
@@ -55,14 +55,14 @@ import { AuthService } from '../../../shared/services/auth.service';
         </form>
       } @else {
         <div class="text-center">
-          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <i class="pi pi-envelope text-green-600 text-2xl"></i>
+          <div class="w-16 h-16 bg-green-100 dark:!bg-green-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="pi pi-envelope text-green-600 dark:!text-green-400 text-2xl"></i>
           </div>
-          <h3 class="text-lg font-medium text-gray-900 mb-2">Check your email</h3>
-          <p class="text-gray-600 mb-6">
+          <h3 class="text-lg font-medium text-gray-900 dark:!text-gray-100 mb-2">Check your email</h3>
+          <p class="text-gray-600 dark:!text-gray-400 mb-6">
             We've sent a password reset link to <strong>{{ submittedEmail }}</strong>
           </p>
-          <p class="text-sm text-gray-500 mb-6">
+          <p class="text-sm text-gray-500 dark:!text-gray-400 mb-6">
             Didn't receive the email? Check your spam folder or try again.
           </p>
           <app-button
@@ -75,9 +75,9 @@ import { AuthService } from '../../../shared/services/auth.service';
       }
 
       <div class="mt-6 text-center">
-        <p class="text-sm text-gray-600">
+        <p class="text-sm text-gray-600 dark:!text-gray-400">
           Remember your password?
-          <a routerLink="/auth/login" class="text-blue-600 hover:text-blue-500 font-medium">
+          <a routerLink="/auth/login" class="text-blue-600 hover:text-blue-500 dark:!text-blue-400 dark:hover:!text-blue-300 font-medium">
             Sign in
           </a>
         </p>
