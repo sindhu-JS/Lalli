@@ -3,12 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { CarouselModule } from 'primeng/carousel';
 
 @Component({
-  selector: 'app-modern-sass-testimonial',
+  selector: 'app-public-modern-testimonial',
   imports: [CommonModule, CarouselModule],
-  templateUrl: './modern-sass-testimonial.component.html',
-  styleUrls: ['./modern-sass-testimonial.component.scss'],
+  templateUrl: './public-modern-testimonial.component.html',
+  styleUrls: ['./public-modern-testimonial.component.scss'],
 })
-export class ModernSassTestimonialComponent implements OnInit {
+export class PublicModernTestimonialComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}

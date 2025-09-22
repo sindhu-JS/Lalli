@@ -1,6 +1,11 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  ReactiveFormsModule,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ButtonComponent } from '../../../shared/components/button/button.component';
 
@@ -15,19 +20,35 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
           {{ isEditMode ? 'Edit Project' : 'Create New Project' }}
         </h1>
         <p class="text-gray-600 dark:!text-gray-400 mt-1">
-          {{ isEditMode ? 'Update project information' : 'Fill in the details below to create a new project' }}
+          {{
+            isEditMode
+              ? 'Update project information'
+              : 'Fill in the details below to create a new project'
+          }}
         </p>
       </div>
 
-      <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700">
-        <form [formGroup]="projectForm" (ngSubmit)="onSubmit()" class="p-6 space-y-6">
+      <div
+        class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700"
+      >
+        <form
+          [formGroup]="projectForm"
+          (ngSubmit)="onSubmit()"
+          class="p-6 space-y-6"
+        >
           <!-- Basic Information -->
           <div>
-            <h3 class="text-lg font-medium text-gray-900 dark:!text-gray-100 mb-4">Basic Information</h3>
+            <h3
+              class="text-lg font-medium text-gray-900 dark:!text-gray-100 mb-4"
+            >
+              Basic Information
+            </h3>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div class="md:col-span-2">
-                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                <label
+                  class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                >
                   Project Name *
                 </label>
                 <input
@@ -38,12 +59,16 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
                   [class.border-red-500]="isFieldInvalid('name')"
                 />
                 @if (isFieldInvalid('name')) {
-                  <p class="mt-1 text-sm text-red-600 dark:!text-red-400">Project name is required</p>
+                <p class="mt-1 text-sm text-red-600 dark:!text-red-400">
+                  Project name is required
+                </p>
                 }
               </div>
 
               <div>
-                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                <label
+                  class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                >
                   Status *
                 </label>
                 <select
@@ -57,12 +82,16 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
                   <option value="on-hold">On Hold</option>
                 </select>
                 @if (isFieldInvalid('status')) {
-                  <p class="mt-1 text-sm text-red-600 dark:!text-red-400">Status is required</p>
+                <p class="mt-1 text-sm text-red-600 dark:!text-red-400">
+                  Status is required
+                </p>
                 }
               </div>
 
               <div>
-                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                <label
+                  class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                >
                   Priority
                 </label>
                 <select
@@ -77,7 +106,9 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
               </div>
 
               <div>
-                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                <label
+                  class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                >
                   Start Date
                 </label>
                 <input
@@ -88,7 +119,9 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
               </div>
 
               <div>
-                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                <label
+                  class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                >
                   Due Date
                 </label>
                 <input
@@ -99,7 +132,9 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
               </div>
 
               <div class="md:col-span-2">
-                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                <label
+                  class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                >
                   Description
                 </label>
                 <textarea
@@ -114,11 +149,17 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
 
           <!-- Team & Budget -->
           <div>
-            <h3 class="text-lg font-medium text-gray-900 dark:!text-gray-100 mb-4">Team & Budget</h3>
+            <h3
+              class="text-lg font-medium text-gray-900 dark:!text-gray-100 mb-4"
+            >
+              Team & Budget
+            </h3>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                <label
+                  class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                >
                   Project Manager
                 </label>
                 <select
@@ -133,7 +174,9 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
               </div>
 
               <div>
-                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                <label
+                  class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                >
                   Budget (USD)
                 </label>
                 <input
@@ -146,7 +189,9 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
               </div>
 
               <div class="md:col-span-2">
-                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                <label
+                  class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                >
                   Team Members
                 </label>
                 <select
@@ -161,18 +206,26 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
                   <option value="mike.davis">Mike Davis</option>
                   <option value="lisa.chen">Lisa Chen</option>
                 </select>
-                <p class="mt-1 text-sm text-gray-500 dark:!text-gray-400">Hold Ctrl (Cmd) to select multiple members</p>
+                <p class="mt-1 text-sm text-gray-500 dark:!text-gray-400">
+                  Hold Ctrl (Cmd) to select multiple members
+                </p>
               </div>
             </div>
           </div>
 
           <!-- Tags & Categories -->
           <div>
-            <h3 class="text-lg font-medium text-gray-900 dark:!text-gray-100 mb-4">Categories & Tags</h3>
+            <h3
+              class="text-lg font-medium text-gray-900 dark:!text-gray-100 mb-4"
+            >
+              Categories & Tags
+            </h3>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                <label
+                  class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                >
                   Category
                 </label>
                 <select
@@ -189,7 +242,9 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
               </div>
 
               <div>
-                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                <label
+                  class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                >
                   Tags
                 </label>
                 <input
@@ -203,13 +258,17 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
           </div>
 
           @if (errorMessage) {
-            <div class="bg-red-50 dark:!bg-red-900 border border-red-200 dark:!border-red-700 text-red-600 dark:!text-red-200 px-4 py-3 rounded-lg">
-              {{ errorMessage }}
-            </div>
+          <div
+            class="bg-red-50 dark:!bg-red-900 border border-red-200 dark:!border-red-700 text-red-600 dark:!text-red-200 px-4 py-3 rounded-lg"
+          >
+            {{ errorMessage }}
+          </div>
           }
 
           <!-- Form Actions -->
-          <div class="flex justify-end space-x-3 pt-6 border-t border-gray-200 dark:!border-gray-700">
+          <div
+            class="flex justify-end space-x-3 pt-6 border-t border-gray-200 dark:!border-gray-700"
+          >
             <app-button
               type="button"
               variant="secondary"
@@ -229,7 +288,7 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
         </form>
       </div>
     </div>
-  `
+  `,
 })
 export class ProjectFormComponent implements OnInit {
   private fb = inject(FormBuilder);
@@ -254,7 +313,7 @@ export class ProjectFormComponent implements OnInit {
       budget: [0, Validators.min(0)],
       teamMembers: [[]],
       category: [''],
-      tags: ['']
+      tags: [''],
     });
   }
 
@@ -272,7 +331,8 @@ export class ProjectFormComponent implements OnInit {
     // In a real app, you would call a service to get the project data
     const mockProject = {
       name: 'Website Redesign',
-      description: 'Complete redesign of the company website with modern UI/UX principles',
+      description:
+        'Complete redesign of the company website with modern UI/UX principles',
       status: 'active',
       priority: 'high',
       startDate: '2024-01-15',
@@ -281,7 +341,7 @@ export class ProjectFormComponent implements OnInit {
       budget: 50000,
       teamMembers: ['alice.johnson', 'charlie.brown'],
       category: 'web-development',
-      tags: 'frontend, react, typescript'
+      tags: 'frontend, react, typescript',
     };
 
     this.projectForm.patchValue(mockProject);
@@ -296,7 +356,9 @@ export class ProjectFormComponent implements OnInit {
 
       // Process tags
       if (formData.tags) {
-        formData.tags = formData.tags.split(',').map((tag: string) => tag.trim());
+        formData.tags = formData.tags
+          .split(',')
+          .map((tag: string) => tag.trim());
       }
 
       // Simulate API call

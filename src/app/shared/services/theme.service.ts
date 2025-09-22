@@ -3,7 +3,7 @@ import { Injectable, signal } from '@angular/core';
 export type Theme = 'light' | 'dark';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ThemeService {
   private readonly STORAGE_KEY = 'theme';
@@ -64,7 +64,9 @@ export class ThemeService {
 
     // Then check system preference
     if (typeof window !== 'undefined' && window.matchMedia) {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const prefersDark = window.matchMedia(
+        '(prefers-color-scheme: dark)'
+      ).matches;
       return prefersDark ? 'dark' : 'light';
     }
 
@@ -80,11 +82,17 @@ export class ThemeService {
     if (theme === 'dark') {
       htmlElement.classList.add('p-dark');
       htmlElement.classList.remove('p-light');
-      console.log('Applied dark theme, classes:', htmlElement.classList.toString());
+      console.log(
+        'Applied dark theme, classes:',
+        htmlElement.classList.toString()
+      );
     } else {
       htmlElement.classList.add('p-light');
       htmlElement.classList.remove('p-dark');
-      console.log('Applied light theme, classes:', htmlElement.classList.toString());
+      console.log(
+        'Applied light theme, classes:',
+        htmlElement.classList.toString()
+      );
     }
   }
 

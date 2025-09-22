@@ -2,12 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-modern-sass-business',
+  selector: 'app-public-modern-business',
   imports: [CommonModule],
-  templateUrl: './modern-sass-business.component.html',
-  styleUrls: ['./modern-sass-business.component.scss'],
+  templateUrl: './public-modern-business.component.html',
+  styleUrls: ['./public-modern-business.component.scss'],
 })
-export class ModernSassBusinessComponent implements OnInit {
+export class PublicModernBusinessComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}

@@ -2,7 +2,13 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'success' | 'warning' | 'ghost';
+export type ButtonVariant =
+  | 'primary'
+  | 'secondary'
+  | 'danger'
+  | 'success'
+  | 'warning'
+  | 'ghost';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
 @Component({
@@ -25,7 +31,7 @@ export type ButtonSize = 'sm' | 'md' | 'lg';
     >
       <ng-content></ng-content>
     </p-button>
-  `
+  `,
 })
 export class ButtonComponent {
   @Input() variant: ButtonVariant = 'primary';
@@ -53,7 +59,7 @@ export class ButtonComponent {
       'fa-home': 'pi pi-home',
       'fa-settings': 'pi pi-cog',
       'fa-check': 'pi pi-check',
-      'fa-times': 'pi pi-times'
+      'fa-times': 'pi pi-times',
     };
 
     // If it's already a pi- icon, return as is
@@ -67,26 +73,36 @@ export class ButtonComponent {
     }
 
     // Default fallback
-    return this.icon.startsWith('pi-') ? `pi ${this.icon}` : `pi pi-${this.icon}`;
+    return this.icon.startsWith('pi-')
+      ? `pi ${this.icon}`
+      : `pi pi-${this.icon}`;
   }
 
-  get primeSeverity(): "success" | "info" | "warn" | "danger" | "help" | "secondary" | "contrast" | null {
+  get primeSeverity():
+    | 'success'
+    | 'info'
+    | 'warn'
+    | 'danger'
+    | 'help'
+    | 'secondary'
+    | 'contrast'
+    | null {
     const severityMap = {
       primary: null, // Primary is default
       secondary: 'secondary',
       danger: 'danger',
       success: 'success',
       warning: 'warn',
-      ghost: null // Will use text variant
+      ghost: null, // Will use text variant
     };
     return severityMap[this.variant];
   }
 
-  get primeSize(): "small" | "large" | null {
+  get primeSize(): 'small' | 'large' | null {
     const sizeMap = {
       sm: 'small',
       md: null, // Medium is default
-      lg: 'large'
+      lg: 'large',
     };
     return sizeMap[this.size];
   }

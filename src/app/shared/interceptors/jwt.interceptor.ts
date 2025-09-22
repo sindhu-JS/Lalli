@@ -1,5 +1,10 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
+import {
+  HttpRequest,
+  HttpHandler,
+  HttpEvent,
+  HttpInterceptor,
+} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
@@ -7,7 +12,10 @@ import { AuthService } from '../services/auth.service';
 export class JwtInterceptor implements HttpInterceptor {
   private authService = inject(AuthService);
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(
+    request: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
     // Get the auth token from the service
     const token = this.authService.getToken();
 
@@ -19,8 +27,8 @@ export class JwtInterceptor implements HttpInterceptor {
       request = request.clone({
         setHeaders: {
           Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        }
+          'Content-Type': 'application/json',
+        },
       });
     }
 
@@ -29,6 +37,10 @@ export class JwtInterceptor implements HttpInterceptor {
 
   private isApiRequest(url: string): boolean {
     // Check if the request URL is for our API
-    return url.includes('/api/') || url.startsWith('http://localhost') || url.includes('your-api-domain.com');
+    return (
+      url.includes('/api/') ||
+      url.startsWith('http://localhost') ||
+      url.includes('your-api-domain.com')
+    );
   }
 }

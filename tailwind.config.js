@@ -1,9 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './src/**/*.{html,ts}',
-    './node_modules/primeng/**/*.{js,ts}'
-  ],
+  content: ['./src/**/*.{html,ts}', './node_modules/primeng/**/*.{js,ts}'],
   theme: {
     extend: {
       colors: {
@@ -33,12 +30,10 @@ module.exports = {
           800: 'rgb(var(--p-surface-800))',
           900: 'rgb(var(--p-surface-900))',
           950: 'rgb(var(--p-surface-950))',
-        }
+        },
       },
     },
   },
-  plugins: [
-    require('tailwindcss-primeui')
-  ],
+  plugins: [require('tailwindcss-primeui')],
   darkMode: ['selector', '.p-dark'],
 };

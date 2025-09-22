@@ -2,12 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-modern-sass-feature',
+  selector: 'app-public-modern-feature',
   imports: [CommonModule],
-  templateUrl: './modern-sass-feature.component.html',
-  styleUrls: ['./modern-sass-feature.component.scss'],
+  templateUrl: './public-modern-feature.component.html',
+  styleUrls: ['./public-modern-feature.component.scss'],
 })
-export class ModernSassFeatureComponent implements OnInit {
+export class PublicModernFeatureComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}

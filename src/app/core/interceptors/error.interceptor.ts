@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpErrorResponse } from '@angular/common/http';
+import {
+  HttpRequest,
+  HttpHandler,
+  HttpEvent,
+  HttpInterceptor,
+  HttpErrorResponse,
+} from '@angular/common/http';
 import { Observable, throwError, NEVER } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
@@ -9,12 +15,12 @@ import { Router } from '@angular/router';
 export class ErrorInterceptor implements HttpInterceptor {
   private isRefreshing = false;
 
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(
+    request: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         // Handle 401 Unauthorized errors
@@ -45,7 +51,7 @@ export class ErrorInterceptor implements HttpInterceptor {
           status: error.status,
           statusText: error.statusText,
           url: request.url,
-          error: error.error
+          error: error.error,
         });
 
         return throwError(() => error);
@@ -53,7 +59,11 @@ export class ErrorInterceptor implements HttpInterceptor {
     );
   }
 
-  private handle401Error(request: HttpRequest<any>, next: HttpHandler, error: HttpErrorResponse): Observable<HttpEvent<any>> {
+  private handle401Error(
+    request: HttpRequest<any>,
+    next: HttpHandler,
+    error: HttpErrorResponse
+  ): Observable<HttpEvent<any>> {
     // Don't try to refresh token for auth endpoints
     if (this.isAuthEndpoint(request.url)) {
       this.authService.logout();
@@ -70,8 +80,8 @@ export class ErrorInterceptor implements HttpInterceptor {
           const token = this.authService.getToken();
           const clonedRequest = request.clone({
             setHeaders: {
-              Authorization: `Bearer ${token}`
-            }
+              Authorization: `Bearer ${token}`,
+            },
           });
           return next.handle(clonedRequest);
         }),
@@ -109,10 +119,12 @@ export class ErrorInterceptor implements HttpInterceptor {
   }
 
   private isAuthEndpoint(url: string): boolean {
-    return url.includes('/auth/login') ||
-           url.includes('/auth/register') ||
-           url.includes('/auth/refresh') ||
-           url.includes('/auth/forgot-password') ||
-           url.includes('/auth/reset-password');
+    return (
+      url.includes('/auth/login') ||
+      url.includes('/auth/register') ||
+      url.includes('/auth/refresh') ||
+      url.includes('/auth/forgot-password') ||
+      url.includes('/auth/reset-password')
+    );
   }
 }

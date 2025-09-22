@@ -1,0 +1,31 @@
+// Remove dropdown arrows and styles
+.nav-link {
+  &::after {
+    display: none !important;
+  }
+  &:after {
+    display: none !important;
+  }
+}
+
+// Ensure no dropdown styling and add spacing
+.main-menu {
+  li {
+    margin-right: 2rem; // Add right margin between menu items
+
+    &:last-child {
+      margin-right: 0; // Remove margin from last item
+    }
+
+    .nav-link {
+      padding-top: 1rem; // Add top padding to menu items
+      padding-bottom: 1rem; // Add bottom padding to menu items
+
+      &::after,
+      &:after {
+        display: none !important;
+        content: none !important;
+      }
+    }
+  }
+}

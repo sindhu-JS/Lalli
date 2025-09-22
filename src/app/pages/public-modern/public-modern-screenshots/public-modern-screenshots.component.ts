@@ -3,12 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { CarouselModule } from 'primeng/carousel';
 
 @Component({
-  selector: 'app-modern-sass-screenshots',
+  selector: 'app-public-modern-screenshots',
   imports: [CommonModule, CarouselModule],
-  templateUrl: './modern-sass-screenshots.component.html',
-  styleUrls: ['./modern-sass-screenshots.component.scss'],
+  templateUrl: './public-modern-screenshots.component.html',
+  styleUrls: ['./public-modern-screenshots.component.scss'],
 })
-export class ModernSassScreenshotsComponent implements OnInit {
+export class PublicModernScreenshotsComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}

@@ -29,7 +29,7 @@ export interface AuthResponse {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private readonly TOKEN_KEY = 'auth_token';
@@ -47,10 +47,7 @@ export class AuthService {
   public currentUser$ = this.currentUserSubject.asObservable();
   public isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
 
-  constructor(
-    private http: HttpClient,
-    private router: Router
-  ) {
+  constructor(private http: HttpClient, private router: Router) {
     this.initializeAuth();
   }
 
@@ -64,29 +61,27 @@ export class AuthService {
   }
 
   login(credentials: LoginRequest): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>('/api/auth/login', credentials)
-      .pipe(
-        tap(response => {
-          this.setAuthData(response);
-        }),
-        catchError(error => {
-          console.error('Login failed:', error);
-          return throwError(() => error);
-        })
-      );
+    return this.http.post<AuthResponse>('/api/auth/login', credentials).pipe(
+      tap((response) => {
+        this.setAuthData(response);
+      }),
+      catchError((error) => {
+        console.error('Login failed:', error);
+        return throwError(() => error);
+      })
+    );
   }
 
   register(userData: RegisterRequest): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>('/api/auth/register', userData)
-      .pipe(
-        tap(response => {
-          this.setAuthData(response);
-        }),
-        catchError(error => {
-          console.error('Registration failed:', error);
-          return throwError(() => error);
-        })
-      );
+    return this.http.post<AuthResponse>('/api/auth/register', userData).pipe(
+      tap((response) => {
+        this.setAuthData(response);
+      }),
+      catchError((error) => {
+        console.error('Registration failed:', error);
+        return throwError(() => error);
+      })
+    );
   }
 
   logout(): void {
@@ -95,7 +90,7 @@ export class AuthService {
       complete: () => {
         this.clearAuthData();
         this.router.navigate(['/auth/login']);
-      }
+      },
     });
   }
 
@@ -105,12 +100,13 @@ export class AuthService {
       return throwError(() => new Error('No refresh token available'));
     }
 
-    return this.http.post<AuthResponse>('/api/auth/refresh', { refreshToken })
+    return this.http
+      .post<AuthResponse>('/api/auth/refresh', { refreshToken })
       .pipe(
-        tap(response => {
+        tap((response) => {
           this.setAuthData(response);
         }),
-        catchError(error => {
+        catchError((error) => {
           this.clearAuthData();
           this.router.navigate(['/auth/login']);
           return throwError(() => error);
@@ -119,29 +115,36 @@ export class AuthService {
   }
 
   forgotPassword(email: string): Observable<{ message: string }> {
-    return this.http.post<{ message: string }>('/api/auth/forgot-password', { email });
+    return this.http.post<{ message: string }>('/api/auth/forgot-password', {
+      email,
+    });
   }
 
-  resetPassword(token: string, newPassword: string): Observable<{ message: string }> {
+  resetPassword(
+    token: string,
+    newPassword: string
+  ): Observable<{ message: string }> {
     return this.http.post<{ message: string }>('/api/auth/reset-password', {
       token,
-      password: newPassword
+      password: newPassword,
     });
   }
 
   updateProfile(userData: Partial<User>): Observable<User> {
-    return this.http.put<User>('/api/auth/profile', userData)
-      .pipe(
-        tap(user => {
-          this.setCurrentUser(user);
-        })
-      );
+    return this.http.put<User>('/api/auth/profile', userData).pipe(
+      tap((user) => {
+        this.setCurrentUser(user);
+      })
+    );
   }
 
-  changePassword(currentPassword: string, newPassword: string): Observable<{ message: string }> {
+  changePassword(
+    currentPassword: string,
+    newPassword: string
+  ): Observable<{ message: string }> {
     return this.http.post<{ message: string }>('/api/auth/change-password', {
       currentPassword,
-      newPassword
+      newPassword,
     });
   }
 

@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  ReactiveFormsModule,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { InputTextModule } from 'primeng/inputtext';
 import { SelectModule } from 'primeng/select';
@@ -11,19 +16,40 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
 @Component({
   selector: 'app-user-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule,InputTextModule, SelectModule, PasswordModule, CheckboxModule, ButtonComponent, RouterModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    InputTextModule,
+    SelectModule,
+    PasswordModule,
+    CheckboxModule,
+    ButtonComponent,
+    RouterModule,
+  ],
   template: `
     <div class="user-form max-w-2xl mx-auto">
       <div class="mb-8">
-        <h1 class="text-2xl font-bold text-gray-900 dark:!text-gray-100">Add New User</h1>
-        <p class="text-gray-600 dark:!text-gray-400 mt-1">Create a new user account</p>
+        <h1 class="text-2xl font-bold text-gray-900 dark:!text-gray-100">
+          Add New User
+        </h1>
+        <p class="text-gray-600 dark:!text-gray-400 mt-1">
+          Create a new user account
+        </p>
       </div>
 
-      <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700">
-        <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="p-6 space-y-6">
+      <div
+        class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700"
+      >
+        <form
+          [formGroup]="userForm"
+          (ngSubmit)="onSubmit()"
+          class="p-6 space-y-6"
+        >
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+              <label
+                class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+              >
                 First Name *
               </label>
               <input
@@ -36,7 +62,9 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
             </div>
 
             <div>
-              <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+              <label
+                class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+              >
                 Last Name *
               </label>
               <input
@@ -50,7 +78,9 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
           </div>
 
           <div>
-            <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+            <label
+              class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+            >
               Email Address *
             </label>
             <input
@@ -63,7 +93,9 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
           </div>
 
           <div>
-            <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+            <label
+              class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+            >
               Role *
             </label>
             <p-select
@@ -77,7 +109,9 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
           </div>
 
           <div>
-            <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+            <label
+              class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+            >
               Status
             </label>
             <p-select
@@ -91,7 +125,9 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
           </div>
 
           <div>
-            <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+            <label
+              class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+            >
               Temporary Password *
             </label>
             <p-password
@@ -113,12 +149,17 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
               inputId="send-invite"
               class="mr-2"
             ></p-checkbox>
-            <label for="send-invite" class="block text-sm text-gray-700 dark:!text-gray-300">
+            <label
+              for="send-invite"
+              class="block text-sm text-gray-700 dark:!text-gray-300"
+            >
               Send welcome email with login instructions
             </label>
           </div>
 
-          <div class="flex justify-end space-x-3 pt-6 border-t border-gray-200 dark:!border-gray-700">
+          <div
+            class="flex justify-end space-x-3 pt-6 border-t border-gray-200 dark:!border-gray-700"
+          >
             <app-button
               type="button"
               variant="secondary"
@@ -138,7 +179,7 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
         </form>
       </div>
     </div>
-  `
+  `,
 })
 export class UserFormComponent {
   userForm: FormGroup;
@@ -146,18 +187,15 @@ export class UserFormComponent {
 
   roleOptions = [
     { value: 'user', label: 'User' },
-    { value: 'admin', label: 'Administrator' }
+    { value: 'admin', label: 'Administrator' },
   ];
 
   statusOptions = [
     { value: 'active', label: 'Active' },
-    { value: 'inactive', label: 'Inactive' }
+    { value: 'inactive', label: 'Inactive' },
   ];
 
-  constructor(
-    private fb: FormBuilder,
-    private router: Router
-  ) {
+  constructor(private fb: FormBuilder, private router: Router) {
     this.userForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -165,7 +203,7 @@ export class UserFormComponent {
       role: ['user', Validators.required],
       status: ['active'],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      sendInvite: [true]
+      sendInvite: [true],
     });
   }
 

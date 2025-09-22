@@ -4,9 +4,22 @@ export * from './directives';
 export * from './pipes';
 
 // Export specific models to avoid conflicts
-export type { User, UserProfile, UserPreferences, NotificationSettings } from './models/user.model';
+export type {
+  User,
+  UserProfile,
+  UserPreferences,
+  NotificationSettings,
+} from './models/user.model';
 export type { ApiError, ApiMeta, PaginatedRequest } from './models/api.model';
-export type { LoginRequest, RegisterRequest, AuthResponse, ForgotPasswordRequest, ResetPasswordRequest, ChangePasswordRequest, AuthState } from './models/auth.model';
+export type {
+  LoginRequest,
+  RegisterRequest,
+  AuthResponse,
+  ForgotPasswordRequest,
+  ResetPasswordRequest,
+  ChangePasswordRequest,
+  AuthState,
+} from './models/auth.model';
 
 // Export services with specific exports to avoid conflicts
 export { AuthService } from './services/auth.service';

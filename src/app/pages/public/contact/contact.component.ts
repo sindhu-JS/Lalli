@@ -1,6 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  ReactiveFormsModule,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { TextareaModule } from 'primeng/textarea';
 import { MessageModule } from 'primeng/message';
@@ -9,7 +14,14 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, InputTextModule, TextareaModule, MessageModule, ButtonComponent],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    InputTextModule,
+    TextareaModule,
+    MessageModule,
+    ButtonComponent,
+  ],
   template: `
     <div class="contact-page">
       <div class="bg-gray-50 py-16">
@@ -28,17 +40,23 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
             <h2 class="text-2xl font-bold text-gray-900 mb-6">Get in Touch</h2>
             <div class="space-y-6">
               <div class="flex items-start">
-                <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                <div
+                  class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1"
+                >
                   <i class="pi pi-map-marker text-blue-600 text-sm"></i>
                 </div>
                 <div>
                   <h3 class="text-lg font-medium text-gray-900">Address</h3>
-                  <p class="text-gray-600">123 Business Street<br>Suite 100<br>City, State 12345</p>
+                  <p class="text-gray-600">
+                    123 Business Street<br />Suite 100<br />City, State 12345
+                  </p>
                 </div>
               </div>
 
               <div class="flex items-start">
-                <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                <div
+                  class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-4 mt-1"
+                >
                   <i class="pi pi-phone text-green-600 text-sm"></i>
                 </div>
                 <div>
@@ -48,7 +66,9 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
               </div>
 
               <div class="flex items-start">
-                <div class="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                <div
+                  class="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center mr-4 mt-1"
+                >
                   <i class="pi pi-envelope text-purple-600 text-sm"></i>
                 </div>
                 <div>
@@ -58,12 +78,19 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
               </div>
 
               <div class="flex items-start">
-                <div class="w-6 h-6 bg-orange-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                <div
+                  class="w-6 h-6 bg-orange-100 rounded-full flex items-center justify-center mr-4 mt-1"
+                >
                   <i class="pi pi-clock text-orange-600 text-sm"></i>
                 </div>
                 <div>
-                  <h3 class="text-lg font-medium text-gray-900">Business Hours</h3>
-                  <p class="text-gray-600">Monday - Friday: 9:00 AM - 6:00 PM<br>Weekend: 10:00 AM - 4:00 PM</p>
+                  <h3 class="text-lg font-medium text-gray-900">
+                    Business Hours
+                  </h3>
+                  <p class="text-gray-600">
+                    Monday - Friday: 9:00 AM - 6:00 PM<br />Weekend: 10:00 AM -
+                    4:00 PM
+                  </p>
                 </div>
               </div>
             </div>
@@ -71,9 +98,15 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
 
           <!-- Contact Form -->
           <div class="bg-white rounded-lg shadow-sm border p-8">
-            <h2 class="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h2>
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">
+              Send us a Message
+            </h2>
 
-            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-6">
+            <form
+              [formGroup]="contactForm"
+              (ngSubmit)="onSubmit()"
+              class="space-y-6"
+            >
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label class="block text-sm font-medium text-gray-700 mb-2">
@@ -86,7 +119,11 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
                     class="w-full"
                   />
                   @if (isFieldInvalid('firstName')) {
-                    <p-message severity="error" class="mt-1" text="First name is required"></p-message>
+                  <p-message
+                    severity="error"
+                    class="mt-1"
+                    text="First name is required"
+                  ></p-message>
                   }
                 </div>
 
@@ -101,7 +138,11 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
                     class="w-full"
                   />
                   @if (isFieldInvalid('lastName')) {
-                    <p-message severity="error" class="mt-1" text="Last name is required"></p-message>
+                  <p-message
+                    severity="error"
+                    class="mt-1"
+                    text="Last name is required"
+                  ></p-message>
                   }
                 </div>
               </div>
@@ -117,8 +158,11 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
                   class="w-full"
                 />
                 @if (isFieldInvalid('email')) {
-                  <p-message severity="error" class="mt-1"
-                    [text]="contactForm.get('email')?.errors?.['required'] ? 'Email is required' : 'Please enter a valid email address'"></p-message>
+                <p-message
+                  severity="error"
+                  class="mt-1"
+                  [text]="contactForm.get('email')?.errors?.['required'] ? 'Email is required' : 'Please enter a valid email address'"
+                ></p-message>
                 }
               </div>
 
@@ -133,7 +177,11 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
                   class="w-full"
                 />
                 @if (isFieldInvalid('subject')) {
-                  <p-message severity="error" class="mt-1" text="Subject is required"></p-message>
+                <p-message
+                  severity="error"
+                  class="mt-1"
+                  text="Subject is required"
+                ></p-message>
                 }
               </div>
 
@@ -149,16 +197,18 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
                   placeholder="Tell us about your project or inquiry..."
                 ></textarea>
                 @if (isFieldInvalid('message')) {
-                  <p-message severity="error" class="mt-1" text="Message is required"></p-message>
+                <p-message
+                  severity="error"
+                  class="mt-1"
+                  text="Message is required"
+                ></p-message>
                 }
               </div>
 
               @if (successMessage) {
-                <p-message severity="success" [text]="successMessage"></p-message>
-              }
-
-              @if (errorMessage) {
-                <p-message severity="error" [text]="errorMessage"></p-message>
+              <p-message severity="success" [text]="successMessage"></p-message>
+              } @if (errorMessage) {
+              <p-message severity="error" [text]="errorMessage"></p-message>
               }
 
               <app-button
@@ -176,7 +226,7 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
         </div>
       </div>
     </div>
-  `
+  `,
 })
 export class ContactComponent {
   private fb = inject(FormBuilder);
@@ -192,7 +242,7 @@ export class ContactComponent {
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       subject: ['', Validators.required],
-      message: ['', Validators.required]
+      message: ['', Validators.required],
     });
   }
 
@@ -205,7 +255,8 @@ export class ContactComponent {
       // Simulate API call
       setTimeout(() => {
         this.isLoading = false;
-        this.successMessage = 'Thank you for your message! We\'ll get back to you soon.';
+        this.successMessage =
+          "Thank you for your message! We'll get back to you soon.";
         this.contactForm.reset();
 
         // Clear success message after 5 seconds

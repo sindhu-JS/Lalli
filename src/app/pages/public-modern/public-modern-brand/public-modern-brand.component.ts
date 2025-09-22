@@ -3,12 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { CarouselModule } from 'primeng/carousel';
 
 @Component({
-  selector: 'app-modern-sass-brand',
+  selector: 'app-public-modern-brand',
   imports: [CommonModule, CarouselModule],
-  templateUrl: './modern-sass-brand.component.html',
-  styleUrls: ['./modern-sass-brand.component.scss'],
+  templateUrl: './public-modern-brand.component.html',
+  styleUrls: ['./public-modern-brand.component.scss'],
 })
-export class ModernSassBrandComponent implements OnInit {
+export class PublicModernBrandComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}

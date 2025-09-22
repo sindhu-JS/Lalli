@@ -1,6 +1,11 @@
 import { Component, OnInit, inject, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  ReactiveFormsModule,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { TextareaModule } from 'primeng/textarea';
 import { SelectModule } from 'primeng/select';
@@ -9,19 +14,40 @@ import { MessageModule } from 'primeng/message';
 import { ButtonModule } from 'primeng/button';
 import { AuthService } from '../../shared/services/auth.service';
 import { ButtonComponent } from '../../shared/components/button/button.component';
-import { type User, type UserProfile, type UserPreferences, type NotificationSettings } from '../../shared/models/user.model';
+import {
+  type User,
+  type UserProfile,
+  type UserPreferences,
+  type NotificationSettings,
+} from '../../shared/models/user.model';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, InputTextModule, TextareaModule, SelectModule, CheckboxModule, MessageModule, ButtonModule, ButtonComponent],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    InputTextModule,
+    TextareaModule,
+    SelectModule,
+    CheckboxModule,
+    MessageModule,
+    ButtonModule,
+    ButtonComponent,
+  ],
   template: `
     <div class="profile-page max-w-4xl mx-auto">
-      <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700">
+      <div
+        class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700"
+      >
         <!-- Header -->
         <div class="px-6 py-4 border-b border-gray-200 dark:!border-gray-700">
-          <h1 class="text-2xl font-bold text-gray-900 dark:!text-gray-100">Profile Settings</h1>
-          <p class="text-gray-600 dark:!text-gray-400 mt-1">Manage your account information and preferences</p>
+          <h1 class="text-2xl font-bold text-gray-900 dark:!text-gray-100">
+            Profile Settings
+          </h1>
+          <p class="text-gray-600 dark:!text-gray-400 mt-1">
+            Manage your account information and preferences
+          </p>
         </div>
 
         <div class="p-6">
@@ -43,11 +69,19 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
                     severity="info"
                   ></p-button>
                 </div>
-                <h2 class="mt-4 text-xl font-semibold text-gray-900 dark:!text-gray-100">{{ currentUser()?.name }}</h2>
-                <p class="text-gray-600 dark:!text-gray-400">{{ currentUser()?.email }}</p>
+                <h2
+                  class="mt-4 text-xl font-semibold text-gray-900 dark:!text-gray-100"
+                >
+                  {{ currentUser()?.name }}
+                </h2>
+                <p class="text-gray-600 dark:!text-gray-400">
+                  {{ currentUser()?.email }}
+                </p>
                 <div class="mt-2">
-                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium"
-                        [class]="getRoleBadgeClass()">
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium"
+                    [class]="getRoleBadgeClass()"
+                  >
                     {{ getRoleLabel() }}
                   </span>
                 </div>
@@ -56,14 +90,24 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
 
             <!-- Profile Form -->
             <div class="lg:col-span-2">
-              <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="space-y-6">
+              <form
+                [formGroup]="profileForm"
+                (ngSubmit)="onSubmit()"
+                class="space-y-6"
+              >
                 <!-- Basic Information -->
                 <div>
-                  <h3 class="text-lg font-medium text-gray-900 dark:!text-gray-100 mb-4">Basic Information</h3>
+                  <h3
+                    class="text-lg font-medium text-gray-900 dark:!text-gray-100 mb-4"
+                  >
+                    Basic Information
+                  </h3>
 
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                      <label
+                        class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                      >
                         First Name *
                       </label>
                       <input
@@ -73,12 +117,18 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
                         class="w-full"
                       />
                       @if (isFieldInvalid('firstName')) {
-                        <p-message severity="error" class="mt-1" text="First name is required"></p-message>
+                      <p-message
+                        severity="error"
+                        class="mt-1"
+                        text="First name is required"
+                      ></p-message>
                       }
                     </div>
 
                     <div>
-                      <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                      <label
+                        class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                      >
                         Last Name *
                       </label>
                       <input
@@ -88,14 +138,20 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
                         class="w-full"
                       />
                       @if (isFieldInvalid('lastName')) {
-                        <p-message severity="error" class="mt-1" text="Last name is required"></p-message>
+                      <p-message
+                        severity="error"
+                        class="mt-1"
+                        text="Last name is required"
+                      ></p-message>
                       }
                     </div>
                   </div>
 
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                      <label
+                        class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                      >
                         Email Address *
                       </label>
                       <input
@@ -105,13 +161,18 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
                         class="w-full"
                       />
                       @if (isFieldInvalid('email')) {
-                        <p-message severity="error" class="mt-1"
-                          [text]="profileForm.get('email')?.errors?.['required'] ? 'Email is required' : 'Please enter a valid email address'"></p-message>
+                      <p-message
+                        severity="error"
+                        class="mt-1"
+                        [text]="profileForm.get('email')?.errors?.['required'] ? 'Email is required' : 'Please enter a valid email address'"
+                      ></p-message>
                       }
                     </div>
 
                     <div>
-                      <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                      <label
+                        class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                      >
                         Phone Number
                       </label>
                       <input
@@ -126,7 +187,9 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
 
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                      <label
+                        class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                      >
                         Company
                       </label>
                       <input
@@ -138,7 +201,9 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
                     </div>
 
                     <div>
-                      <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                      <label
+                        class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                      >
                         Department
                       </label>
                       <input
@@ -166,11 +231,17 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
 
                 <!-- Preferences -->
                 <div>
-                  <h3 class="text-lg font-medium text-gray-900 dark:!text-gray-100 mb-4">Preferences</h3>
+                  <h3
+                    class="text-lg font-medium text-gray-900 dark:!text-gray-100 mb-4"
+                  >
+                    Preferences
+                  </h3>
 
                   <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
-                      <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                      <label
+                        class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                      >
                         Theme
                       </label>
                       <p-select
@@ -184,7 +255,9 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
                     </div>
 
                     <div>
-                      <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                      <label
+                        class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                      >
                         Language
                       </label>
                       <p-select
@@ -198,7 +271,9 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
                     </div>
 
                     <div>
-                      <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                      <label
+                        class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                      >
                         Timezone
                       </label>
                       <p-select
@@ -215,7 +290,11 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
 
                 <!-- Notification Preferences -->
                 <div>
-                  <h3 class="text-lg font-medium text-gray-900 dark:!text-gray-100 mb-4">Notifications</h3>
+                  <h3
+                    class="text-lg font-medium text-gray-900 dark:!text-gray-100 mb-4"
+                  >
+                    Notifications
+                  </h3>
 
                   <div class="space-y-3">
                     <label class="flex items-center">
@@ -224,7 +303,9 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
                         [binary]="true"
                         class="mr-2"
                       ></p-checkbox>
-                      <span class="text-sm text-gray-700 dark:!text-gray-300">Email notifications</span>
+                      <span class="text-sm text-gray-700 dark:!text-gray-300"
+                        >Email notifications</span
+                      >
                     </label>
 
                     <label class="flex items-center">
@@ -233,7 +314,9 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
                         [binary]="true"
                         class="mr-2"
                       ></p-checkbox>
-                      <span class="text-sm text-gray-700 dark:!text-gray-300">Browser notifications</span>
+                      <span class="text-sm text-gray-700 dark:!text-gray-300"
+                        >Browser notifications</span
+                      >
                     </label>
 
                     <label class="flex items-center">
@@ -242,7 +325,9 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
                         [binary]="true"
                         class="mr-2"
                       ></p-checkbox>
-                      <span class="text-sm text-gray-700 dark:!text-gray-300">Mobile notifications</span>
+                      <span class="text-sm text-gray-700 dark:!text-gray-300"
+                        >Mobile notifications</span
+                      >
                     </label>
 
                     <label class="flex items-center">
@@ -251,17 +336,18 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
                         [binary]="true"
                         class="mr-2"
                       ></p-checkbox>
-                      <span class="text-sm text-gray-700 dark:!text-gray-300">Marketing emails and newsletters</span>
+                      <span class="text-sm text-gray-700 dark:!text-gray-300"
+                        >Marketing emails and newsletters</span
+                      >
                     </label>
                   </div>
                 </div>
 
                 <!-- Form Actions -->
-                <div class="flex justify-end space-x-3 pt-6 border-t border-gray-200 dark:!border-gray-700">
-                  <app-button
-                    variant="secondary"
-                    (clicked)="resetForm()"
-                  >
+                <div
+                  class="flex justify-end space-x-3 pt-6 border-t border-gray-200 dark:!border-gray-700"
+                >
+                  <app-button variant="secondary" (clicked)="resetForm()">
                     Reset Changes
                   </app-button>
                   <app-button
@@ -280,18 +366,20 @@ import { type User, type UserProfile, type UserPreferences, type NotificationSet
       </div>
 
       @if (successMessage) {
-        <div class="mt-4 bg-green-50 dark:!bg-green-900 border border-green-200 dark:!border-green-700 text-green-700 dark:!text-green-200 px-4 py-3 rounded-lg">
-          {{ successMessage }}
-        </div>
-      }
-
-      @if (errorMessage) {
-        <div class="mt-4 bg-red-50 dark:!bg-red-900 border border-red-200 dark:!border-red-700 text-red-600 dark:!text-red-200 px-4 py-3 rounded-lg">
-          {{ errorMessage }}
-        </div>
+      <div
+        class="mt-4 bg-green-50 dark:!bg-green-900 border border-green-200 dark:!border-green-700 text-green-700 dark:!text-green-200 px-4 py-3 rounded-lg"
+      >
+        {{ successMessage }}
+      </div>
+      } @if (errorMessage) {
+      <div
+        class="mt-4 bg-red-50 dark:!bg-red-900 border border-red-200 dark:!border-red-700 text-red-600 dark:!text-red-200 px-4 py-3 rounded-lg"
+      >
+        {{ errorMessage }}
+      </div>
       }
     </div>
-  `
+  `,
 })
 export class ProfileComponent implements OnInit {
   private fb = inject(FormBuilder);
@@ -306,27 +394,29 @@ export class ProfileComponent implements OnInit {
   themeOptions = [
     { value: 'light', label: 'Light' },
     { value: 'dark', label: 'Dark' },
-    { value: 'system', label: 'System' }
+    { value: 'system', label: 'System' },
   ];
 
   languageOptions = [
     { value: 'en', label: 'English' },
     { value: 'es', label: 'Spanish' },
     { value: 'fr', label: 'French' },
-    { value: 'de', label: 'German' }
+    { value: 'de', label: 'German' },
   ];
 
   timezoneOptions = [
     { value: 'UTC', label: 'UTC' },
     { value: 'EST', label: 'Eastern Time' },
     { value: 'PST', label: 'Pacific Time' },
-    { value: 'GMT', label: 'Greenwich Mean Time' }
+    { value: 'GMT', label: 'Greenwich Mean Time' },
   ];
 
   avatarUrl = computed(() => {
     const user = this.currentUser();
     return user?.email
-      ? `https://www.gravatar.com/avatar/${this.hashEmail(user.email)}?d=identicon&s=128`
+      ? `https://www.gravatar.com/avatar/${this.hashEmail(
+          user.email
+        )}?d=identicon&s=128`
       : 'https://i.pravatar.cc/128';
   });
 
@@ -345,7 +435,7 @@ export class ProfileComponent implements OnInit {
       emailNotifications: [true],
       browserNotifications: [true],
       mobileNotifications: [false],
-      marketingEmails: [false]
+      marketingEmails: [false],
     });
   }
 
@@ -372,10 +462,14 @@ export class ProfileComponent implements OnInit {
         theme: user.profile?.preferences?.theme || 'light',
         language: user.profile?.preferences?.language || 'en',
         timezone: user.profile?.preferences?.timezone || 'UTC',
-        emailNotifications: user.profile?.preferences?.notifications?.email ?? true,
-        browserNotifications: user.profile?.preferences?.notifications?.browser ?? true,
-        mobileNotifications: user.profile?.preferences?.notifications?.mobile ?? false,
-        marketingEmails: user.profile?.preferences?.notifications?.marketing ?? false
+        emailNotifications:
+          user.profile?.preferences?.notifications?.email ?? true,
+        browserNotifications:
+          user.profile?.preferences?.notifications?.browser ?? true,
+        mobileNotifications:
+          user.profile?.preferences?.notifications?.mobile ?? false,
+        marketingEmails:
+          user.profile?.preferences?.notifications?.marketing ?? false,
       });
     }
   }
@@ -407,10 +501,10 @@ export class ProfileComponent implements OnInit {
               email: formValue.emailNotifications,
               browser: formValue.browserNotifications,
               mobile: formValue.mobileNotifications,
-              marketing: formValue.marketingEmails
-            }
-          }
-        }
+              marketing: formValue.marketingEmails,
+            },
+          },
+        },
       };
 
       // Simulate API call
@@ -466,7 +560,7 @@ export class ProfileComponent implements OnInit {
     let hash = 0;
     for (let i = 0; i < email.length; i++) {
       const char = email.charCodeAt(i);
-      hash = ((hash << 5) - hash) + char;
+      hash = (hash << 5) - hash + char;
       hash = hash & hash;
     }
     return Math.abs(hash).toString(16);

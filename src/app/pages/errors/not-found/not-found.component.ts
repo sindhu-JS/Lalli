@@ -8,18 +8,16 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
   standalone: true,
   imports: [CommonModule, RouterModule, ButtonComponent],
   template: `
-    <div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div
+      class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8"
+    >
       <div class="max-w-md w-full space-y-8">
         <div class="text-center">
           <div class="mx-auto h-24 w-24 text-gray-400">
             <i class="pi pi-search text-8xl"></i>
           </div>
-          <h2 class="mt-6 text-6xl font-bold text-gray-900">
-            404
-          </h2>
-          <p class="mt-2 text-xl text-gray-600">
-            Page Not Found
-          </p>
+          <h2 class="mt-6 text-6xl font-bold text-gray-900">404</h2>
+          <p class="mt-2 text-xl text-gray-600">Page Not Found</p>
           <p class="mt-2 text-sm text-gray-500">
             The page you're looking for doesn't exist or has been moved.
           </p>
@@ -48,11 +46,7 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
           </div>
 
           <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
-            <app-button
-              routerLink="/home"
-              variant="primary"
-              [fullWidth]="true"
-            >
+            <app-button routerLink="/home" variant="primary" [fullWidth]="true">
               <i class="pi pi-home mr-2"></i>
               Go Home
             </app-button>
@@ -70,7 +64,10 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
           <div class="text-center">
             <p class="text-sm text-gray-500">
               Still need help?
-              <a routerLink="/contact" class="font-medium text-blue-600 hover:text-blue-500">
+              <a
+                routerLink="/contact"
+                class="font-medium text-blue-600 hover:text-blue-500"
+              >
                 Contact Support
               </a>
             </p>
@@ -78,7 +75,7 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
         </div>
       </div>
     </div>
-  `
+  `,
 })
 export class NotFoundComponent {
   goBack(): void {

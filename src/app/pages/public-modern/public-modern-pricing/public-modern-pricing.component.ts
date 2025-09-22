@@ -3,12 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { CarouselModule } from 'primeng/carousel';
 
 @Component({
-  selector: 'app-modern-sass-pricing',
+  selector: 'app-public-modern-pricing',
   imports: [CarouselModule, CommonModule],
-  templateUrl: './modern-sass-pricing.component.html',
-  styleUrls: ['./modern-sass-pricing.component.scss'],
+  templateUrl: './public-modern-pricing.component.html',
+  styleUrls: ['./public-modern-pricing.component.scss'],
 })
-export class ModernSassPricingComponent implements OnInit {
+export class PublicModernPricingComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}

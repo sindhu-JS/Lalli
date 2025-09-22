@@ -31,7 +31,7 @@ export interface AuthResponse {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private readonly TOKEN_KEY = 'auth_token';
@@ -45,15 +45,15 @@ export class AuthService {
       email: 'admin@lalli.com',
       password: 'admin123$',
       name: 'Admin User',
-      role: 'admin' as UserRole
+      role: 'admin' as UserRole,
     },
     {
       id: 'user-001',
       email: 'user@lalli.com',
       password: 'user123$',
       name: 'Regular User',
-      role: 'user' as UserRole
-    }
+      role: 'user' as UserRole,
+    },
   ];
 
   private currentUserSubject = new BehaviorSubject<User | null>(null);
@@ -67,10 +67,7 @@ export class AuthService {
   public currentUser$ = this.currentUserSubject.asObservable();
   public isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
 
-  constructor(
-    private http: HttpClient,
-    private router: Router
-  ) {
+  constructor(private http: HttpClient, private router: Router) {
     this.initializeAuth();
   }
 
@@ -85,9 +82,10 @@ export class AuthService {
 
   login(credentials: LoginRequest): Observable<AuthResponse> {
     // Mock authentication - find user by email/username and password
-    const user = this.MOCK_USERS.find(u =>
-      (u.email === credentials.email || u.email === credentials.email) &&
-      u.password === credentials.password
+    const user = this.MOCK_USERS.find(
+      (u) =>
+        (u.email === credentials.email || u.email === credentials.email) &&
+        u.password === credentials.password
     );
 
     if (user) {
@@ -98,14 +96,14 @@ export class AuthService {
           id: user.id,
           email: user.email,
           name: user.name,
-          role: user.role
+          role: user.role,
         },
         token,
-        refreshToken: `refresh_${token}`
+        refreshToken: `refresh_${token}`,
       };
 
       // Simulate async operation with delay
-      return new Observable<AuthResponse>(observer => {
+      return new Observable<AuthResponse>((observer) => {
         setTimeout(() => {
           this.setAuthData(authResponse);
           observer.next(authResponse);
@@ -114,37 +112,41 @@ export class AuthService {
       });
     } else {
       // Simulate async operation with delay for error
-      return new Observable<AuthResponse>(observer => {
+      return new Observable<AuthResponse>((observer) => {
         setTimeout(() => {
-          observer.error({ message: 'Invalid credentials. Please check your username/password.' });
+          observer.error({
+            message:
+              'Invalid credentials. Please check your username/password.',
+          });
         }, 500);
       });
     }
   }
 
   register(userData: RegisterRequest): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>('/api/auth/register', userData)
-      .pipe(
-        tap(response => {
-          this.setAuthData(response);
-        }),
-        catchError(error => {
-          console.error('Registration failed:', error);
-          return throwError(() => error);
-        })
-      );
+    return this.http.post<AuthResponse>('/api/auth/register', userData).pipe(
+      tap((response) => {
+        this.setAuthData(response);
+      }),
+      catchError((error) => {
+        console.error('Registration failed:', error);
+        return throwError(() => error);
+      })
+    );
   }
 
   private generateMockToken(user: any): string {
     // Generate a simple JWT-like token for mock purposes
     const header = btoa(JSON.stringify({ typ: 'JWT', alg: 'HS256' }));
-    const payload = btoa(JSON.stringify({
-      sub: user.id,
-      email: user.email,
-      role: user.role,
-      iat: Math.floor(Date.now() / 1000),
-      exp: Math.floor(Date.now() / 1000) + (24 * 60 * 60) // 24 hours
-    }));
+    const payload = btoa(
+      JSON.stringify({
+        sub: user.id,
+        email: user.email,
+        role: user.role,
+        iat: Math.floor(Date.now() / 1000),
+        exp: Math.floor(Date.now() / 1000) + 24 * 60 * 60, // 24 hours
+      })
+    );
     const signature = btoa(`mock-signature-${user.id}-${Date.now()}`);
 
     return `${header}.${payload}.${signature}`;
@@ -161,12 +163,13 @@ export class AuthService {
       return throwError(() => new Error('No refresh token available'));
     }
 
-    return this.http.post<AuthResponse>('/api/auth/refresh', { refreshToken })
+    return this.http
+      .post<AuthResponse>('/api/auth/refresh', { refreshToken })
       .pipe(
-        tap(response => {
+        tap((response) => {
           this.setAuthData(response);
         }),
-        catchError(error => {
+        catchError((error) => {
           this.clearAuthData();
           this.router.navigate(['/auth/login']);
           return throwError(() => error);
@@ -175,29 +178,36 @@ export class AuthService {
   }
 
   forgotPassword(email: string): Observable<{ message: string }> {
-    return this.http.post<{ message: string }>('/api/auth/forgot-password', { email });
+    return this.http.post<{ message: string }>('/api/auth/forgot-password', {
+      email,
+    });
   }
 
-  resetPassword(token: string, newPassword: string): Observable<{ message: string }> {
+  resetPassword(
+    token: string,
+    newPassword: string
+  ): Observable<{ message: string }> {
     return this.http.post<{ message: string }>('/api/auth/reset-password', {
       token,
-      password: newPassword
+      password: newPassword,
     });
   }
 
   updateProfile(userData: Partial<User>): Observable<User> {
-    return this.http.put<User>('/api/auth/profile', userData)
-      .pipe(
-        tap(user => {
-          this.setCurrentUser(user);
-        })
-      );
+    return this.http.put<User>('/api/auth/profile', userData).pipe(
+      tap((user) => {
+        this.setCurrentUser(user);
+      })
+    );
   }
 
-  changePassword(currentPassword: string, newPassword: string): Observable<{ message: string }> {
+  changePassword(
+    currentPassword: string,
+    newPassword: string
+  ): Observable<{ message: string }> {
     return this.http.post<{ message: string }>('/api/auth/change-password', {
       currentPassword,
-      newPassword
+      newPassword,
     });
   }
 

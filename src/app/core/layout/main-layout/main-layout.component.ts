@@ -59,7 +59,9 @@ import { ThemeService } from '../../../shared/services/theme.service';
                 <button
                   (click)="toggleTheme()"
                   class="text-gray-500 hover:text-gray-700 dark:!text-gray-400 dark:hover:!text-gray-200 p-2 rounded-md hover:bg-gray-100 dark:hover:!bg-gray-700 transition-colors"
-                  [title]="isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'"
+                  [title]="
+                    isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'
+                  "
                 >
                   <i [class]="isDarkMode ? 'pi pi-sun' : 'pi pi-moon'"></i>
                 </button>
@@ -80,7 +82,8 @@ import { ThemeService } from '../../../shared/services/theme.service';
                         src="https://i.pravatar.cc/32"
                         alt="User"
                       />
-                      <span class="text-sm font-medium text-gray-700 dark:!text-gray-200"
+                      <span
+                        class="text-sm font-medium text-gray-700 dark:!text-gray-200"
                         >{{ currentUser()?.name || 'User' }}</span
                       >
                     </button>
@@ -118,7 +121,9 @@ import { ThemeService } from '../../../shared/services/theme.service';
       </main>
 
       <!-- Footer -->
-      <footer class="bg-white dark:!bg-gray-800 border-t border-gray-200 dark:!border-gray-700 mt-auto">
+      <footer
+        class="bg-white dark:!bg-gray-800 border-t border-gray-200 dark:!border-gray-700 mt-auto"
+      >
         <div class="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8">
           <div class="flex justify-between items-center">
             <div class="flex items-center space-x-4">
@@ -127,13 +132,19 @@ import { ThemeService } from '../../../shared/services/theme.service';
               </p>
             </div>
             <div class="flex items-center space-x-4">
-              <a href="#" class="text-sm text-gray-500 hover:text-gray-900 dark:!text-gray-400 dark:hover:!text-gray-200"
+              <a
+                href="#"
+                class="text-sm text-gray-500 hover:text-gray-900 dark:!text-gray-400 dark:hover:!text-gray-200"
                 >Privacy</a
               >
-              <a href="#" class="text-sm text-gray-500 hover:text-gray-900 dark:!text-gray-400 dark:hover:!text-gray-200"
+              <a
+                href="#"
+                class="text-sm text-gray-500 hover:text-gray-900 dark:!text-gray-400 dark:hover:!text-gray-200"
                 >Terms</a
               >
-              <a href="#" class="text-sm text-gray-500 hover:text-gray-900 dark:!text-gray-400 dark:hover:!text-gray-200"
+              <a
+                href="#"
+                class="text-sm text-gray-500 hover:text-gray-900 dark:!text-gray-400 dark:hover:!text-gray-200"
                 >Support</a
               >
             </div>

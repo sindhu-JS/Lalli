@@ -42,7 +42,7 @@ import { ButtonComponent } from '../button/button.component';
         </div>
       </ng-template>
     </p-dialog>
-  `
+  `,
 })
 export class ModalComponent {
   @Input() isOpen: boolean = false;
@@ -67,7 +67,7 @@ export class ModalComponent {
       sm: 'w-full max-w-sm',
       md: 'w-full max-w-md',
       lg: 'w-full max-w-lg',
-      xl: 'w-full max-w-2xl'
+      xl: 'w-full max-w-2xl',
     };
     return `${sizeMap[this.size]} mx-auto`;
   }

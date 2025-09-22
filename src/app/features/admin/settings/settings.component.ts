@@ -1,6 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  ReactiveFormsModule,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { PasswordModule } from 'primeng/password';
@@ -14,24 +19,49 @@ import { ToastService } from '../../../shared/services/toast.service';
 @Component({
   selector: 'app-settings',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, InputTextModule, InputNumberModule, PasswordModule, TextareaModule, SelectModule, CheckboxModule, ButtonModule, ButtonComponent],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    InputTextModule,
+    InputNumberModule,
+    PasswordModule,
+    TextareaModule,
+    SelectModule,
+    CheckboxModule,
+    ButtonModule,
+    ButtonComponent,
+  ],
   template: `
     <div class="settings max-w-4xl mx-auto">
       <div class="mb-8">
-        <h1 class="text-2xl font-bold text-gray-900 dark:!text-gray-100">System Settings</h1>
-        <p class="text-gray-600 dark:!text-gray-400 mt-1">Configure system-wide settings and preferences</p>
+        <h1 class="text-2xl font-bold text-gray-900 dark:!text-gray-100">
+          System Settings
+        </h1>
+        <p class="text-gray-600 dark:!text-gray-400 mt-1">
+          Configure system-wide settings and preferences
+        </p>
       </div>
 
       <div class="space-y-8">
         <!-- General Settings -->
-        <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700">
+        <div
+          class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700"
+        >
           <div class="p-6 border-b border-gray-200 dark:!border-gray-700">
-            <h2 class="text-lg font-medium text-gray-900 dark:!text-gray-100">General Settings</h2>
+            <h2 class="text-lg font-medium text-gray-900 dark:!text-gray-100">
+              General Settings
+            </h2>
           </div>
-          <form [formGroup]="generalForm" (ngSubmit)="onGeneralSubmit()" class="p-6">
+          <form
+            [formGroup]="generalForm"
+            (ngSubmit)="onGeneralSubmit()"
+            class="p-6"
+          >
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                <label
+                  class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                >
                   Application Name
                 </label>
                 <input
@@ -43,7 +73,9 @@ import { ToastService } from '../../../shared/services/toast.service';
               </div>
 
               <div>
-                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                <label
+                  class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                >
                   Default Language
                 </label>
                 <p-select
@@ -57,7 +89,9 @@ import { ToastService } from '../../../shared/services/toast.service';
               </div>
 
               <div>
-                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                <label
+                  class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                >
                   Default Timezone
                 </label>
                 <p-select
@@ -71,7 +105,9 @@ import { ToastService } from '../../../shared/services/toast.service';
               </div>
 
               <div>
-                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                <label
+                  class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                >
                   Date Format
                 </label>
                 <p-select
@@ -86,7 +122,9 @@ import { ToastService } from '../../../shared/services/toast.service';
             </div>
 
             <div class="mt-6">
-              <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+              <label
+                class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+              >
                 System Description
               </label>
               <textarea
@@ -112,14 +150,24 @@ import { ToastService } from '../../../shared/services/toast.service';
         </div>
 
         <!-- Security Settings -->
-        <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700">
+        <div
+          class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700"
+        >
           <div class="p-6 border-b border-gray-200 dark:!border-gray-700">
-            <h2 class="text-lg font-medium text-gray-900 dark:!text-gray-100">Security Settings</h2>
+            <h2 class="text-lg font-medium text-gray-900 dark:!text-gray-100">
+              Security Settings
+            </h2>
           </div>
-          <form [formGroup]="securityForm" (ngSubmit)="onSecuritySubmit()" class="p-6">
+          <form
+            [formGroup]="securityForm"
+            (ngSubmit)="onSecuritySubmit()"
+            class="p-6"
+          >
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                <label
+                  class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                >
                   Session Timeout (minutes)
                 </label>
                 <p-inputnumber
@@ -132,7 +180,9 @@ import { ToastService } from '../../../shared/services/toast.service';
               </div>
 
               <div>
-                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                <label
+                  class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                >
                   Password Min Length
                 </label>
                 <p-inputnumber
@@ -144,7 +194,9 @@ import { ToastService } from '../../../shared/services/toast.service';
               </div>
 
               <div>
-                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                <label
+                  class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                >
                   Max Login Attempts
                 </label>
                 <p-inputnumber
@@ -156,7 +208,9 @@ import { ToastService } from '../../../shared/services/toast.service';
               </div>
 
               <div>
-                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                <label
+                  class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                >
                   Account Lockout Duration (minutes)
                 </label>
                 <p-inputnumber
@@ -177,7 +231,10 @@ import { ToastService } from '../../../shared/services/toast.service';
                   inputId="require-2fa"
                   class="mr-2"
                 ></p-checkbox>
-                <label for="require-2fa" class="block text-sm text-gray-700 dark:!text-gray-300">
+                <label
+                  for="require-2fa"
+                  class="block text-sm text-gray-700 dark:!text-gray-300"
+                >
                   Require two-factor authentication for all users
                 </label>
               </div>
@@ -189,7 +246,10 @@ import { ToastService } from '../../../shared/services/toast.service';
                   inputId="force-https"
                   class="mr-2"
                 ></p-checkbox>
-                <label for="force-https" class="block text-sm text-gray-700 dark:!text-gray-300">
+                <label
+                  for="force-https"
+                  class="block text-sm text-gray-700 dark:!text-gray-300"
+                >
                   Force HTTPS connections
                 </label>
               </div>
@@ -201,7 +261,10 @@ import { ToastService } from '../../../shared/services/toast.service';
                   inputId="password-complexity"
                   class="mr-2"
                 ></p-checkbox>
-                <label for="password-complexity" class="block text-sm text-gray-700 dark:!text-gray-300">
+                <label
+                  for="password-complexity"
+                  class="block text-sm text-gray-700 dark:!text-gray-300"
+                >
                   Enforce password complexity requirements
                 </label>
               </div>
@@ -221,14 +284,24 @@ import { ToastService } from '../../../shared/services/toast.service';
         </div>
 
         <!-- Email Settings -->
-        <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700">
+        <div
+          class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700"
+        >
           <div class="p-6 border-b border-gray-200 dark:!border-gray-700">
-            <h2 class="text-lg font-medium text-gray-900 dark:!text-gray-100">Email Settings</h2>
+            <h2 class="text-lg font-medium text-gray-900 dark:!text-gray-100">
+              Email Settings
+            </h2>
           </div>
-          <form [formGroup]="emailForm" (ngSubmit)="onEmailSubmit()" class="p-6">
+          <form
+            [formGroup]="emailForm"
+            (ngSubmit)="onEmailSubmit()"
+            class="p-6"
+          >
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                <label
+                  class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                >
                   SMTP Server
                 </label>
                 <input
@@ -241,7 +314,9 @@ import { ToastService } from '../../../shared/services/toast.service';
               </div>
 
               <div>
-                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                <label
+                  class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                >
                   SMTP Port
                 </label>
                 <p-inputnumber
@@ -254,7 +329,9 @@ import { ToastService } from '../../../shared/services/toast.service';
               </div>
 
               <div>
-                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                <label
+                  class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                >
                   Username
                 </label>
                 <input
@@ -266,7 +343,9 @@ import { ToastService } from '../../../shared/services/toast.service';
               </div>
 
               <div>
-                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                <label
+                  class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                >
                   Password
                 </label>
                 <p-password
@@ -278,7 +357,9 @@ import { ToastService } from '../../../shared/services/toast.service';
               </div>
 
               <div>
-                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                <label
+                  class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                >
                   From Email
                 </label>
                 <input
@@ -291,7 +372,9 @@ import { ToastService } from '../../../shared/services/toast.service';
               </div>
 
               <div>
-                <label class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1">
+                <label
+                  class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-1"
+                >
                   From Name
                 </label>
                 <input
@@ -312,7 +395,10 @@ import { ToastService } from '../../../shared/services/toast.service';
                   inputId="use-tls"
                   class="mr-2"
                 ></p-checkbox>
-                <label for="use-tls" class="block text-sm text-gray-700 dark:!text-gray-300">
+                <label
+                  for="use-tls"
+                  class="block text-sm text-gray-700 dark:!text-gray-300"
+                >
                   Use TLS encryption
                 </label>
               </div>
@@ -324,7 +410,10 @@ import { ToastService } from '../../../shared/services/toast.service';
                   inputId="email-notifications"
                   class="mr-2"
                 ></p-checkbox>
-                <label for="email-notifications" class="block text-sm text-gray-700 dark:!text-gray-300">
+                <label
+                  for="email-notifications"
+                  class="block text-sm text-gray-700 dark:!text-gray-300"
+                >
                   Enable email notifications
                 </label>
               </div>
@@ -352,15 +441,27 @@ import { ToastService } from '../../../shared/services/toast.service';
         </div>
 
         <!-- System Maintenance -->
-        <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700">
+        <div
+          class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:!border-gray-700"
+        >
           <div class="p-6 border-b border-gray-200 dark:!border-gray-700">
-            <h2 class="text-lg font-medium text-gray-900 dark:!text-gray-100">System Maintenance</h2>
+            <h2 class="text-lg font-medium text-gray-900 dark:!text-gray-100">
+              System Maintenance
+            </h2>
           </div>
           <div class="p-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div class="bg-yellow-50 dark:!bg-yellow-900 border border-yellow-200 dark:!border-yellow-700 rounded-lg p-4">
-                <h3 class="text-sm font-medium text-yellow-800 dark:!text-yellow-200 mb-2">Database Maintenance</h3>
-                <p class="text-sm text-yellow-700 dark:!text-yellow-300 mb-4">Clean up old logs and optimize database performance.</p>
+              <div
+                class="bg-yellow-50 dark:!bg-yellow-900 border border-yellow-200 dark:!border-yellow-700 rounded-lg p-4"
+              >
+                <h3
+                  class="text-sm font-medium text-yellow-800 dark:!text-yellow-200 mb-2"
+                >
+                  Database Maintenance
+                </h3>
+                <p class="text-sm text-yellow-700 dark:!text-yellow-300 mb-4">
+                  Clean up old logs and optimize database performance.
+                </p>
                 <app-button
                   variant="warning"
                   size="sm"
@@ -371,9 +472,17 @@ import { ToastService } from '../../../shared/services/toast.service';
                 </app-button>
               </div>
 
-              <div class="bg-blue-50 dark:!bg-blue-900 border border-blue-200 dark:!border-blue-700 rounded-lg p-4">
-                <h3 class="text-sm font-medium text-blue-800 dark:!text-blue-200 mb-2">Clear Cache</h3>
-                <p class="text-sm text-blue-700 dark:!text-blue-300 mb-4">Clear application cache to improve performance.</p>
+              <div
+                class="bg-blue-50 dark:!bg-blue-900 border border-blue-200 dark:!border-blue-700 rounded-lg p-4"
+              >
+                <h3
+                  class="text-sm font-medium text-blue-800 dark:!text-blue-200 mb-2"
+                >
+                  Clear Cache
+                </h3>
+                <p class="text-sm text-blue-700 dark:!text-blue-300 mb-4">
+                  Clear application cache to improve performance.
+                </p>
                 <app-button
                   variant="secondary"
                   size="sm"
@@ -384,9 +493,17 @@ import { ToastService } from '../../../shared/services/toast.service';
                 </app-button>
               </div>
 
-              <div class="bg-green-50 dark:!bg-green-900 border border-green-200 dark:!border-green-700 rounded-lg p-4">
-                <h3 class="text-sm font-medium text-green-800 dark:!text-green-200 mb-2">Export Data</h3>
-                <p class="text-sm text-green-700 dark:!text-green-300 mb-4">Export system data for backup purposes.</p>
+              <div
+                class="bg-green-50 dark:!bg-green-900 border border-green-200 dark:!border-green-700 rounded-lg p-4"
+              >
+                <h3
+                  class="text-sm font-medium text-green-800 dark:!text-green-200 mb-2"
+                >
+                  Export Data
+                </h3>
+                <p class="text-sm text-green-700 dark:!text-green-300 mb-4">
+                  Export system data for backup purposes.
+                </p>
                 <app-button
                   variant="success"
                   size="sm"
@@ -397,9 +514,17 @@ import { ToastService } from '../../../shared/services/toast.service';
                 </app-button>
               </div>
 
-              <div class="bg-red-50 dark:!bg-red-900 border border-red-200 dark:!border-red-700 rounded-lg p-4">
-                <h3 class="text-sm font-medium text-red-800 dark:!text-red-200 mb-2">System Reset</h3>
-                <p class="text-sm text-red-700 dark:!text-red-300 mb-4">Reset system to default settings (dangerous).</p>
+              <div
+                class="bg-red-50 dark:!bg-red-900 border border-red-200 dark:!border-red-700 rounded-lg p-4"
+              >
+                <h3
+                  class="text-sm font-medium text-red-800 dark:!text-red-200 mb-2"
+                >
+                  System Reset
+                </h3>
+                <p class="text-sm text-red-700 dark:!text-red-300 mb-4">
+                  Reset system to default settings (dangerous).
+                </p>
                 <app-button
                   variant="danger"
                   size="sm"
@@ -413,7 +538,7 @@ import { ToastService } from '../../../shared/services/toast.service';
         </div>
       </div>
     </div>
-  `
+  `,
 })
 export class SettingsComponent {
   private fb = inject(FormBuilder);
@@ -434,20 +559,20 @@ export class SettingsComponent {
     { value: 'en', label: 'English' },
     { value: 'es', label: 'Spanish' },
     { value: 'fr', label: 'French' },
-    { value: 'de', label: 'German' }
+    { value: 'de', label: 'German' },
   ];
 
   timezoneOptions = [
     { value: 'UTC', label: 'UTC' },
     { value: 'EST', label: 'Eastern Time' },
     { value: 'PST', label: 'Pacific Time' },
-    { value: 'GMT', label: 'Greenwich Mean Time' }
+    { value: 'GMT', label: 'Greenwich Mean Time' },
   ];
 
   dateFormatOptions = [
     { value: 'MM/DD/YYYY', label: 'MM/DD/YYYY' },
     { value: 'DD/MM/YYYY', label: 'DD/MM/YYYY' },
-    { value: 'YYYY-MM-DD', label: 'YYYY-MM-DD' }
+    { value: 'YYYY-MM-DD', label: 'YYYY-MM-DD' },
   ];
 
   constructor(private toastService: ToastService) {
@@ -456,7 +581,7 @@ export class SettingsComponent {
       defaultLanguage: ['en'],
       defaultTimezone: ['UTC'],
       dateFormat: ['MM/DD/YYYY'],
-      description: ['Enterprise application platform']
+      description: ['Enterprise application platform'],
     });
 
     this.securityForm = this.fb.group({
@@ -466,7 +591,7 @@ export class SettingsComponent {
       lockoutDuration: [15, [Validators.required, Validators.min(5)]],
       require2FA: [false],
       forceHttps: [true],
-      passwordComplexity: [true]
+      passwordComplexity: [true],
     });
 
     this.emailForm = this.fb.group({
@@ -477,7 +602,7 @@ export class SettingsComponent {
       fromEmail: ['', [Validators.required, Validators.email]],
       fromName: ['', Validators.required],
       useTLS: [true],
-      enableNotifications: [true]
+      enableNotifications: [true],
     });
   }
 
@@ -533,7 +658,9 @@ export class SettingsComponent {
       this.maintenanceLoading = true;
       setTimeout(() => {
         this.maintenanceLoading = false;
-        this.toastService.success('Database maintenance completed successfully!');
+        this.toastService.success(
+          'Database maintenance completed successfully!'
+        );
       }, 3000);
     }
   }
@@ -565,7 +692,9 @@ export class SettingsComponent {
     );
 
     if (confirmed) {
-      this.toastService.warning('System reset cancelled for safety. Contact system administrator.');
+      this.toastService.warning(
+        'System reset cancelled for safety. Contact system administrator.'
+      );
     }
   }
 }

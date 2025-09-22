@@ -19,22 +19,30 @@ export const routes: Routes = [
       {
         path: 'home',
         loadComponent: () =>
-          import('./pages/public/home/home.component').then((c) => c.HomeComponent),
+          import('./pages/public/home/home.component').then(
+            (c) => c.HomeComponent
+          ),
       },
       {
         path: 'about',
         loadComponent: () =>
-          import('./pages/public/about/about.component').then((c) => c.AboutComponent),
+          import('./pages/public/about/about.component').then(
+            (c) => c.AboutComponent
+          ),
       },
       {
         path: 'services',
         loadComponent: () =>
-          import('./pages/public/services/services.component').then((c) => c.ServicesComponent),
+          import('./pages/public/services/services.component').then(
+            (c) => c.ServicesComponent
+          ),
       },
       {
         path: 'contact',
         loadComponent: () =>
-          import('./pages/public/contact/contact.component').then((c) => c.ContactComponent),
+          import('./pages/public/contact/contact.component').then(
+            (c) => c.ContactComponent
+          ),
       },
     ],
   },
@@ -55,17 +63,23 @@ export const routes: Routes = [
       {
         path: 'login',
         loadComponent: () =>
-          import('./features/auth/login.component').then((c) => c.LoginComponent),
+          import('./features/auth/login.component').then(
+            (c) => c.LoginComponent
+          ),
       },
       {
         path: 'register',
         loadComponent: () =>
-          import('./features/auth/register.component').then((c) => c.RegisterComponent),
+          import('./features/auth/register.component').then(
+            (c) => c.RegisterComponent
+          ),
       },
       {
         path: 'forgot-password',
         loadComponent: () =>
-          import('./pages/auth/forgot-password/forgot-password.component').then((c) => c.ForgotPasswordComponent),
+          import('./pages/auth/forgot-password/forgot-password.component').then(
+            (c) => c.ForgotPasswordComponent
+          ),
       },
     ],
   },
@@ -87,17 +101,23 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         loadComponent: () =>
-          import('./features/dashboard/dashboard.component').then((c) => c.DashboardComponent),
+          import('./features/dashboard/dashboard.component').then(
+            (c) => c.DashboardComponent
+          ),
       },
       {
         path: 'projects',
         loadChildren: () =>
-          import('./features/projects/projects.routes').then((r) => r.projectRoutes),
+          import('./features/projects/projects.routes').then(
+            (r) => r.projectRoutes
+          ),
       },
       {
         path: 'profile',
         loadChildren: () =>
-          import('./features/profile/profile.routes').then((r) => r.profileRoutes),
+          import('./features/profile/profile.routes').then(
+            (r) => r.profileRoutes
+          ),
       },
       {
         path: 'team',
@@ -107,7 +127,9 @@ export const routes: Routes = [
       {
         path: 'notifications',
         loadChildren: () =>
-          import('./features/notifications/notifications.routes').then((r) => r.notificationsRoutes),
+          import('./features/notifications/notifications.routes').then(
+            (r) => r.notificationsRoutes
+          ),
       },
     ],
   },
@@ -129,48 +151,76 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         loadComponent: () =>
-          import('./pages/admin/dashboard/admin-dashboard.component').then((c) => c.AdminDashboardComponent),
+          import('./pages/admin/dashboard/admin-dashboard.component').then(
+            (c) => c.AdminDashboardComponent
+          ),
       },
       {
         path: 'users',
         loadChildren: () =>
-          import('./features/admin/users/users.routes').then((r) => r.usersRoutes),
+          import('./features/admin/users/users.routes').then(
+            (r) => r.usersRoutes
+          ),
       },
       {
         path: 'settings',
         loadChildren: () =>
-          import('./features/admin/settings/settings.routes').then((r) => r.settingsRoutes),
+          import('./features/admin/settings/settings.routes').then(
+            (r) => r.settingsRoutes
+          ),
       },
       {
         path: 'profile',
         loadChildren: () =>
-          import('./features/profile/profile.routes').then((r) => r.profileRoutes),
+          import('./features/profile/profile.routes').then(
+            (r) => r.profileRoutes
+          ),
       },
       {
         path: 'notifications',
         loadChildren: () =>
-          import('./features/notifications/notifications.routes').then((r) => r.notificationsRoutes),
+          import('./features/notifications/notifications.routes').then(
+            (r) => r.notificationsRoutes
+          ),
       },
     ],
   },
 
-  // Legacy routes (maintain backward compatibility)
+  // Modern public layout with child routes
   {
-    path: 'modern-sass',
-    loadChildren: () =>
-      import('./layouts/layout.routes').then((r) => r.Layout),
+    path: 'home2',
+    loadComponent: () =>
+      import(
+        './core/layout/public-layout-modern/public-layout-modern.component'
+      ).then((c) => c.PublicLayoutModernComponent),
+    children: [
+      {
+        path: '',
+        loadComponent: () =>
+          import('./pages/public-modern/public-modern.component').then(
+            (c) => c.PublicModernComponent
+          ),
+        data: {
+          title: 'Modern Home | Lalli',
+        },
+      },
+    ],
   },
 
   // Error routes
   {
     path: 'unauthorized',
     loadComponent: () =>
-      import('./pages/errors/unauthorized/unauthorized.component').then((c) => c.UnauthorizedComponent),
+      import('./pages/errors/unauthorized/unauthorized.component').then(
+        (c) => c.UnauthorizedComponent
+      ),
   },
   {
     path: '404',
     loadComponent: () =>
-      import('./pages/errors/not-found/not-found.component').then((c) => c.NotFoundComponent),
+      import('./pages/errors/not-found/not-found.component').then(
+        (c) => c.NotFoundComponent
+      ),
   },
 
   // Wildcard route - must be last

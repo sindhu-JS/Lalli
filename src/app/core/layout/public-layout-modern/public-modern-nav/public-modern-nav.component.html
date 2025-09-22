@@ -1,0 +1,81 @@
+<!--Nav start-->
+<header class="saas2 loding-header nav-abs custom-scroll text-white">
+  <div class="container mx-auto py-2">
+    <div class="flex flex-wrap">
+      <div class="w-full">
+        <nav>
+          <a
+            (click)="scrollToSection('home')"
+            class="inline-block mr-auto cursor-pointer"
+          >
+            <img src="assets/images/logo/1.png" alt="" class="img-fluid" />
+          </a>
+          <div
+            class="flex ml-auto"
+            id="togglebtn"
+            [class.openSidebar]="openSide"
+          >
+            <div class="responsive-btn">
+              <a (click)="toggleSidebar()">
+                <h5>back</h5>
+              </a>
+            </div>
+            <ul class="main-menu">
+              <li>
+                <a
+                  (click)="scrollToSection('home')"
+                  class="nav-link cursor-pointer"
+                >
+                  Home
+                </a>
+              </li>
+              <li>
+                <a
+                  (click)="scrollToSection('services')"
+                  class="nav-link cursor-pointer"
+                >
+                  Features
+                </a>
+              </li>
+              <li>
+                <a
+                  (click)="scrollToSection('screenshot')"
+                  class="nav-link cursor-pointer"
+                >
+                  Screenshots
+                </a>
+              </li>
+              <li>
+                <a
+                  (click)="scrollToSection('plan')"
+                  class="nav-link cursor-pointer"
+                >
+                  Pricing
+                </a>
+              </li>
+              <li>
+                <a
+                  (click)="scrollToSection('contact')"
+                  class="nav-link cursor-pointer"
+                >
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="responsive-btn">
+            <a (click)="toggleSidebar()">
+              <i class="pi pi-bars text-white" aria-hidden="true"></i>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <a
+    class="overlay-sidebar-header"
+    [class.overlay-sidebar-header-open]="openSide"
+    (click)="closeOverlay()"
+  ></a>
+</header>
+<!--Nav end-->

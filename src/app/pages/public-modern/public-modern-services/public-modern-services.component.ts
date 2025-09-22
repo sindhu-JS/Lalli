@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-modern-sass-services',
+  selector: 'app-public-modern-services',
   imports: [],
-  templateUrl: './modern-sass-services.component.html',
-  styleUrls: ['./modern-sass-services.component.scss'],
+  templateUrl: './public-modern-services.component.html',
+  styleUrls: ['./public-modern-services.component.scss'],
 })
-export class ModernSassServicesComponent implements OnInit {
+export class PublicModernServicesComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}

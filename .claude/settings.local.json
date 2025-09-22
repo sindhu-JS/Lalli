@@ -18,7 +18,8 @@
       "WebSearch",
       "Bash(dir \"C:\\MyDevelopment\\Lalli\\public\\assets\\images\\logo\")",
       "Bash(npx tsc:*)",
-      "Bash(npm run lint)"
+      "Bash(npm run lint)",
+      "Bash(copy:*)"
     ],
     "deny": [],
     "ask": []

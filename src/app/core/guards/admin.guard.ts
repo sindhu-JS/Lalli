@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import {
+  CanActivate,
+  CanActivateChild,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+  Router,
+} from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AdminGuard implements CanActivate, CanActivateChild {
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -30,7 +33,7 @@ export class AdminGuard implements CanActivate, CanActivateChild {
   private checkAdminAccess(redirectUrl: string): Observable<boolean> {
     return this.authService.currentUser$.pipe(
       take(1),
-      map(user => {
+      map((user) => {
         // Check if user is authenticated
         if (!user) {
           // Store the attempted URL for redirecting after login
@@ -38,7 +41,7 @@ export class AdminGuard implements CanActivate, CanActivateChild {
 
           // Redirect to login page
           this.router.navigate(['/auth/login'], {
-            queryParams: { returnUrl: redirectUrl }
+            queryParams: { returnUrl: redirectUrl },
           });
 
           return false;
@@ -48,7 +51,7 @@ export class AdminGuard implements CanActivate, CanActivateChild {
         if (user.role !== 'admin') {
           // Redirect to unauthorized page or main dashboard
           this.router.navigate(['/unauthorized'], {
-            queryParams: { message: 'Admin access required' }
+            queryParams: { message: 'Admin access required' },
           });
 
           return false;

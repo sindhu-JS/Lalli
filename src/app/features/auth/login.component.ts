@@ -1,6 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  ReactiveFormsModule,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
@@ -13,16 +18,33 @@ import { ToastService } from '../../shared/services/toast.service';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterModule, InputTextModule, PasswordModule, CheckboxModule, MessageModule, ButtonComponent],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    RouterModule,
+    InputTextModule,
+    PasswordModule,
+    CheckboxModule,
+    MessageModule,
+    ButtonComponent,
+  ],
   template: `
     <div class="login-form">
       <div class="text-center mb-8">
-        <h2 class="text-3xl font-bold text-gray-900 dark:!text-gray-100">Sign In</h2>
-        <p class="text-gray-600 dark:!text-gray-400 mt-2">Welcome back! Please sign in to your account.</p>
+        <h2 class="text-3xl font-bold text-gray-900 dark:!text-gray-100">
+          Sign In
+        </h2>
+        <p class="text-gray-600 dark:!text-gray-400 mt-2">
+          Welcome back! Please sign in to your account.
+        </p>
 
         <!-- Demo Credentials -->
-        <div class="mt-4 p-4 bg-blue-50 dark:!bg-blue-900/20 border border-blue-200 dark:!border-blue-800 rounded-lg">
-          <p class="text-sm font-medium text-blue-800 dark:!text-blue-200 mb-2">Demo Credentials (click to auto-fill):</p>
+        <div
+          class="mt-4 p-4 bg-blue-50 dark:!bg-blue-900/20 border border-blue-200 dark:!border-blue-800 rounded-lg"
+        >
+          <p class="text-sm font-medium text-blue-800 dark:!text-blue-200 mb-2">
+            Demo Credentials (click to auto-fill):
+          </p>
           <div class="text-sm text-blue-700 dark:!text-blue-300 space-y-2">
             <button
               type="button"
@@ -44,7 +66,10 @@ import { ToastService } from '../../shared/services/toast.service';
 
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-6">
         <div>
-          <label for="email" class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-2">
+          <label
+            for="email"
+            class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-2"
+          >
             Email Address
           </label>
           <input
@@ -56,16 +81,19 @@ import { ToastService } from '../../shared/services/toast.service';
             placeholder="Enter your email"
           />
           @if (isFieldInvalid('email')) {
-            <p-message
-              severity="error"
-              class="mt-1"
-              [text]="getEmailErrorMessage()"
-            ></p-message>
+          <p-message
+            severity="error"
+            class="mt-1"
+            [text]="getEmailErrorMessage()"
+          ></p-message>
           }
         </div>
 
         <div>
-          <label for="password" class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-2">
+          <label
+            for="password"
+            class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-2"
+          >
             Password
           </label>
           <p-password
@@ -77,11 +105,11 @@ import { ToastService } from '../../shared/services/toast.service';
             inputStyleClass="w-full"
           ></p-password>
           @if (isFieldInvalid('password')) {
-            <p-message
-              severity="error"
-              class="mt-1"
-              text="Password is required"
-            ></p-message>
+          <p-message
+            severity="error"
+            class="mt-1"
+            text="Password is required"
+          ></p-message>
           }
         </div>
 
@@ -92,7 +120,10 @@ import { ToastService } from '../../shared/services/toast.service';
               formControlName="rememberMe"
               [binary]="true"
             ></p-checkbox>
-            <label for="remember-me" class="ml-2 block text-sm text-gray-700 dark:!text-gray-300">
+            <label
+              for="remember-me"
+              class="ml-2 block text-sm text-gray-700 dark:!text-gray-300"
+            >
               Remember me
             </label>
           </div>
@@ -108,10 +139,7 @@ import { ToastService } from '../../shared/services/toast.service';
         </div>
 
         @if (errorMessage) {
-          <p-message
-            severity="error"
-            [text]="errorMessage"
-          ></p-message>
+        <p-message severity="error" [text]="errorMessage"></p-message>
         }
 
         <div class="flex justify-between space-x-3">
@@ -141,13 +169,16 @@ import { ToastService } from '../../shared/services/toast.service';
       <div class="mt-6 text-center">
         <p class="text-sm text-gray-600 dark:!text-gray-400">
           Don't have an account?
-          <a routerLink="/auth/register" class="text-blue-600 hover:text-blue-500 dark:!text-blue-400 dark:hover:!text-blue-300 font-medium">
+          <a
+            routerLink="/auth/register"
+            class="text-blue-600 hover:text-blue-500 dark:!text-blue-400 dark:hover:!text-blue-300 font-medium"
+          >
             Sign up
           </a>
         </p>
       </div>
     </div>
-  `
+  `,
 })
 export class LoginComponent {
   private fb = inject(FormBuilder);
@@ -163,14 +194,14 @@ export class LoginComponent {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
-      rememberMe: [false]
+      rememberMe: [false],
     });
   }
 
   fillCredentials(email: string, password: string): void {
     this.loginForm.patchValue({
       email: email,
-      password: password
+      password: password,
     });
   }
 
@@ -212,9 +243,11 @@ export class LoginComponent {
         },
         error: (error) => {
           this.isLoading = false;
-          this.errorMessage = error.message || 'An error occurred during login. Please try again.';
+          this.errorMessage =
+            error.message ||
+            'An error occurred during login. Please try again.';
           this.toastService.error(this.errorMessage, 'Login Failed');
-        }
+        },
       });
     }
   }

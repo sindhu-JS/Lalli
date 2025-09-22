@@ -10,7 +10,7 @@ export interface ToastOptions {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ToastService {
   constructor(
@@ -30,7 +30,7 @@ export class ToastService {
       life: options?.life || 5000,
       sticky: options?.sticky || false,
       closable: options?.closable !== false,
-      data: options?.data
+      data: options?.data,
     });
   }
 
@@ -46,7 +46,7 @@ export class ToastService {
       life: options?.life || 7000,
       sticky: options?.sticky || false,
       closable: options?.closable !== false,
-      data: options?.data
+      data: options?.data,
     });
   }
 
@@ -62,7 +62,7 @@ export class ToastService {
       life: options?.life || 5000,
       sticky: options?.sticky || false,
       closable: options?.closable !== false,
-      data: options?.data
+      data: options?.data,
     });
   }
 
@@ -78,14 +78,19 @@ export class ToastService {
       life: options?.life || 6000,
       sticky: options?.sticky || false,
       closable: options?.closable !== false,
-      data: options?.data
+      data: options?.data,
     });
   }
 
   /**
    * Show a custom toast message
    */
-  show(severity: 'success' | 'info' | 'warn' | 'error' | 'secondary' | 'contrast', message: string, title?: string, options?: ToastOptions): void {
+  show(
+    severity: 'success' | 'info' | 'warn' | 'error' | 'secondary' | 'contrast',
+    message: string,
+    title?: string,
+    options?: ToastOptions
+  ): void {
     this.messageService.add({
       severity,
       summary: title,
@@ -94,7 +99,7 @@ export class ToastService {
       life: options?.life || 5000,
       sticky: options?.sticky || false,
       closable: options?.closable !== false,
-      data: options?.data
+      data: options?.data,
     });
   }
 
@@ -127,7 +132,7 @@ export class ToastService {
         acceptButtonStyleClass,
         rejectButtonStyleClass,
         accept: () => resolve(true),
-        reject: () => resolve(false)
+        reject: () => resolve(false),
       });
     });
   }

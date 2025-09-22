@@ -16,8 +16,9 @@ import { RouterModule } from '@angular/router';
               Welcome to Our Platform
             </h1>
             <p class="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
-              Experience the power of modern web applications built with cutting-edge technology.
-              Join thousands of users who trust our platform for their business needs.
+              Experience the power of modern web applications built with
+              cutting-edge technology. Join thousands of users who trust our
+              platform for their business needs.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -45,38 +46,48 @@ import { RouterModule } from '@angular/router';
               Why Choose Our Platform?
             </h2>
             <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-              We provide everything you need to succeed in today's digital landscape
+              We provide everything you need to succeed in today's digital
+              landscape
             </p>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="text-center p-6">
-              <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div
+                class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4"
+              >
                 <i class="pi pi-send text-2xl text-blue-600"></i>
               </div>
               <h3 class="text-xl font-semibold mb-3">Lightning Fast</h3>
               <p class="text-gray-600">
-                Built for speed and performance. Experience blazing fast load times and smooth interactions.
+                Built for speed and performance. Experience blazing fast load
+                times and smooth interactions.
               </p>
             </div>
 
             <div class="text-center p-6">
-              <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div
+                class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"
+              >
                 <i class="pi pi-shield text-2xl text-green-600"></i>
               </div>
               <h3 class="text-xl font-semibold mb-3">Secure & Reliable</h3>
               <p class="text-gray-600">
-                Enterprise-grade security with 99.9% uptime guarantee. Your data is always safe with us.
+                Enterprise-grade security with 99.9% uptime guarantee. Your data
+                is always safe with us.
               </p>
             </div>
 
             <div class="text-center p-6">
-              <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div
+                class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4"
+              >
                 <i class="pi pi-users text-2xl text-purple-600"></i>
               </div>
               <h3 class="text-xl font-semibold mb-3">Team Collaboration</h3>
               <p class="text-gray-600">
-                Work seamlessly with your team. Real-time collaboration tools built for modern workflows.
+                Work seamlessly with your team. Real-time collaboration tools
+                built for modern workflows.
               </p>
             </div>
           </div>
@@ -90,7 +101,8 @@ import { RouterModule } from '@angular/router';
             Ready to Get Started?
           </h2>
           <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Join over 10,000 companies that trust our platform for their business operations.
+            Join over 10,000 companies that trust our platform for their
+            business operations.
           </p>
           <a
             routerLink="/auth/register"
@@ -101,6 +113,6 @@ import { RouterModule } from '@angular/router';
         </div>
       </section>
     </div>
-  `
+  `,
 })
 export class HomeComponent {}

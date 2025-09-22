@@ -8,7 +8,9 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
   standalone: true,
   imports: [CommonModule, RouterModule, ButtonComponent],
   template: `
-    <div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div
+      class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8"
+    >
       <div class="max-w-md w-full space-y-8">
         <div class="text-center">
           <div class="mx-auto h-24 w-24 text-red-500">
@@ -34,8 +36,9 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
                 </h3>
                 <div class="mt-2 text-sm text-red-700">
                   <p>
-                    This page requires special permissions that your account doesn't have.
-                    Please contact your administrator if you believe this is an error.
+                    This page requires special permissions that your account
+                    doesn't have. Please contact your administrator if you
+                    believe this is an error.
                   </p>
                 </div>
               </div>
@@ -65,7 +68,10 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
           <div class="text-center">
             <p class="text-sm text-gray-500">
               Need help?
-              <a routerLink="/contact" class="font-medium text-blue-600 hover:text-blue-500">
+              <a
+                routerLink="/contact"
+                class="font-medium text-blue-600 hover:text-blue-500"
+              >
                 Contact Support
               </a>
             </p>
@@ -73,7 +79,7 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
         </div>
       </div>
     </div>
-  `
+  `,
 })
 export class UnauthorizedComponent {
   goBack(): void {

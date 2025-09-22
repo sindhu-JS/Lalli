@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import {
+  CanActivate,
+  CanActivateChild,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+  Router,
+} from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthGuard implements CanActivate, CanActivateChild {
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -30,7 +33,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   private checkAuth(redirectUrl: string): Observable<boolean> {
     return this.authService.isAuthenticated$.pipe(
       take(1),
-      map(isAuthenticated => {
+      map((isAuthenticated) => {
         if (isAuthenticated) {
           return true;
         }
@@ -40,7 +43,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
 
         // Redirect to login page
         this.router.navigate(['/auth/login'], {
-          queryParams: { returnUrl: redirectUrl }
+          queryParams: { returnUrl: redirectUrl },
         });
 
         return false;

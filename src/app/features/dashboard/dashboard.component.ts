@@ -23,8 +23,14 @@ import { AuthService } from '../../shared/services/auth.service';
           <div class="hidden md:block">
             <div class="flex items-center space-x-4">
               <div class="text-right">
-                <p class="text-sm text-gray-500 dark:!text-gray-400">Member since</p>
-                <p class="text-sm font-medium text-gray-900 dark:!text-gray-100">{{ memberSince() }}</p>
+                <p class="text-sm text-gray-500 dark:!text-gray-400">
+                  Member since
+                </p>
+                <p
+                  class="text-sm font-medium text-gray-900 dark:!text-gray-100"
+                >
+                  {{ memberSince() }}
+                </p>
               </div>
               <img
                 [src]="avatarUrl()"
@@ -41,13 +47,19 @@ import { AuthService } from '../../shared/services/auth.service';
         <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm p-6">
           <div class="flex items-center">
             <div class="flex-shrink-0">
-              <div class="w-8 h-8 bg-blue-100 rounded-md flex items-center justify-center">
+              <div
+                class="w-8 h-8 bg-blue-100 rounded-md flex items-center justify-center"
+              >
                 <i class="pi pi-chart-line text-blue-600"></i>
               </div>
             </div>
             <div class="ml-4">
-              <p class="text-sm font-medium text-gray-500 dark:!text-gray-400">Total Projects</p>
-              <p class="text-2xl font-bold text-gray-900 dark:!text-gray-100">{{ stats.projects }}</p>
+              <p class="text-sm font-medium text-gray-500 dark:!text-gray-400">
+                Total Projects
+              </p>
+              <p class="text-2xl font-bold text-gray-900 dark:!text-gray-100">
+                {{ stats.projects }}
+              </p>
             </div>
           </div>
         </div>
@@ -55,13 +67,19 @@ import { AuthService } from '../../shared/services/auth.service';
         <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm p-6">
           <div class="flex items-center">
             <div class="flex-shrink-0">
-              <div class="w-8 h-8 bg-green-100 rounded-md flex items-center justify-center">
+              <div
+                class="w-8 h-8 bg-green-100 rounded-md flex items-center justify-center"
+              >
                 <i class="pi pi-check-circle text-green-600"></i>
               </div>
             </div>
             <div class="ml-4">
-              <p class="text-sm font-medium text-gray-500 dark:!text-gray-400">Completed</p>
-              <p class="text-2xl font-bold text-gray-900 dark:!text-gray-100">{{ stats.completed }}</p>
+              <p class="text-sm font-medium text-gray-500 dark:!text-gray-400">
+                Completed
+              </p>
+              <p class="text-2xl font-bold text-gray-900 dark:!text-gray-100">
+                {{ stats.completed }}
+              </p>
             </div>
           </div>
         </div>
@@ -69,13 +87,19 @@ import { AuthService } from '../../shared/services/auth.service';
         <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm p-6">
           <div class="flex items-center">
             <div class="flex-shrink-0">
-              <div class="w-8 h-8 bg-yellow-100 rounded-md flex items-center justify-center">
+              <div
+                class="w-8 h-8 bg-yellow-100 rounded-md flex items-center justify-center"
+              >
                 <i class="pi pi-clock text-yellow-600"></i>
               </div>
             </div>
             <div class="ml-4">
-              <p class="text-sm font-medium text-gray-500 dark:!text-gray-400">In Progress</p>
-              <p class="text-2xl font-bold text-gray-900 dark:!text-gray-100">{{ stats.inProgress }}</p>
+              <p class="text-sm font-medium text-gray-500 dark:!text-gray-400">
+                In Progress
+              </p>
+              <p class="text-2xl font-bold text-gray-900 dark:!text-gray-100">
+                {{ stats.inProgress }}
+              </p>
             </div>
           </div>
         </div>
@@ -83,13 +107,19 @@ import { AuthService } from '../../shared/services/auth.service';
         <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm p-6">
           <div class="flex items-center">
             <div class="flex-shrink-0">
-              <div class="w-8 h-8 bg-purple-100 rounded-md flex items-center justify-center">
+              <div
+                class="w-8 h-8 bg-purple-100 rounded-md flex items-center justify-center"
+              >
                 <i class="pi pi-users text-purple-600"></i>
               </div>
             </div>
             <div class="ml-4">
-              <p class="text-sm font-medium text-gray-500 dark:!text-gray-400">Team Members</p>
-              <p class="text-2xl font-bold text-gray-900 dark:!text-gray-100">{{ stats.teamMembers }}</p>
+              <p class="text-sm font-medium text-gray-500 dark:!text-gray-400">
+                Team Members
+              </p>
+              <p class="text-2xl font-bold text-gray-900 dark:!text-gray-100">
+                {{ stats.teamMembers }}
+              </p>
             </div>
           </div>
         </div>
@@ -100,32 +130,40 @@ import { AuthService } from '../../shared/services/auth.service';
         <!-- Recent Activity -->
         <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm">
           <div class="p-6 border-b border-gray-200 dark:!border-gray-700">
-            <h3 class="text-lg font-medium text-gray-900 dark:!text-gray-100">Recent Activity</h3>
+            <h3 class="text-lg font-medium text-gray-900 dark:!text-gray-100">
+              Recent Activity
+            </h3>
           </div>
           <div class="p-6">
             <div class="flow-root">
               <ul class="-my-5 divide-y divide-gray-200 dark:!divide-gray-700">
                 @for (activity of recentActivities; track activity.id) {
-                  <li class="py-4">
-                    <div class="flex items-center space-x-4">
-                      <div class="flex-shrink-0">
-                        <div [class]="getActivityIconClass(activity.type)">
-                          <i [class]="getActivityIcon(activity.type)"></i>
-                        </div>
-                      </div>
-                      <div class="flex-1 min-w-0">
-                        <p class="text-sm font-medium text-gray-900 dark:!text-gray-100 truncate">
-                          {{ activity.title }}
-                        </p>
-                        <p class="text-sm text-gray-500 dark:!text-gray-400 truncate">
-                          {{ activity.description }}
-                        </p>
-                      </div>
-                      <div class="flex-shrink-0 text-sm text-gray-500 dark:!text-gray-400">
-                        {{ activity.time }}
+                <li class="py-4">
+                  <div class="flex items-center space-x-4">
+                    <div class="flex-shrink-0">
+                      <div [class]="getActivityIconClass(activity.type)">
+                        <i [class]="getActivityIcon(activity.type)"></i>
                       </div>
                     </div>
-                  </li>
+                    <div class="flex-1 min-w-0">
+                      <p
+                        class="text-sm font-medium text-gray-900 dark:!text-gray-100 truncate"
+                      >
+                        {{ activity.title }}
+                      </p>
+                      <p
+                        class="text-sm text-gray-500 dark:!text-gray-400 truncate"
+                      >
+                        {{ activity.description }}
+                      </p>
+                    </div>
+                    <div
+                      class="flex-shrink-0 text-sm text-gray-500 dark:!text-gray-400"
+                    >
+                      {{ activity.time }}
+                    </div>
+                  </div>
+                </li>
                 }
               </ul>
             </div>
@@ -143,7 +181,9 @@ import { AuthService } from '../../shared/services/auth.service';
         <!-- Quick Actions -->
         <div class="bg-white dark:!bg-gray-800 rounded-lg shadow-sm">
           <div class="p-6 border-b border-gray-200 dark:!border-gray-700">
-            <h3 class="text-lg font-medium text-gray-900 dark:!text-gray-100">Quick Actions</h3>
+            <h3 class="text-lg font-medium text-gray-900 dark:!text-gray-100">
+              Quick Actions
+            </h3>
           </div>
           <div class="p-6">
             <div class="grid grid-cols-2 gap-4">
@@ -152,7 +192,9 @@ import { AuthService } from '../../shared/services/auth.service';
                 class="relative group bg-gray-50 dark:!bg-gray-700 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-500 rounded-lg hover:bg-gray-100 dark:hover:!bg-gray-700"
               >
                 <div>
-                  <span class="rounded-lg inline-flex p-3 bg-blue-50 text-blue-700 group-hover:bg-blue-100">
+                  <span
+                    class="rounded-lg inline-flex p-3 bg-blue-50 text-blue-700 group-hover:bg-blue-100"
+                  >
                     <i class="pi pi-plus"></i>
                   </span>
                 </div>
@@ -172,7 +214,9 @@ import { AuthService } from '../../shared/services/auth.service';
                 class="relative group bg-gray-50 dark:!bg-gray-700 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-500 rounded-lg hover:bg-gray-100 dark:hover:!bg-gray-700"
               >
                 <div>
-                  <span class="rounded-lg inline-flex p-3 bg-green-50 text-green-700 group-hover:bg-green-100">
+                  <span
+                    class="rounded-lg inline-flex p-3 bg-green-50 text-green-700 group-hover:bg-green-100"
+                  >
                     <i class="pi pi-user-plus"></i>
                   </span>
                 </div>
@@ -192,7 +236,9 @@ import { AuthService } from '../../shared/services/auth.service';
                 class="relative group bg-gray-50 dark:!bg-gray-700 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-500 rounded-lg hover:bg-gray-100 dark:hover:!bg-gray-700"
               >
                 <div>
-                  <span class="rounded-lg inline-flex p-3 bg-purple-50 text-purple-700 group-hover:bg-purple-100">
+                  <span
+                    class="rounded-lg inline-flex p-3 bg-purple-50 text-purple-700 group-hover:bg-purple-100"
+                  >
                     <i class="pi pi-cog"></i>
                   </span>
                 </div>
@@ -211,7 +257,9 @@ import { AuthService } from '../../shared/services/auth.service';
                 class="relative group bg-gray-50 dark:!bg-gray-700 p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-500 rounded-lg hover:bg-gray-100 dark:hover:!bg-gray-700"
               >
                 <div>
-                  <span class="rounded-lg inline-flex p-3 bg-orange-50 text-orange-700 group-hover:bg-orange-100">
+                  <span
+                    class="rounded-lg inline-flex p-3 bg-orange-50 text-orange-700 group-hover:bg-orange-100"
+                  >
                     <i class="pi pi-question-circle"></i>
                   </span>
                 </div>
@@ -230,7 +278,7 @@ import { AuthService } from '../../shared/services/auth.service';
         </div>
       </div>
     </div>
-  `
+  `,
 })
 export class DashboardComponent implements OnInit {
   private authService = inject(AuthService);
@@ -241,7 +289,7 @@ export class DashboardComponent implements OnInit {
     projects: 12,
     completed: 8,
     inProgress: 4,
-    teamMembers: 6
+    teamMembers: 6,
   };
 
   recentActivities = [
@@ -250,29 +298,29 @@ export class DashboardComponent implements OnInit {
       type: 'project',
       title: 'New project created',
       description: 'Website Redesign project has been created',
-      time: '2 hours ago'
+      time: '2 hours ago',
     },
     {
       id: 2,
       type: 'task',
       title: 'Task completed',
       description: 'Homepage wireframes have been completed',
-      time: '4 hours ago'
+      time: '4 hours ago',
     },
     {
       id: 3,
       type: 'team',
       title: 'New team member',
       description: 'Sarah Johnson joined the team',
-      time: '1 day ago'
+      time: '1 day ago',
     },
     {
       id: 4,
       type: 'update',
       title: 'Project updated',
       description: 'Mobile App project status changed to In Progress',
-      time: '2 days ago'
-    }
+      time: '2 days ago',
+    },
   ];
 
   memberSince = computed(() => {
@@ -282,7 +330,9 @@ export class DashboardComponent implements OnInit {
   avatarUrl = computed(() => {
     const user = this.currentUser();
     return user?.email
-      ? `https://www.gravatar.com/avatar/${this.hashEmail(user.email)}?d=identicon&s=48`
+      ? `https://www.gravatar.com/avatar/${this.hashEmail(
+          user.email
+        )}?d=identicon&s=48`
       : 'https://i.pravatar.cc/48';
   });
 
@@ -301,14 +351,15 @@ export class DashboardComponent implements OnInit {
     let hash = 0;
     for (let i = 0; i < email.length; i++) {
       const char = email.charCodeAt(i);
-      hash = ((hash << 5) - hash) + char;
+      hash = (hash << 5) - hash + char;
       hash = hash & hash; // Convert to 32-bit integer
     }
     return Math.abs(hash).toString(16);
   }
 
   getActivityIconClass(type: string): string {
-    const baseClasses = 'w-8 h-8 rounded-full flex items-center justify-center text-sm';
+    const baseClasses =
+      'w-8 h-8 rounded-full flex items-center justify-center text-sm';
     switch (type) {
       case 'project':
         return `${baseClasses} bg-blue-100 text-blue-600`;

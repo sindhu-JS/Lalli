@@ -18,11 +18,13 @@ const appConfigWithTheme = {
         options: {
           prefix: 'p',
           darkModeSelector: '.p-dark',
-          cssLayer: false
-        }
-      }
-    })
-  ]
+          cssLayer: false,
+        },
+      },
+    }),
+  ],
 };
 
-bootstrapApplication(App, appConfigWithTheme).catch((err) => console.error(err));
+bootstrapApplication(App, appConfigWithTheme).catch((err) =>
+  console.error(err)
+);

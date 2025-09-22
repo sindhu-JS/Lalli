@@ -1,6 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormsModule, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import {
+  ReactiveFormsModule,
+  FormsModule,
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormArray,
+} from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { TextareaModule } from 'primeng/textarea';
 import { SelectModule } from 'primeng/select';
@@ -16,19 +23,34 @@ interface FormField {
   label: string;
   type: string;
   required: boolean;
-  options?: { value: string; label: string; }[];
+  options?: { value: string; label: string }[];
 }
 
 @Component({
   selector: 'app-forms',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, InputTextModule, TextareaModule, SelectModule, CheckboxModule, RadioButtonModule, MessageModule, ButtonModule, ButtonComponent],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    InputTextModule,
+    TextareaModule,
+    SelectModule,
+    CheckboxModule,
+    RadioButtonModule,
+    MessageModule,
+    ButtonModule,
+    ButtonComponent,
+  ],
   template: `
     <div class="forms-demo max-w-4xl mx-auto">
       <div class="mb-8">
-        <h1 class="text-3xl font-bold text-gray-900 mb-2">Dynamic Forms Demo</h1>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">
+          Dynamic Forms Demo
+        </h1>
         <p class="text-gray-600">
-          This demonstrates various form controls and validation patterns using Angular Reactive Forms.
+          This demonstrates various form controls and validation patterns using
+          Angular Reactive Forms.
         </p>
       </div>
 
@@ -37,7 +59,11 @@ interface FormField {
         <div class="bg-white rounded-lg shadow-sm border p-6">
           <h2 class="text-xl font-semibold text-gray-900 mb-6">Contact Form</h2>
 
-          <form [formGroup]="contactForm" (ngSubmit)="onContactSubmit()" class="space-y-4">
+          <form
+            [formGroup]="contactForm"
+            (ngSubmit)="onContactSubmit()"
+            class="space-y-4"
+          >
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">
@@ -50,7 +76,11 @@ interface FormField {
                   class="w-full"
                 />
                 @if (isContactFieldInvalid('firstName')) {
-                  <p-message severity="error" class="mt-1" text="First name is required"></p-message>
+                <p-message
+                  severity="error"
+                  class="mt-1"
+                  text="First name is required"
+                ></p-message>
                 }
               </div>
 
@@ -65,7 +95,11 @@ interface FormField {
                   class="w-full"
                 />
                 @if (isContactFieldInvalid('lastName')) {
-                  <p-message severity="error" class="mt-1" text="Last name is required"></p-message>
+                <p-message
+                  severity="error"
+                  class="mt-1"
+                  text="Last name is required"
+                ></p-message>
                 }
               </div>
             </div>
@@ -81,8 +115,11 @@ interface FormField {
                 class="w-full"
               />
               @if (isContactFieldInvalid('email')) {
-                <p-message severity="error" class="mt-1"
-                  [text]="contactForm.get('email')?.errors?.['required'] ? 'Email is required' : 'Please enter a valid email address'"></p-message>
+              <p-message
+                severity="error"
+                class="mt-1"
+                [text]="contactForm.get('email')?.errors?.['required'] ? 'Email is required' : 'Please enter a valid email address'"
+              ></p-message>
               }
             </div>
 
@@ -97,7 +134,11 @@ interface FormField {
                 class="w-full"
               ></p-select>
               @if (isContactFieldInvalid('subject')) {
-                <p-message severity="error" class="mt-1" text="Please select a subject"></p-message>
+              <p-message
+                severity="error"
+                class="mt-1"
+                text="Please select a subject"
+              ></p-message>
               }
             </div>
 
@@ -113,7 +154,11 @@ interface FormField {
                 placeholder="Please describe your inquiry..."
               ></textarea>
               @if (isContactFieldInvalid('message')) {
-                <p-message severity="error" class="mt-1" text="Message is required"></p-message>
+              <p-message
+                severity="error"
+                class="mt-1"
+                text="Message is required"
+              ></p-message>
               }
             </div>
 
@@ -146,57 +191,60 @@ interface FormField {
 
         <!-- Dynamic Form Builder -->
         <div class="bg-white rounded-lg shadow-sm border p-6">
-          <h2 class="text-xl font-semibold text-gray-900 mb-6">Dynamic Form Builder</h2>
+          <h2 class="text-xl font-semibold text-gray-900 mb-6">
+            Dynamic Form Builder
+          </h2>
 
-          <form [formGroup]="dynamicForm" (ngSubmit)="onDynamicSubmit()" class="space-y-4">
+          <form
+            [formGroup]="dynamicForm"
+            (ngSubmit)="onDynamicSubmit()"
+            class="space-y-4"
+          >
             @for (field of formFields; track field.name) {
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">
-                  {{ field.label }}
-                  @if (field.required) { * }
-                </label>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">
+                {{ field.label }}
+                @if (field.required) { * }
+              </label>
 
-                @switch (field.type) {
-                  @case ('text') {
-                    <input
-                      pInputText
-                      type="text"
-                      [formControlName]="field.name"
-                      class="w-full"
-                    />
-                  }
-                  @case ('email') {
-                    <input
-                      pInputText
-                      type="email"
-                      [formControlName]="field.name"
-                      class="w-full"
-                    />
-                  }
-                  @case ('select') {
-                    <p-select
-                      [formControlName]="field.name"
-                      [options]="field.options || []"
-                      placeholder="Choose an option"
-                      optionLabel="label"
-                      optionValue="value"
-                      class="w-full"
-                    ></p-select>
-                  }
-                  @case ('textarea') {
-                    <textarea
-                      pTextarea
-                      [formControlName]="field.name"
-                      rows="3"
-                      class="w-full"
-                    ></textarea>
-                  }
-                }
-
-                @if (isDynamicFieldInvalid(field.name)) {
-                  <p-message severity="error" class="mt-1" [text]="field.label + ' is required'"></p-message>
-                }
-              </div>
+              @switch (field.type) { @case ('text') {
+              <input
+                pInputText
+                type="text"
+                [formControlName]="field.name"
+                class="w-full"
+              />
+              } @case ('email') {
+              <input
+                pInputText
+                type="email"
+                [formControlName]="field.name"
+                class="w-full"
+              />
+              } @case ('select') {
+              <p-select
+                [formControlName]="field.name"
+                [options]="field.options || []"
+                placeholder="Choose an option"
+                optionLabel="label"
+                optionValue="value"
+                class="w-full"
+              ></p-select>
+              } @case ('textarea') {
+              <textarea
+                pTextarea
+                [formControlName]="field.name"
+                rows="3"
+                class="w-full"
+              ></textarea>
+              } } @if (isDynamicFieldInvalid(field.name)) {
+              <p-message
+                severity="error"
+                class="mt-1"
+                [text]="field.label + ' is required'"
+              ></p-message>
+              }
+            </div>
             }
 
             <div class="pt-4">
@@ -214,7 +262,9 @@ interface FormField {
 
           <!-- Form Configuration -->
           <div class="mt-8 pt-8 border-t border-gray-200">
-            <h3 class="text-lg font-medium text-gray-900 mb-4">Add Form Field</h3>
+            <h3 class="text-lg font-medium text-gray-900 mb-4">
+              Add Form Field
+            </h3>
             <div class="grid grid-cols-2 gap-3">
               <p-select
                 [(ngModel)]="newFieldType"
@@ -238,13 +288,16 @@ interface FormField {
 
       <!-- Form Submission Results -->
       @if (lastSubmission) {
-        <div class="mt-8 bg-green-50 border border-green-200 rounded-lg p-6">
-          <h3 class="text-lg font-medium text-green-800 mb-2">Last Submission</h3>
-          <pre class="text-sm text-green-700 bg-green-100 p-4 rounded overflow-x-auto">{{ lastSubmission | json }}</pre>
-        </div>
+      <div class="mt-8 bg-green-50 border border-green-200 rounded-lg p-6">
+        <h3 class="text-lg font-medium text-green-800 mb-2">Last Submission</h3>
+        <pre
+          class="text-sm text-green-700 bg-green-100 p-4 rounded overflow-x-auto"
+          >{{ lastSubmission | json }}</pre
+        >
+      </div>
       }
     </div>
-  `
+  `,
 })
 export class FormsComponent {
   private fb = inject(FormBuilder);
@@ -260,26 +313,35 @@ export class FormsComponent {
     { value: 'general', label: 'General Inquiry' },
     { value: 'support', label: 'Technical Support' },
     { value: 'billing', label: 'Billing Question' },
-    { value: 'feature', label: 'Feature Request' }
+    { value: 'feature', label: 'Feature Request' },
   ];
 
   fieldTypeOptions = [
     { value: 'text', label: 'Text Input' },
     { value: 'email', label: 'Email Input' },
     { value: 'select', label: 'Select Dropdown' },
-    { value: 'textarea', label: 'Text Area' }
+    { value: 'textarea', label: 'Text Area' },
   ];
 
   formFields: FormField[] = [
     { name: 'username', label: 'Username', type: 'text', required: true },
-    { name: 'priority', label: 'Priority', type: 'select', required: true,
+    {
+      name: 'priority',
+      label: 'Priority',
+      type: 'select',
+      required: true,
       options: [
         { value: 'low', label: 'Low' },
         { value: 'medium', label: 'Medium' },
-        { value: 'high', label: 'High' }
-      ]
+        { value: 'high', label: 'High' },
+      ],
     },
-    { name: 'description', label: 'Description', type: 'textarea', required: false }
+    {
+      name: 'description',
+      label: 'Description',
+      type: 'textarea',
+      required: false,
+    },
   ];
 
   constructor() {
@@ -289,7 +351,7 @@ export class FormsComponent {
       email: ['', [Validators.required, Validators.email]],
       subject: ['', Validators.required],
       message: ['', Validators.required],
-      subscribe: [false]
+      subscribe: [false],
     });
 
     this.dynamicForm = this.createDynamicForm();
@@ -298,7 +360,7 @@ export class FormsComponent {
   createDynamicForm(): FormGroup {
     const group: any = {};
 
-    this.formFields.forEach(field => {
+    this.formFields.forEach((field) => {
       const validators = field.required ? [Validators.required] : [];
       if (field.type === 'email') {
         validators.push(Validators.email);
@@ -318,7 +380,7 @@ export class FormsComponent {
         this.lastSubmission = {
           type: 'Contact Form',
           data: this.contactForm.value,
-          timestamp: new Date().toISOString()
+          timestamp: new Date().toISOString(),
         };
         this.contactLoading = false;
         this.contactForm.reset();
@@ -335,7 +397,7 @@ export class FormsComponent {
         this.lastSubmission = {
           type: 'Dynamic Form',
           data: this.dynamicForm.value,
-          timestamp: new Date().toISOString()
+          timestamp: new Date().toISOString(),
         };
         this.dynamicLoading = false;
         this.dynamicForm.reset();
@@ -349,14 +411,14 @@ export class FormsComponent {
       name: fieldName,
       label: `New ${this.newFieldType} Field`,
       type: this.newFieldType,
-      required: true
+      required: true,
     };
 
     if (this.newFieldType === 'select') {
       newField.options = [
         { value: 'option1', label: 'Option 1' },
         { value: 'option2', label: 'Option 2' },
-        { value: 'option3', label: 'Option 3' }
+        { value: 'option3', label: 'Option 3' },
       ];
     }
 

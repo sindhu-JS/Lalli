@@ -15,10 +15,10 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
         [animationDuration]="'.5s'"
       ></p-progressSpinner>
       @if (text) {
-        <span class="ml-3 text-gray-600" [class]="textClass">{{ text }}</span>
+      <span class="ml-3 text-gray-600" [class]="textClass">{{ text }}</span>
       }
     </div>
-  `
+  `,
 })
 export class LoadingSpinnerComponent {
   @Input() size: number = 24;
@@ -40,10 +40,11 @@ export class LoadingSpinnerComponent {
       yellow: '#f59e0b',
       purple: '#8b5cf6',
       gray: '#6b7280',
-      white: '#ffffff'
+      white: '#ffffff',
     };
 
-    const strokeColor = colorMap[this.color as keyof typeof colorMap] || colorMap.blue;
+    const strokeColor =
+      colorMap[this.color as keyof typeof colorMap] || colorMap.blue;
 
     return {
       width: `${this.size}px`,
@@ -51,7 +52,7 @@ export class LoadingSpinnerComponent {
       '--p-progressspinner-color-1': strokeColor,
       '--p-progressspinner-color-2': strokeColor,
       '--p-progressspinner-color-3': strokeColor,
-      '--p-progressspinner-color-4': strokeColor
+      '--p-progressspinner-color-4': strokeColor,
     };
   }
 }

@@ -1,6 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  ReactiveFormsModule,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
@@ -13,17 +18,37 @@ import { ButtonComponent } from '../../shared/components/button/button.component
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterModule, InputTextModule, PasswordModule, CheckboxModule, MessageModule, ButtonComponent],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    RouterModule,
+    InputTextModule,
+    PasswordModule,
+    CheckboxModule,
+    MessageModule,
+    ButtonComponent,
+  ],
   template: `
     <div class="register-form">
       <div class="text-center mb-8">
-        <h2 class="text-3xl font-bold text-gray-900 dark:!text-gray-100">Create Account</h2>
-        <p class="text-gray-600 dark:!text-gray-400 mt-2">Join us and start your journey today</p>
+        <h2 class="text-3xl font-bold text-gray-900 dark:!text-gray-100">
+          Create Account
+        </h2>
+        <p class="text-gray-600 dark:!text-gray-400 mt-2">
+          Join us and start your journey today
+        </p>
       </div>
 
-      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="space-y-6">
+      <form
+        [formGroup]="registerForm"
+        (ngSubmit)="onSubmit()"
+        class="space-y-6"
+      >
         <div>
-          <label for="name" class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-2">
+          <label
+            for="name"
+            class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-2"
+          >
             Full Name
           </label>
           <input
@@ -35,16 +60,19 @@ import { ButtonComponent } from '../../shared/components/button/button.component
             placeholder="Enter your full name"
           />
           @if (isFieldInvalid('name')) {
-            <p-message
-              severity="error"
-              class="mt-1"
-              [text]="getNameErrorMessage()"
-            ></p-message>
+          <p-message
+            severity="error"
+            class="mt-1"
+            [text]="getNameErrorMessage()"
+          ></p-message>
           }
         </div>
 
         <div>
-          <label for="email" class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-2">
+          <label
+            for="email"
+            class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-2"
+          >
             Email Address
           </label>
           <input
@@ -56,16 +84,19 @@ import { ButtonComponent } from '../../shared/components/button/button.component
             placeholder="Enter your email"
           />
           @if (isFieldInvalid('email')) {
-            <p-message
-              severity="error"
-              class="mt-1"
-              [text]="getEmailErrorMessage()"
-            ></p-message>
+          <p-message
+            severity="error"
+            class="mt-1"
+            [text]="getEmailErrorMessage()"
+          ></p-message>
           }
         </div>
 
         <div>
-          <label for="password" class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-2">
+          <label
+            for="password"
+            class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-2"
+          >
             Password
           </label>
           <p-password
@@ -77,18 +108,20 @@ import { ButtonComponent } from '../../shared/components/button/button.component
             inputStyleClass="w-full"
           ></p-password>
           @if (isFieldInvalid('password')) {
-            <p class="mt-1 text-sm text-red-600">
-              @if (registerForm.get('password')?.errors?.['required']) {
-                Password is required
-              } @else if (registerForm.get('password')?.errors?.['minlength']) {
-                Password must be at least 6 characters long
-              }
-            </p>
+          <p class="mt-1 text-sm text-red-600">
+            @if (registerForm.get('password')?.errors?.['required']) { Password
+            is required } @else if
+            (registerForm.get('password')?.errors?.['minlength']) { Password
+            must be at least 6 characters long }
+          </p>
           }
         </div>
 
         <div>
-          <label for="confirmPassword" class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-2">
+          <label
+            for="confirmPassword"
+            class="block text-sm font-medium text-gray-700 dark:!text-gray-300 mb-2"
+          >
             Confirm Password
           </label>
           <p-password
@@ -100,11 +133,11 @@ import { ButtonComponent } from '../../shared/components/button/button.component
             inputStyleClass="w-full"
           ></p-password>
           @if (isFieldInvalid('confirmPassword')) {
-            <p-message
-              severity="error"
-              class="mt-1"
-              [text]="getConfirmPasswordErrorMessage()"
-            ></p-message>
+          <p-message
+            severity="error"
+            class="mt-1"
+            [text]="getConfirmPasswordErrorMessage()"
+          ></p-message>
           }
         </div>
 
@@ -115,26 +148,32 @@ import { ButtonComponent } from '../../shared/components/button/button.component
             [binary]="true"
             styleClass="mt-1"
           ></p-checkbox>
-          <label for="terms" class="ml-2 block text-sm text-gray-700 dark:!text-gray-300">
+          <label
+            for="terms"
+            class="ml-2 block text-sm text-gray-700 dark:!text-gray-300"
+          >
             I agree to the
-            <a href="#" class="text-blue-600 hover:text-blue-500 dark:!text-blue-400 dark:hover:!text-blue-300">Terms of Service</a>
+            <a
+              href="#"
+              class="text-blue-600 hover:text-blue-500 dark:!text-blue-400 dark:hover:!text-blue-300"
+              >Terms of Service</a
+            >
             and
-            <a href="#" class="text-blue-600 hover:text-blue-500 dark:!text-blue-400 dark:hover:!text-blue-300">Privacy Policy</a>
+            <a
+              href="#"
+              class="text-blue-600 hover:text-blue-500 dark:!text-blue-400 dark:hover:!text-blue-300"
+              >Privacy Policy</a
+            >
           </label>
         </div>
         @if (isFieldInvalid('acceptTerms')) {
-          <p-message
-            severity="error"
-            class="mt-1"
-            text="You must accept the terms and conditions"
-          ></p-message>
-        }
-
-        @if (errorMessage) {
-          <p-message
-            severity="error"
-            [text]="errorMessage"
-          ></p-message>
+        <p-message
+          severity="error"
+          class="mt-1"
+          text="You must accept the terms and conditions"
+        ></p-message>
+        } @if (errorMessage) {
+        <p-message severity="error" [text]="errorMessage"></p-message>
         }
 
         <app-button
@@ -152,13 +191,16 @@ import { ButtonComponent } from '../../shared/components/button/button.component
       <div class="mt-6 text-center">
         <p class="text-sm text-gray-600 dark:!text-gray-400">
           Already have an account?
-          <a routerLink="/auth/login" class="text-blue-600 hover:text-blue-500 dark:!text-blue-400 dark:hover:!text-blue-300 font-medium">
+          <a
+            routerLink="/auth/login"
+            class="text-blue-600 hover:text-blue-500 dark:!text-blue-400 dark:hover:!text-blue-300 font-medium"
+          >
             Sign in
           </a>
         </p>
       </div>
     </div>
-  `
+  `,
 })
 export class RegisterComponent {
   private fb = inject(FormBuilder);
@@ -171,15 +213,18 @@ export class RegisterComponent {
   errorMessage = '';
 
   constructor() {
-    this.registerForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(2)]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', [Validators.required]],
-      acceptTerms: [false, [Validators.requiredTrue]]
-    }, {
-      validators: this.passwordMatchValidator
-    });
+    this.registerForm = this.fb.group(
+      {
+        name: ['', [Validators.required, Validators.minLength(2)]],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        confirmPassword: ['', [Validators.required]],
+        acceptTerms: [false, [Validators.requiredTrue]],
+      },
+      {
+        validators: this.passwordMatchValidator,
+      }
+    );
   }
 
   passwordMatchValidator(form: FormGroup) {
@@ -220,9 +265,11 @@ export class RegisterComponent {
         },
         error: (error) => {
           this.isLoading = false;
-          this.errorMessage = error.message || 'An error occurred during registration. Please try again.';
+          this.errorMessage =
+            error.message ||
+            'An error occurred during registration. Please try again.';
           this.toastService.error(this.errorMessage, 'Registration Failed');
-        }
+        },
       });
     }
   }
