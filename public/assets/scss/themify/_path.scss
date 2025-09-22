@@ -1,6 +1,8 @@
 /* FONT PATH
  * -------------------------- */
 
+@use 'variables' as *;
+
 @font-face {
   font-family: 'themify';
   src: url('#{$ti-font-path}/themify.eot?-fvbane');

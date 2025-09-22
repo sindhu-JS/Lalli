@@ -1,6 +1,8 @@
 // Base Class Definition
 // -------------------------
 
+@use 'variables' as *;
+
 .#{$fa-css-prefix} {
   display: inline-block;
   font: normal normal normal #{$fa-font-size-base}/#{$fa-line-height-base}

@@ -1,16 +1,25 @@
-@use '../../../node_modules/bootstrap/scss/bootstrap.scss';
+// Bootstrap removed - using Tailwind CSS instead
+// Added Bootstrap grid and forms replacement for existing components
+@use '../../../src/app/shared/styles/bootstrap-grid-replacement' as *;
+@use '../../../src/app/shared/styles/bootstrap-forms-replacement' as *;
+
 // Owl carousel styles removed - migrated to PrimeNG Carousel
 // @import 'swiper/scss';
 // @import 'swiper/scss/navigation';
 // @import 'swiper/scss/pagination';
-@import 'font-awesome.scss';
-@import 'themify.scss';
-@import 'flaticon.scss';
-@import 'inner-page.scss';
+
+// Use modern @use syntax with global access for variables and mixins
+@use 'font-awesome' as *;
+@use 'themify' as *;
+@use 'flaticon' as *;
+@use 'inner-page' as *;
+
 // @import "../css/keyframes.css";
-@import 'ngx-toastr/toastr';
+// @import 'ngx-toastr/toastr'; - removed as not being used
 // @import 'ngx-toastr/toastr-bs5-alert';
-@import './theme/style';
-@import './theme/responsive';
-@import 'theme/theme-dark';
-@import 'theme/theme-rtl';
+
+// Core theme modules - maintaining load order for overrides
+@use 'theme/style' as *;
+@use 'theme/responsive' as *;
+@use 'theme/theme-dark' as *;
+@use 'theme/theme-rtl' as *;

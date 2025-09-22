@@ -1,0 +1,14 @@
+// Core theme forwards
+@forward 'theme/variable';
+@forward 'theme/style';
+@forward 'theme/responsive';
+@forward 'theme/theme-dark';
+@forward 'theme/theme-rtl';
+
+// Icon font forwards
+@forward 'font-awesome';
+@forward 'themify';
+@forward 'flaticon';
+
+// Page-specific forwards
+@forward 'inner-page';

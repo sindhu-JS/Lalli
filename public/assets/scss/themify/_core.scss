@@ -1,3 +1,6 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
 [class^='icon-'],
 [class*=' icon-'] {
   @include icon-themify-icons();

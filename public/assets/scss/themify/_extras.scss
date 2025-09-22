@@ -1,6 +1,8 @@
 /* EXTRAS
  * -------------------------- */
 
+@use 'mixins' as *;
+
 /* Stacked and layered icon */
 @include icon-stack();
 

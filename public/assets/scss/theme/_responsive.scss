@@ -2,6 +2,8 @@
      63. Responsive CSS Start
   ==========================**/
 
+@use 'variable' as *;
+
 @media only screen and (max-width: 1600px) {
   .about {
     &.app1 {

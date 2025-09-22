@@ -1,6 +1,8 @@
 // Screen Readers
 // -------------------------
 
+@use 'mixins' as *;
+
 .sr-only {
   @include sr-only();
 }

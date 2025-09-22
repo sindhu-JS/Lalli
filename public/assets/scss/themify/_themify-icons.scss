@@ -1,6 +1,6 @@
-@import 'variables';
-@import 'mixins';
-@import 'path';
-@import 'core';
-@import 'extras';
-@import 'icons';
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'path' as *;
+@use 'core' as *;
+@use 'extras' as *;
+@use 'icons' as *;
