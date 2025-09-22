@@ -1,81 +1,324 @@
-# Lalli
+# Lalli - Modern Angular Project Management System
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+A modern, full-featured project management application built with Angular 20, Nx, PrimeNG, and Tailwind CSS.
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
+## 🚀 Quick Start
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/tutorials/angular-standalone-tutorial?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+### Prerequisites
 
-## Finish your CI setup
+Before you begin, ensure you have the following installed on your system:
 
-[Click here to finish setting up your workspace!](https://cloud.nx.app/connect/mwcprg0FKR)
+#### Required Software
+- **Node.js**: Version 22.12.0 or higher
+  - Download from [nodejs.org](https://nodejs.org/)
+  - Verify installation: `node --version`
 
-## Run tasks
+- **npm**: Version 10.x or higher (comes with Node.js)
+  - Verify installation: `npm --version`
 
-To run the dev server for your app, use:
+- **Git**: Latest version
+  - Download from [git-scm.com](https://git-scm.com/)
 
-```sh
-npx nx serve Lalli
+#### Optional but Recommended
+- **Visual Studio Code** with extensions:
+  - Angular Language Service
+  - Nx Console
+  - Tailwind CSS IntelliSense
+  - Prettier - Code formatter
+  - ESLint
+
+### Installation Steps
+
+1. **Clone the Repository**
+   ```bash
+   git clone <your-repository-url>
+   cd Lalli
+   ```
+
+2. **Install Dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Install Global Dependencies** (if not already installed)
+   ```bash
+   # Install Angular CLI globally
+   npm install -g @angular/cli@20
+
+   # Install Nx CLI globally
+   npm install -g nx@21.5.2
+   ```
+
+4. **Verify Installation**
+   ```bash
+   # Check Angular CLI
+   ng version
+
+   # Check Nx installation
+   nx --version
+   ```
+
+### Development Setup
+
+#### Start the Development Server
+```bash
+# Using Nx
+nx serve Lalli
+
+# Alternative using npm
+npm start
 ```
 
-To create a production bundle:
+The application will be available at `http://localhost:4200`
 
-```sh
-npx nx build Lalli
+#### Build for Production
+```bash
+# Production build
+nx build Lalli
+
+# Alternative using npm
+npm run build
 ```
 
-To see all available targets to run for a project, run:
+#### Run Tests
+```bash
+# Unit tests
+nx test Lalli
 
-```sh
-npx nx show project Lalli
+# E2E tests
+nx e2e Lalli-e2e
 ```
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+#### Linting and Formatting
+```bash
+# Run ESLint
+nx lint Lalli
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Add new projects
-
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
-
-Use the plugin's generator to create new projects.
-
-To generate a new application, use:
-
-```sh
-npx nx g @nx/angular:app demo
+# Format code with Prettier
+nx format
 ```
 
-To generate a new library, use:
+## 🛠 Technology Stack
 
-```sh
-npx nx g @nx/angular:lib mylib
+### Core Framework
+- **Angular 20.2.0**: Latest stable version with standalone components
+- **TypeScript 5.9.2**: Type safety and modern JS features
+- **Nx 21.5.2**: Monorepo tool and build system
+
+### UI & Styling
+- **PrimeNG 20.1.2**: Enterprise-grade Angular UI components
+- **PrimeIcons 7.0.0**: Icon library for PrimeNG
+- **Tailwind CSS 3.4.17**: Utility-first CSS framework
+- **@primeng/themes 20.1.2**: Official PrimeNG themes
+
+### State Management & Services
+- **Angular Signals**: For reactive state management
+- **RxJS 7.8.0**: For reactive programming and HTTP handling
+- **Angular Router**: For navigation and routing
+
+### Development Tools
+- **ESLint 9.8.0**: Code linting and quality checks
+- **Prettier 2.6.2**: Code formatting
+- **Jest 30.0.2**: Unit testing framework
+- **TypeScript ESLint 8.40.0**: TypeScript linting rules
+
+## 📂 Project Structure
+
+```
+Lalli/
+├── src/
+│   ├── app/
+│   │   ├── core/                    # Core modules (guards, interceptors, layout)
+│   │   │   ├── guards/             # Route guards
+│   │   │   ├── interceptors/       # HTTP interceptors
+│   │   │   └── layout/             # Layout components
+│   │   ├── features/               # Feature modules
+│   │   │   ├── auth/              # Authentication feature
+│   │   │   ├── dashboard/         # Dashboard feature
+│   │   │   ├── projects/          # Projects management
+│   │   │   ├── team/              # Team management
+│   │   │   └── ...
+│   │   ├── shared/                # Shared components and services
+│   │   │   ├── components/        # Reusable components
+│   │   │   ├── services/          # Shared services
+│   │   │   ├── models/            # TypeScript interfaces/types
+│   │   │   └── utils/             # Utility functions
+│   │   └── pages/                 # Page components (public pages)
+│   ├── assets/                    # Static assets
+│   └── styles/                    # Global styles
+├── public/                        # Public assets (Sass themes, images)
+├── docs/                          # Project documentation
+├── package.json                   # Dependencies and scripts
+├── tailwind.config.js            # Tailwind CSS configuration
+├── nx.json                       # Nx workspace configuration
+└── README.md                     # This file
 ```
 
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
+## 🚦 Available Scripts
 
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+```bash
+# Development
+npm start                 # Start development server
+npm run build            # Build for production
+npm run build:dev        # Build for development
 
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+# Testing
+npm test                 # Run unit tests
+npm run test:watch       # Run tests in watch mode
+npm run e2e              # Run E2E tests
 
-## Install Nx Console
+# Code Quality
+npm run lint             # Run ESLint
+npm run lint:fix         # Fix ESLint issues
+npm run format           # Format code with Prettier
 
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
+# Nx Commands
+npm run nx:graph         # Show dependency graph
+npm run nx:affected      # Run affected commands
+```
 
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## 🔧 Configuration
 
-## Useful links
+### Environment Variables
+Create environment files in `src/environments/`:
 
-Learn more:
+- `environment.ts` - Development environment
+- `environment.prod.ts` - Production environment
 
-- [Learn more about this workspace setup](https://nx.dev/getting-started/tutorials/angular-standalone-tutorial?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+Example configuration:
+```typescript
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:3000/api',
+  appName: 'Lalli Project Manager'
+};
+```
 
-And join the Nx community:
+### Tailwind CSS
+Tailwind is configured in `tailwind.config.js`. The configuration includes:
+- Custom color palette
+- Dark mode support
+- PrimeNG integration
+- Custom utility classes
 
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### Angular Configuration
+Key Angular configurations:
+- Standalone components architecture
+- Modern Angular features (Signals, Control Flow)
+- Strict TypeScript mode
+- Path mapping for clean imports
+
+## 🌟 Features
+
+### Authentication & Authorization
+- JWT-based authentication
+- Role-based access control
+- Route guards for protected routes
+- User session management
+
+### Project Management
+- Create, edit, and delete projects
+- Project status tracking
+- Team assignment
+- Progress monitoring
+
+### User Management
+- User profiles and settings
+- Team member management
+- Role assignment
+- Activity tracking
+
+### UI/UX Features
+- Dark/Light mode toggle
+- Responsive design
+- Loading states
+- Toast notifications
+- Confirmation dialogs
+
+## 📱 Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/new-feature`
+3. Commit your changes: `git commit -m 'Add new feature'`
+4. Push to the branch: `git push origin feature/new-feature`
+5. Submit a pull request
+
+### Code Style Guidelines
+- Follow Angular style guide
+- Use TypeScript strict mode
+- Write meaningful commit messages
+- Add tests for new features
+- Document public APIs
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🆘 Troubleshooting
+
+### Common Issues
+
+**Node Version Conflicts**
+```bash
+# Use Node Version Manager (nvm)
+nvm use 22.12.0
+```
+
+**Dependency Issues**
+```bash
+# Clear npm cache
+npm cache clean --force
+
+# Delete node_modules and reinstall
+rm -rf node_modules
+npm install
+```
+
+**Build Errors**
+```bash
+# Clear Nx cache
+nx reset
+
+# Rebuild project
+nx build Lalli --verbose
+```
+
+### Getting Help
+
+- Check the [Angular documentation](https://angular.dev)
+- Visit [Nx documentation](https://nx.dev)
+- Review [PrimeNG documentation](https://primeng.org)
+- Open an issue in this repository
+
+## 📊 Performance
+
+The application is optimized for performance with:
+- Lazy loading for feature modules
+- OnPush change detection strategy
+- Bundle optimization with Nx
+- Tree shaking for minimal bundle size
+- Modern Angular 20 optimizations
+
+Current bundle sizes:
+- Main bundle: ~1.25 MB (compressed: ~237 KB)
+- Lazy chunks: Optimized per feature
+
+### Key Dependencies Versions
+- **Angular**: 20.2.0
+- **Nx**: 21.5.2
+- **PrimeNG**: 20.1.2
+- **PrimeIcons**: 7.0.0
+- **Tailwind CSS**: 3.4.17
+- **TypeScript**: 5.9.2
+- **RxJS**: 7.8.0
+
+---
+
+**Happy Coding! 🚀**
