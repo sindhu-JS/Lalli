@@ -31,7 +31,7 @@ import { ButtonComponent } from '../../shared/components/button/button.component
   template: `
     <div class="register-form">
       <div class="text-center mb-8">
-        <h2 class="text-3xl font-bold text-gray-900 dark:!text-gray-100">
+        <h2 class="text-3xl font-bold text-gray-900 dark:!text-gray-100 mt-6">
           Create Account
         </h2>
         <p class="text-gray-600 dark:!text-gray-400 mt-2">
@@ -175,17 +175,18 @@ import { ButtonComponent } from '../../shared/components/button/button.component
         } @if (errorMessage) {
         <p-message severity="error" [text]="errorMessage"></p-message>
         }
-
-        <app-button
-          type="submit"
-          variant="primary"
-          size="lg"
-          [fullWidth]="true"
-          [loading]="isLoading"
-          [disabled]="registerForm.invalid"
-        >
-          Create Account
-        </app-button>
+        <div class="flex justify-between space-x-3">
+          <app-button
+            type="submit"
+            variant="primary"
+            size="lg"
+            [fullWidth]="true"
+            [loading]="isLoading"
+            [disabled]="registerForm.invalid"
+          >
+            Create Account
+          </app-button>
+        </div>
       </form>
 
       <div class="mt-6 text-center">

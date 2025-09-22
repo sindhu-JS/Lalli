@@ -33,22 +33,22 @@ import { ThemeService } from '../../../shared/services/theme.service';
                 <div class="ml-10 flex items-baseline space-x-4">
                   <a
                     routerLink="/app/dashboard"
-                    routerLinkActive="text-blue-600"
-                    class="px-3 py-2 rounded-md text-sm font-medium hover:text-blue-600 text-gray-900 dark:!text-gray-100"
+                    routerLinkActive="text-blue-600 bg-blue-50 dark:bg-blue-900/20"
+                    class="px-3 py-2 rounded-md text-sm font-medium hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 text-gray-900 dark:!text-gray-100 transition-colors"
                   >
                     Dashboard
                   </a>
                   <a
                     routerLink="/app/projects"
-                    routerLinkActive="text-blue-600"
-                    class="px-3 py-2 rounded-md text-sm font-medium hover:text-blue-600 text-gray-900 dark:!text-gray-100"
+                    routerLinkActive="text-blue-600 bg-blue-50 dark:bg-blue-900/20"
+                    class="px-3 py-2 rounded-md text-sm font-medium hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 text-gray-900 dark:!text-gray-100 transition-colors"
                   >
                     Projects
                   </a>
                   <a
                     routerLink="/app/team"
-                    routerLinkActive="text-blue-600"
-                    class="px-3 py-2 rounded-md text-sm font-medium hover:text-blue-600 text-gray-900 dark:!text-gray-100"
+                    routerLinkActive="text-blue-600 bg-blue-50 dark:bg-blue-900/20"
+                    class="px-3 py-2 rounded-md text-sm font-medium hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 text-gray-900 dark:!text-gray-100 transition-colors"
                   >
                     Team
                   </a>

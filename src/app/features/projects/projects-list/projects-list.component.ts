@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
 import { ToastService } from '../../../shared/services/toast.service';
 
 interface Project {
@@ -16,7 +17,7 @@ interface Project {
 @Component({
   selector: 'app-projects-list',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ButtonModule],
   template: `
     <div class="projects-list">
       <!-- Header -->
@@ -29,13 +30,12 @@ interface Project {
             Manage and track all your projects
           </p>
         </div>
-        <a
-          routerLink="/app/projects/new"
-          class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-        >
-          <i class="pi pi-plus mr-2"></i>
-          New Project
-        </a>
+        <p-button
+          label="New Project"
+          icon="pi pi-plus"
+          [routerLink]="'/app/projects/new'"
+          styleClass="p-button-primary"
+        ></p-button>
       </div>
 
       <!-- Filters -->
@@ -176,13 +176,12 @@ interface Project {
           project. } @else { No projects match the current filter. }
         </p>
         @if (activeFilter === 'all') {
-        <a
-          routerLink="/app/projects/new"
-          class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
-        >
-          <i class="pi pi-plus mr-2"></i>
-          Create Project
-        </a>
+        <p-button
+          label="Create Project"
+          icon="pi pi-plus"
+          [routerLink]="'/app/projects/new'"
+          styleClass="p-button-primary"
+        ></p-button>
         }
       </div>
       }

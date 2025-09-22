@@ -68,17 +68,18 @@ import { AuthService } from '../../../shared/services/auth.service';
         @if (errorMessage) {
         <p-message severity="error" [text]="errorMessage"></p-message>
         }
-
-        <app-button
-          type="submit"
-          variant="primary"
-          size="lg"
-          [fullWidth]="true"
-          [loading]="isLoading"
-          [disabled]="forgotPasswordForm.invalid"
-        >
-          Send Reset Link
-        </app-button>
+        <div class="flex justify-between space-x-3">
+          <app-button
+            type="submit"
+            variant="primary"
+            size="lg"
+            [fullWidth]="true"
+            [loading]="isLoading"
+            [disabled]="forgotPasswordForm.invalid"
+          >
+            Send Reset Link
+          </app-button>
+        </div>
       </form>
       } @else {
       <div class="text-center">
