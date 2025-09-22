@@ -1,7 +1,4 @@
 // Bootstrap removed - using Tailwind CSS instead
-// Added Bootstrap grid and forms replacement for existing components
-@use '../../../src/app/shared/styles/bootstrap-grid-replacement' as *;
-@use '../../../src/app/shared/styles/bootstrap-forms-replacement' as *;
 
 // Owl carousel styles removed - migrated to PrimeNG Carousel
 // @import 'swiper/scss';

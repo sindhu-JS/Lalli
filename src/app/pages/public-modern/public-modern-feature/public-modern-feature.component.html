@@ -1,8 +1,8 @@
 <!--feature css start-->
 <section class="saas2 feature booking" id="feaure">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-10 offset-md-1">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-wrap -mx-4">
+      <div class="w-full md:w-10/12 md:mx-auto px-4">
         <div class="title">
           <div class="main-title">
             <h2>Advance Features</h2>
@@ -16,22 +16,22 @@
           </div>
         </div>
       </div>
-      <div class="col-xl-8 col-md-7">
-        <div class="center-text justify-content-center">
+      <div class="w-full xl:w-2/3 md:w-7/12 px-4">
+        <div class="center-text flex justify-center">
           <div class="image-container">
             <img
               src="assets/images/saas2/advance-feature/01.png"
               alt=""
-              class="img-fluid advance-feature-img"
+              class="max-w-full h-auto advance-feature-img"
             />
           </div>
         </div>
       </div>
-      <div class="col-xl-4 col-md-5">
+      <div class="w-full xl:w-1/3 md:w-5/12 px-4">
         @for(data of features; track data){
         <div>
-          <div class="center-content justify-content-start">
-            <img [src]="data.img" alt="" class="img-fluid" />
+          <div class="center-content flex justify-start items-start">
+            <img [src]="data.img" alt="" class="max-w-full h-auto" />
             <div class="feature-content">
               <h5 class="feature-head">{{ data.title }}</h5>
               <p class="feature-para">{{ data.description }}</p>

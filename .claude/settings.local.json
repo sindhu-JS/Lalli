@@ -21,7 +21,9 @@
       "Bash(npm run lint)",
       "Bash(copy:*)",
       "Bash(npx eslint:*)",
-      "Bash(nx serve:*)"
+      "Bash(nx serve:*)",
+      "Bash(del \"C:\\MyDevelopment\\Lalli\\src\\app\\shared\\styles\\bootstrap-grid-replacement.scss\")",
+      "Bash(del \"C:\\MyDevelopment\\Lalli\\src\\app\\shared\\styles\\bootstrap-forms-replacement.scss\")"
     ],
     "deny": [],
     "ask": []
