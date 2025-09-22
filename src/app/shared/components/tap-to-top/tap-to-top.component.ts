@@ -8,14 +8,14 @@ import { Component, HostListener, OnInit } from '@angular/core';
   styleUrls: ['./tap-to-top.component.scss'],
 })
 export class TapToTopComponent implements OnInit {
-  public show: boolean = false;
+  public show = false;
   constructor(private viewScroller: ViewportScroller) {}
 
   ngOnInit() {}
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    let number =
+    const number =
       window.pageYOffset ||
       document.documentElement.scrollTop ||
       document.body.scrollTop ||

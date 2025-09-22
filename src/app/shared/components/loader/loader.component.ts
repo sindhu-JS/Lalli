@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-loader',
@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './loader.component.html',
   styleUrls: ['./loader.component.scss'],
 })
-export class LoaderComponent implements OnInit {
-  public show: boolean = true;
+export class LoaderComponent implements OnInit, OnDestroy {
+  public show = true;
 
   constructor() {
     setTimeout(() => {

@@ -21,8 +21,8 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
   `,
 })
 export class LoadingSpinnerComponent {
-  @Input() size: number = 24;
-  @Input() color: string = 'blue';
+  @Input() size = 24;
+  @Input() color = 'blue';
   @Input() text?: string;
   @Input() containerClass?: string;
   @Input() textClass?: string;

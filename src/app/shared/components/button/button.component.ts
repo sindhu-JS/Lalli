@@ -37,11 +37,11 @@ export class ButtonComponent {
   @Input() variant: ButtonVariant = 'primary';
   @Input() size: ButtonSize = 'md';
   @Input() type: 'button' | 'submit' | 'reset' = 'button';
-  @Input() disabled: boolean = false;
-  @Input() loading: boolean = false;
-  @Input() fullWidth: boolean = false;
+  @Input() disabled = false;
+  @Input() loading = false;
+  @Input() fullWidth = false;
   @Input() icon?: string;
-  @Input() iconRight: boolean = false;
+  @Input() iconRight = false;
   @Input() customClass?: string;
 
   @Output() clicked = new EventEmitter<Event>();

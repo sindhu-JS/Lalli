@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./public-modern-nav.component.scss'],
 })
 export class PublicModernNavComponent implements OnInit {
-  public openSide: boolean = false;
+  public openSide = false;
 
   constructor() {}
 

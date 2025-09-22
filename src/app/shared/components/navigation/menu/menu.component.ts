@@ -11,11 +11,11 @@ import { RouterModule } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
   public menuItems: Menu[];
-  public openSide: boolean = false;
-  public activeItem: string = 'home';
-  public active: boolean = false;
-  public activeChildItem: string = '';
-  public overlay: boolean = false;
+  public openSide = false;
+  public activeItem = 'home';
+  public active = false;
+  public activeChildItem = '';
+  public overlay = false;
 
   constructor(public navServices: NavService) {}
 

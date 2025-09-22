@@ -45,18 +45,18 @@ import { ButtonComponent } from '../button/button.component';
   `,
 })
 export class ModalComponent {
-  @Input() isOpen: boolean = false;
+  @Input() isOpen = false;
   @Input() title?: string;
   @Input() size: 'sm' | 'md' | 'lg' | 'xl' = 'md';
-  @Input() showCloseButton: boolean = true;
-  @Input() closeOnOverlayClick: boolean = true;
-  @Input() showFooter: boolean = false;
-  @Input() showCancelButton: boolean = true;
-  @Input() showConfirmButton: boolean = true;
-  @Input() cancelText: string = 'Cancel';
-  @Input() confirmText: string = 'Confirm';
+  @Input() showCloseButton = true;
+  @Input() closeOnOverlayClick = true;
+  @Input() showFooter = false;
+  @Input() showCancelButton = true;
+  @Input() showConfirmButton = true;
+  @Input() cancelText = 'Cancel';
+  @Input() confirmText = 'Confirm';
   @Input() confirmVariant: 'primary' | 'danger' | 'success' = 'primary';
-  @Input() confirmLoading: boolean = false;
+  @Input() confirmLoading = false;
 
   @Output() closed = new EventEmitter<void>();
   @Output() confirmed = new EventEmitter<void>();

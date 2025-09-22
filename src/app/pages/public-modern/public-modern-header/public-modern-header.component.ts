@@ -14,7 +14,7 @@ export class PublicModernHeaderComponent implements OnInit {
 
   onRedirect(e: { preventDefault: () => void }) {
     e.preventDefault();
-    let el: any = document.getElementById('feaure');
+    const el: any = document.getElementById('feaure');
     el.scrollIntoView({ behavior: 'smooth' });
   }
 }

@@ -25,7 +25,7 @@ export class App implements OnInit {
   }
 
   public ngOnInit() {
-    let script = this._renderer2.createElement('script');
+    const script = this._renderer2.createElement('script');
     script.src = `/assets/tilt.js`;
     this._renderer2.appendChild(document.body, script);
   }

@@ -115,12 +115,12 @@ export class ToastService {
    */
   confirm(
     message: string,
-    title: string = 'Confirm',
-    acceptLabel: string = 'Yes',
-    rejectLabel: string = 'No',
-    icon: string = 'pi pi-question-circle',
-    acceptButtonStyleClass: string = 'p-button-danger',
-    rejectButtonStyleClass: string = 'p-button-secondary'
+    title = 'Confirm',
+    acceptLabel = 'Yes',
+    rejectLabel = 'No',
+    icon = 'pi pi-question-circle',
+    acceptButtonStyleClass = 'p-button-danger',
+    rejectButtonStyleClass = 'p-button-secondary'
   ): Promise<boolean> {
     return new Promise((resolve) => {
       this.confirmationService.confirm({
