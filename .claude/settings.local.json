@@ -20,7 +20,8 @@
       "Bash(npx tsc:*)",
       "Bash(npm run lint)",
       "Bash(copy:*)",
-      "Bash(npx eslint:*)"
+      "Bash(npx eslint:*)",
+      "Bash(nx serve:*)"
     ],
     "deny": [],
     "ask": []

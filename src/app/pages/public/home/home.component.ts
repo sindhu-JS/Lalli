@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -21,12 +22,21 @@ import { RouterModule } from '@angular/router';
               platform for their business needs.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                routerLink="/auth/register"
-                class="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-gray-50 transition-colors"
-              >
-                Get Started Free
-              </a>
+              @if (authService.isAuthenticated()) {
+                <a
+                  [routerLink]="getDashboardRoute()"
+                  class="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-gray-50 transition-colors"
+                >
+                  My Dashboard
+                </a>
+              } @else {
+                <a
+                  routerLink="/auth/register"
+                  class="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-gray-50 transition-colors"
+                >
+                  Get Started Free
+                </a>
+              }
               <a
                 routerLink="/about"
                 class="inline-flex items-center px-8 py-3 border-2 border-white text-base font-medium rounded-md text-white hover:bg-white hover:text-blue-600 transition-colors"
@@ -104,15 +114,31 @@ import { RouterModule } from '@angular/router';
             Join over 10,000 companies that trust our platform for their
             business operations.
           </p>
-          <a
-            routerLink="/auth/register"
-            class="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-white hover:bg-gray-100 transition-colors"
-          >
-            Start Your Free Trial
-          </a>
+          @if (authService.isAuthenticated()) {
+            <a
+              [routerLink]="getDashboardRoute()"
+              class="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-white hover:bg-gray-100 transition-colors"
+            >
+              Go to Dashboard
+            </a>
+          } @else {
+            <a
+              routerLink="/auth/register"
+              class="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-white hover:bg-gray-100 transition-colors"
+            >
+              Start Your Free Trial
+            </a>
+          }
         </div>
       </section>
     </div>
   `,
 })
-export class HomeComponent {}
+export class HomeComponent {
+  authService = inject(AuthService);
+
+  getDashboardRoute(): string {
+    const user = this.authService.currentUser();
+    return user?.role === 'admin' ? '/admin/dashboard' : '/app/dashboard';
+  }
+}

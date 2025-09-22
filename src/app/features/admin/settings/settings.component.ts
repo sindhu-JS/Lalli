@@ -640,7 +640,7 @@ export class SettingsComponent {
     this.testEmailLoading = true;
     setTimeout(() => {
       this.testEmailLoading = false;
-      alert('Test email sent successfully!');
+      this.toastService.success('Test email sent successfully!');
     }, 2000);
   }
 
@@ -669,7 +669,7 @@ export class SettingsComponent {
     this.cacheLoading = true;
     setTimeout(() => {
       this.cacheLoading = false;
-      alert('Cache cleared successfully!');
+      this.toastService.success('Cache cleared successfully!');
     }, 1000);
   }
 
@@ -677,7 +677,7 @@ export class SettingsComponent {
     this.exportLoading = true;
     setTimeout(() => {
       this.exportLoading = false;
-      alert('Data export completed! Check your downloads folder.');
+      this.toastService.success('Data export completed! Check your downloads folder.');
     }, 2000);
   }
 

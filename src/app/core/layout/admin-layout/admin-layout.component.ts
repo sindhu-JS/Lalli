@@ -18,16 +18,18 @@ import { ThemeService } from '../../../shared/services/theme.service';
           <div class="flex justify-between items-center h-16">
             <div class="flex items-center">
               <div class="flex-shrink-0 mr-4">
-                <img
-                  class="h-8 w-auto block dark:hidden"
-                  src="assets/images/logo/9.png"
-                  alt="Logo"
-                />
-                <img
-                  class="h-8 w-auto hidden dark:block"
-                  src="assets/images/logo/1.png"
-                  alt="Logo"
-                />
+                <a routerLink="/" class="cursor-pointer">
+                  <img
+                    class="h-8 w-auto block dark:hidden"
+                    src="assets/images/logo/9.png"
+                    alt="Logo"
+                  />
+                  <img
+                    class="h-8 w-auto hidden dark:block"
+                    src="assets/images/logo/1.png"
+                    alt="Logo"
+                  />
+                </a>
               </div>
               <h1
                 class="text-xl font-semibold text-gray-900 dark:!text-gray-100"

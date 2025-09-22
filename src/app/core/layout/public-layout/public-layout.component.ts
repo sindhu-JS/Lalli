@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-public-layout',
@@ -15,11 +16,13 @@ import { CommonModule } from '@angular/common';
             <!-- Logo -->
             <div class="flex items-center">
               <div class="flex-shrink-0">
-                <img
-                  class="h-8 w-auto"
-                  src="assets/images/logo/9.png"
-                  alt="Company Logo"
-                />
+                <a routerLink="/" class="cursor-pointer">
+                  <img
+                    class="h-8 w-auto"
+                    src="assets/images/logo/9.png"
+                    alt="Company Logo"
+                  />
+                </a>
               </div>
             </div>
 
@@ -60,18 +63,27 @@ import { CommonModule } from '@angular/common';
             <!-- CTA Buttons -->
             <div class="hidden md:block">
               <div class="ml-4 flex items-center md:ml-6 space-x-3">
-                <a
-                  routerLink="/auth/login"
-                  class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Sign in
-                </a>
-                <a
-                  routerLink="/auth/register"
-                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
-                >
-                  Get Started
-                </a>
+                @if (authService.isAuthenticated()) {
+                  <a
+                    [routerLink]="getDashboardRoute()"
+                    class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
+                  >
+                    My Dashboard
+                  </a>
+                } @else {
+                  <a
+                    routerLink="/auth/login"
+                    class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    Sign in
+                  </a>
+                  <a
+                    routerLink="/auth/register"
+                    class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
+                  >
+                    Get Started
+                  </a>
+                }
               </div>
             </div>
 
@@ -111,16 +123,24 @@ import { CommonModule } from '@angular/common';
             >
             <div class="pt-4 pb-3 border-t border-gray-200">
               <div class="flex items-center space-x-3 px-3">
-                <a
-                  routerLink="/auth/login"
-                  class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100"
-                  >Sign in</a
-                >
-                <a
-                  routerLink="/auth/register"
-                  class="block px-3 py-2 rounded-md text-base font-medium bg-blue-600 text-white hover:bg-blue-700"
-                  >Get Started</a
-                >
+                @if (authService.isAuthenticated()) {
+                  <a
+                    [routerLink]="getDashboardRoute()"
+                    class="block px-3 py-2 rounded-md text-base font-medium bg-blue-600 text-white hover:bg-blue-700"
+                    >My Dashboard</a
+                  >
+                } @else {
+                  <a
+                    routerLink="/auth/login"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100"
+                    >Sign in</a
+                  >
+                  <a
+                    routerLink="/auth/register"
+                    class="block px-3 py-2 rounded-md text-base font-medium bg-blue-600 text-white hover:bg-blue-700"
+                    >Get Started</a
+                  >
+                }
               </div>
             </div>
           </div>
@@ -137,11 +157,13 @@ import { CommonModule } from '@angular/common';
         <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
           <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div class="col-span-1 md:col-span-2">
-              <img
-                class="h-8 w-auto mb-4"
-                src="assets/images/logo/9.png"
-                alt="Company Logo"
-              />
+              <a routerLink="/" class="cursor-pointer">
+                <img
+                  class="h-8 w-auto mb-4"
+                  src="assets/images/logo/9.png"
+                  alt="Company Logo"
+                />
+              </a>
               <p class="text-gray-400 mb-4 max-w-md">
                 We create amazing digital experiences that help businesses grow
                 and succeed in the modern world.
@@ -214,4 +236,11 @@ import { CommonModule } from '@angular/common';
     </div>
   `,
 })
-export class PublicLayoutComponent {}
+export class PublicLayoutComponent {
+  authService = inject(AuthService);
+
+  getDashboardRoute(): string {
+    const user = this.authService.currentUser();
+    return user?.role === 'admin' ? '/admin/dashboard' : '/app/dashboard';
+  }
+}
