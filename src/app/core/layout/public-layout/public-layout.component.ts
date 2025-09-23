@@ -1,12 +1,20 @@
-import { Component, inject } from '@angular/core';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { Component, inject, OnInit } from '@angular/core';
+import {
+  Router,
+  NavigationEnd,
+  RouterModule,
+  RouterOutlet,
+} from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
+import { MenubarModule } from 'primeng/menubar';
+import { MenuItem } from 'primeng/api';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-public-layout',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, RouterModule],
+  imports: [RouterOutlet, CommonModule, RouterModule, MenubarModule],
   template: `
     <div class="public-layout min-h-screen bg-white">
       <!-- Public Header -->
@@ -28,61 +36,39 @@ import { AuthService } from '../../services/auth.service';
 
             <!-- Navigation -->
             <div class="hidden md:block">
-              <div class="ml-10 flex items-baseline space-x-4">
-                <a
-                  routerLink="/home"
-                  routerLinkActive="text-blue-600 border-b-2 border-blue-600"
-                  class="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-300"
-                >
-                  Home
-                </a>
-                <a
-                  routerLink="/about"
-                  routerLinkActive="text-blue-600 border-b-2 border-blue-600"
-                  class="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-300"
-                >
-                  About
-                </a>
-                <a
-                  routerLink="/services"
-                  routerLinkActive="text-blue-600 border-b-2 border-blue-600"
-                  class="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-300"
-                >
-                  Services
-                </a>
-                <a
-                  routerLink="/contact"
-                  routerLinkActive="text-blue-600 border-b-2 border-blue-600"
-                  class="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-300"
-                >
-                  Contact
-                </a>
-              </div>
+              <p-menubar [model]="menuItems" class="public-menubar">
+                <ng-template pTemplate="start">
+                  <!-- Empty start template -->
+                </ng-template>
+                <ng-template pTemplate="end">
+                  <!-- Empty end template -->
+                </ng-template>
+              </p-menubar>
             </div>
 
             <!-- CTA Buttons -->
             <div class="hidden md:block">
               <div class="ml-4 flex items-center md:ml-6 space-x-3">
                 @if (authService.isAuthenticated()) {
-                  <a
-                    [routerLink]="getDashboardRoute()"
-                    class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
-                  >
-                    My Dashboard
-                  </a>
+                <a
+                  [routerLink]="getDashboardRoute()"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
+                >
+                  My Dashboard
+                </a>
                 } @else {
-                  <a
-                    routerLink="/auth/login"
-                    class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Sign in
-                  </a>
-                  <a
-                    routerLink="/auth/register"
-                    class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
-                  >
-                    Get Started
-                  </a>
+                <a
+                  routerLink="/auth/login"
+                  class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  Sign in
+                </a>
+                <a
+                  routerLink="/auth/register"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
+                >
+                  Get Started
+                </a>
                 }
               </div>
             </div>
@@ -90,56 +76,56 @@ import { AuthService } from '../../services/auth.service';
             <!-- Mobile menu button -->
             <div class="md:hidden">
               <button
+                (click)="toggleMobileMenu()"
                 class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
               >
-                <i class="pi pi-bars"></i>
+                <i
+                  class="pi"
+                  [class.pi-bars]="!mobileMenuOpen"
+                  [class.pi-times]="mobileMenuOpen"
+                ></i>
               </button>
             </div>
           </div>
         </div>
 
         <!-- Mobile menu -->
-        <div class="md:hidden">
+        <div class="md:hidden" [class.hidden]="!mobileMenuOpen">
           <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-50 border-t">
-            <a
-              routerLink="/home"
-              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100"
-              >Home</a
+            <button
+              *ngFor="let item of menuItems"
+              (click)="item.command && item.command({}); mobileMenuOpen = false"
+              class="w-full text-left block px-3 py-2 rounded-md text-base font-medium transition-colors"
+              [class.text-blue-600]="item.styleClass === 'active-menu-item'"
+              [class.bg-blue-50]="item.styleClass === 'active-menu-item'"
+              [class.text-gray-700]="item.styleClass !== 'active-menu-item'"
+              [class.hover:text-gray-900]="
+                item.styleClass !== 'active-menu-item'
+              "
+              [class.hover:bg-gray-100]="item.styleClass !== 'active-menu-item'"
             >
-            <a
-              routerLink="/about"
-              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100"
-              >About</a
-            >
-            <a
-              routerLink="/services"
-              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100"
-              >Services</a
-            >
-            <a
-              routerLink="/contact"
-              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100"
-              >Contact</a
-            >
+              <i [class]="item.icon" class="mr-2"></i>
+              {{ item.label }}
+            </button>
             <div class="pt-4 pb-3 border-t border-gray-200">
               <div class="flex items-center space-x-3 px-3">
                 @if (authService.isAuthenticated()) {
-                  <a
-                    [routerLink]="getDashboardRoute()"
-                    class="block px-3 py-2 rounded-md text-base font-medium bg-blue-600 text-white hover:bg-blue-700"
-                    >My Dashboard</a
-                  >
+                <a
+                  [routerLink]="getDashboardRoute()"
+                  class="block px-3 py-2 rounded-md text-base font-medium bg-blue-600 text-white hover:bg-blue-700"
+                  >My Dashboard</a
+                >
                 } @else {
-                  <a
-                    routerLink="/auth/login"
-                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100"
-                    >Sign in</a
-                  >
-                  <a
-                    routerLink="/auth/register"
-                    class="block px-3 py-2 rounded-md text-base font-medium bg-blue-600 text-white hover:bg-blue-700"
-                    >Get Started</a
-                  >
+                <a
+                  routerLink="/auth/login"
+                  class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100"
+                  >Sign in</a
+                >
+                <a
+                  routerLink="/auth/register"
+                  class="block px-3 py-2 rounded-md text-base font-medium bg-blue-600 text-white hover:bg-blue-700"
+                  >Get Started</a
+                >
                 }
               </div>
             </div>
@@ -236,8 +222,87 @@ import { AuthService } from '../../services/auth.service';
     </div>
   `,
 })
-export class PublicLayoutComponent {
+export class PublicLayoutComponent implements OnInit {
   authService = inject(AuthService);
+  router = inject(Router);
+
+  currentRoute = '';
+  menuItems: MenuItem[] = [];
+  mobileMenuOpen = false;
+
+  ngOnInit() {
+    this.initializeMenuItems();
+
+    // Track route changes for active menu highlighting
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        this.currentRoute = event.urlAfterRedirects || event.url;
+        this.updateMenuActiveStates();
+      });
+
+    // Set initial route
+    this.currentRoute = this.router.url;
+    this.updateMenuActiveStates();
+  }
+
+  initializeMenuItems() {
+    this.menuItems = [
+      {
+        label: 'Home',
+        icon: 'pi pi-home',
+        command: () => this.router.navigate(['/home']),
+        styleClass: '',
+      },
+      {
+        label: 'About',
+        icon: 'pi pi-info-circle',
+        command: () => this.router.navigate(['/about']),
+        styleClass: '',
+      },
+      {
+        label: 'Services',
+        icon: 'pi pi-cog',
+        command: () => this.router.navigate(['/services']),
+        styleClass: '',
+      },
+      {
+        label: 'Contact',
+        icon: 'pi pi-envelope',
+        command: () => this.router.navigate(['/contact']),
+        styleClass: '',
+      },
+    ];
+  }
+
+  updateMenuActiveStates() {
+    this.menuItems.forEach((item) => {
+      const routeMap: { [key: string]: string } = {
+        Home: '/home',
+        About: '/about',
+        Services: '/services',
+        Contact: '/contact',
+      };
+
+      const route = routeMap[item.label || ''];
+      if (route && this.isActiveRoute(route)) {
+        item.styleClass = 'active-menu-item';
+      } else {
+        item.styleClass = '';
+      }
+    });
+  }
+
+  isActiveRoute(route: string): boolean {
+    if (route === '/home') {
+      return this.currentRoute === '/' || this.currentRoute === '/home';
+    }
+    return this.currentRoute.startsWith(route);
+  }
+
+  toggleMobileMenu() {
+    this.mobileMenuOpen = !this.mobileMenuOpen;
+  }
 
   getDashboardRoute(): string {
     const user = this.authService.currentUser();
